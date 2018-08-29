@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Rectangle x:Name="Player" Fill="#FF2D2D8C" HorizontalAlignment="Left" Height="100" Margin="124,144,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+
     </Grid>
 </Window>

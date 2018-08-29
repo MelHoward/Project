@@ -15,21 +15,18 @@ using System.Windows.Shapes;
 
 namespace Project
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {       
-            [System.STAThreadAttribute()]
-            [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
+         [System.STAThreadAttribute()]
+         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
 
-            public static void Main()
-            {
-                Project.App app = new Project.App();
-                app.InitializeComponent();
-                app.Run();
-            }
+        public static void Main()
+        {
+            Project.App app = new Project.App();
+            app.InitializeComponent();
+            app.Run();
+        }
         public MainWindow()
         {
             InitializeComponent();
