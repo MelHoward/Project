@@ -200,7 +200,6 @@
             this.pictureBox12.TabIndex = 13;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "hostile";
-            this.pictureBox12.Click += new System.EventHandler(this.pictureBox12_Click);
             // 
             // label1
             // 
