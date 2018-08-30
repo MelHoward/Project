@@ -18,10 +18,9 @@ namespace Project
 {
     public partial class MainWindow : Window
     {       
-         [System.STAThreadAttribute()]
-         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
-         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
-
+        [System.STAThreadAttribute()]
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main()
         {
             Project.App app = new Project.App();
@@ -55,11 +54,6 @@ namespace Project
                 y += .05;
                 Canvas.SetTop(Player, y);
             }
-            if (Keyboard.IsKeyDown(Key.Space))
-            {
-                x += .05;
-                Canvas.SetRight(bullets, x);
-            }
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
@@ -73,19 +67,13 @@ namespace Project
                     _direction = Direction.down;
                     _directionIsPressed = true;
                     break;
-                case Key.Space:
-                    _direction = Direction.right;
-                    _directionIsPressed = true;
-                    break;
                 default:
                     _direction = Direction.none;
                     break;
             }
         }
         private void OnKeyRelease(Object sender, KeyEventArgs e)
-        {
-            if (Keyboard.IsKeyDown(Key.Space))
-                _direction = Direction.right;
+        { 
             if (Keyboard.IsKeyDown(Key.Down))
                 _direction = Direction.down;
             else if (Keyboard.IsKeyDown(Key.Up))
