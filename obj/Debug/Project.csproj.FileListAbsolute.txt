@@ -1,0 +1,15 @@
+D:\Documents\Project352\Project\bin\Debug\Project.exe.config
+D:\Documents\Project352\Project\bin\Debug\Project.exe
+D:\Documents\Project352\Project\bin\Debug\Project.pdb
+D:\Documents\Project352\Project\obj\Debug\Project.csprojAssemblyReference.cache
+D:\Documents\Project352\Project\obj\Debug\MainWindow.g.cs
+D:\Documents\Project352\Project\obj\Debug\App.g.cs
+D:\Documents\Project352\Project\obj\Debug\Project_MarkupCompile.cache
+D:\Documents\Project352\Project\obj\Debug\Project_MarkupCompile.lref
+D:\Documents\Project352\Project\obj\Debug\MainWindow.baml
+D:\Documents\Project352\Project\obj\Debug\Project.g.resources
+D:\Documents\Project352\Project\obj\Debug\Project.Properties.Resources.resources
+D:\Documents\Project352\Project\obj\Debug\Project.csproj.GenerateResource.cache
+D:\Documents\Project352\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+D:\Documents\Project352\Project\obj\Debug\Project.exe
+D:\Documents\Project352\Project\obj\Debug\Project.pdb
