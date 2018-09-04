@@ -44,15 +44,39 @@ namespace Project
         }
         private void MovePlayer(object sender, EventArgs e)
         {
+
             if(Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.Up))
             {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(@"/Resources/up.png", UriKind.Relative));
+                Player.Fill = img;
                 y -= .05;
                 Canvas.SetTop(Player, y);
+
             }
             if (Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.Down))
             {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(@"/Resources/down.png", UriKind.Relative));
+                Player.Fill = img;
                 y += .05;
                 Canvas.SetTop(Player, y);
+            }
+            if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))
+            {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(@"/Resources/left.png", UriKind.Relative));
+                Player.Fill = img;
+                x -= .05;
+                Canvas.SetLeft(Player, x);
+            }
+            if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))
+            {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(@"/Resources/right.png", UriKind.Relative));
+                Player.Fill = img;
+                x += .05;
+                Canvas.SetLeft(Player, x);
             }
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
@@ -67,6 +91,14 @@ namespace Project
                     _direction = Direction.down;
                     _directionIsPressed = true;
                     break;
+                case Key.Left:
+                    _direction = Direction.left;
+                    _directionIsPressed = true;
+                    break;
+                case Key.Right:
+                    _direction = Direction.right;
+                    _directionIsPressed = true;
+                    break;
                 default:
                     _direction = Direction.none;
                     break;
@@ -78,6 +110,10 @@ namespace Project
                 _direction = Direction.down;
             else if (Keyboard.IsKeyDown(Key.Up))
                 _direction = Direction.up;
+            else if (Keyboard.IsKeyDown(Key.Left))
+                _direction = Direction.left;
+            else if (Keyboard.IsKeyDown(Key.Right))
+                _direction = Direction.right;
             else
                 _direction = Direction.none;
         }

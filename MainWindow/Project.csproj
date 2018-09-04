@@ -93,6 +93,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,8 +103,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Resource Include="Resources\down.png" />
+    <Resource Include="Resources\down2.png" />
+    <Resource Include="Resources\down3.png" />
+    <Resource Include="Resources\down4.png" />
+    <Resource Include="Resources\left.png" />
+    <Resource Include="Resources\left2.png" />
+    <Resource Include="Resources\left3.png" />
+    <Resource Include="Resources\right.png" />
+    <Resource Include="Resources\right2.png" />
+    <Resource Include="Resources\right3.png" />
+    <Resource Include="Resources\up.png" />
+    <Resource Include="Resources\up2.png" />
+    <Resource Include="Resources\up3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,16 +8,17 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="420" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794">
-            <Rectangle 
-            x:Name="Player" 
-            Fill="#FF2D2D8C" 
-            HorizontalAlignment="Left" 
-            Height="53" 
-            Stroke="Black" 
-            VerticalAlignment="Top" 
-            Width="62" 
-            Canvas.Left="22" Canvas.Top="182" 
-            />
+            <Rectangle
+                x:Name="Player" 
+                HorizontalAlignment="Left" 
+                Height="53"
+                VerticalAlignment="Top" 
+                Width="48" 
+                Canvas.Left="380" Canvas.Top="320" >
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Resources/up.png"/>
+                </Rectangle.Fill>
+            </Rectangle>
         </Canvas>
 
     </Grid>
