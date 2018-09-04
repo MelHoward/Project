@@ -12,11 +12,11 @@
             x:Name="Player" 
             Fill="#FF2D2D8C" 
             HorizontalAlignment="Left" 
-            Height="53" 
+            Height="16" 
             Stroke="Black" 
             VerticalAlignment="Top" 
-            Width="62" 
-            Canvas.Left="22" Canvas.Top="182" 
+            Width="14" 
+            Canvas.Left="403" Canvas.Top="364" 
             />
         </Canvas>
 

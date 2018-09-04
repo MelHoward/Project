@@ -54,6 +54,16 @@ namespace Project
                 y += .05;
                 Canvas.SetTop(Player, y);
             }
+            if(Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))
+            {
+                x -= .05;
+                Canvas.SetLeft(Player, x);
+            }
+            if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))
+            {
+                x += .05;
+                Canvas.SetLeft(Player, x);
+            }
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
@@ -67,17 +77,29 @@ namespace Project
                     _direction = Direction.down;
                     _directionIsPressed = true;
                     break;
+                case Key.Left:
+                    _direction = Direction.left;
+                    _directionIsPressed = true;
+                    break;
+                case Key.Right:
+                    _direction = Direction.right;
+                    _directionIsPressed = true;
+                    break;
                 default:
                     _direction = Direction.none;
                     break;
             }
         }
         private void OnKeyRelease(Object sender, KeyEventArgs e)
-        { 
+        {
             if (Keyboard.IsKeyDown(Key.Down))
                 _direction = Direction.down;
             else if (Keyboard.IsKeyDown(Key.Up))
                 _direction = Direction.up;
+            else if (Keyboard.IsKeyDown(Key.Left))
+                _direction = Direction.left;
+            else if (Keyboard.IsKeyDown(Key.Right))
+                _direction = Direction.right;
             else
                 _direction = Direction.none;
         }
