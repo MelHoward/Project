@@ -16,7 +16,7 @@
             Stroke="Black" 
             VerticalAlignment="Top" 
             Width="14" 
-            Canvas.Left="403" Canvas.Top="364" 
+            Canvas.Left="390" Canvas.Top="334" 
             />
         </Canvas>
 
