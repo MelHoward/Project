@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="420" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794">
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="420" Margin="-1,0,0,0" VerticalAlignment="Top" Width="794">
             <Rectangle 
             x:Name="Player" 
             Fill="#FF2D2D8C" 
