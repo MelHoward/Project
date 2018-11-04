@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Engine",
+    "\\MainWindow",
+    "\\Properties"
   ],
-  "SelectedNode": "\\.gitattributes",
+  "SelectedNode": "\\MainWindow\\.gitattributes",
   "PreviewInSolutionExplorer": false
 }

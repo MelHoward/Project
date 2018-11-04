@@ -103,6 +103,5 @@ namespace Project
             else
                 _direction = Direction.none;
         }
-
     }
 }
