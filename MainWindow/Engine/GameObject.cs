@@ -11,16 +11,16 @@ namespace twoDTDS.Engine
 {
     public abstract class GameObject : DependencyObject
     {
-        public static DependencyProperty XProperty = DependencyProperty.Register("X", typeof(double), typeof(GameObject));
-        public double X
-        {
+        public static DependencyProperty XProperty = 
+                      DependencyProperty.Register("X", typeof(double), typeof(GameObject));
+        public static DependencyProperty YProperty = 
+                      DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
+
+        public double X {
             get { return (double)GetValue(XProperty); }
             set { SetValue(XProperty, value); }
         }
-
-        public static DependencyProperty YProperty = DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
-        public double Y
-        {
+        public double Y {
             get { return (double)GetValue(YProperty); }
             set { SetValue(YProperty, value); }
         }
@@ -29,23 +29,20 @@ namespace twoDTDS.Engine
 
         public double Height { get; set; }
 
-        public Sprite Sprite { get; set; }
+        public Sprite sprite { get; set; }
 
         public Map Map { get; set; }
 
-        public bool IsDied { get; set; } = false;
+        public bool ObDied { get; set; } = false;
 
-        public GameObject(Map map)
-        {
-            Map = map;
-        }
+        public GameObject(Map map){ Map = map; }
 
         public virtual void OnUpdate(){}
 
         public virtual void OnRender(DrawingContext dc)
         {
-            if (Sprite != null)
-                Sprite.Render(this, dc);
+            if (sprite != null)
+                sprite.Render(this, dc);
         }
 
         private Storyboard MoveToStoryboard;
@@ -61,45 +58,46 @@ namespace twoDTDS.Engine
 
             Duration duration = new Duration(TimeSpan.FromMilliseconds(durationMs));
 
-            DoubleAnimation xani = new DoubleAnimation(x, duration);
-            DoubleAnimation yani = new DoubleAnimation(y, duration);
+            DoubleAnimation xAnimation = new DoubleAnimation(x, duration);
+            DoubleAnimation yAnimation = new DoubleAnimation(y, duration);
 
-            Storyboard.SetTargetProperty(xani, new PropertyPath(XProperty));
-            Storyboard.SetTargetProperty(yani, new PropertyPath(YProperty));
+            Storyboard.SetTargetProperty(xAnimation, new PropertyPath(XProperty));
+            Storyboard.SetTargetProperty(yAnimation, new PropertyPath(YProperty));
 
-            Storyboard.SetTarget(xani, this);
-            Storyboard.SetTarget(yani, this);
+            Storyboard.SetTarget(xAnimation, this);
+            Storyboard.SetTarget(yAnimation, this);
 
-            sb.Children.Add(xani);
-            sb.Children.Add(yani);
+            sb.Children.Add(xAnimation);
+            sb.Children.Add(yAnimation);
 
             sb.Begin();
 
             MoveToStoryboard = sb;
-
-            return sb;
+            return sb; 
         }
 
-        public static bool IsHitted(GameObject me, GameObject other)
+        public static bool isHit(GameObject me, GameObject other)
         {
-            if (other.X >= me.X - other.Width && other.X <= me.X + me.Width && other.Y >= me.Y - other.Height && other.Y <= me.Y + me.Height)
-            {
+            // returns true if other is within player bounds
+            double leftX = me.X - other.Width,
+                   rightX = me.X + me.Width,
+                   bottomY = me.Y - other.Height,
+                   topY = me.Y + me.Height;
+
+            if ((other.X >= leftX) && (other.X <= rightX) && 
+                (other.Y >= bottomY) && (other.Y <= topY)){
                 return true;
             }
-
             return false;
         }
 
-        public bool IsHitted(GameObject other)
-        {
-            return IsHitted(this, other);
-        }
+        public bool isHit(GameObject other){ return isHit(this, other); }
 
         public void CheckOutOfBounds()
         {
-            if (X < -Width || X > Map.Width + Width || Y < -Height || Y > Map.Height + Height)
-            {
-                IsDied = true;
+            if ((X < -Width)  || (X > Map.Width + Width) || 
+                (Y < -Height) || (Y > Map.Height + Height)) {
+                ObDied = true;
             }
         }
     }

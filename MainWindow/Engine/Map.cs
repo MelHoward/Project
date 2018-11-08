@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using twoDTDS.Game;
 
 namespace twoDTDS.Engine
 {
@@ -22,39 +23,30 @@ namespace twoDTDS.Engine
         public Map(PlayArea Plane)
         {
             this.Plane = Plane;
-
             Width = Plane.ActualWidth;
-
             Height = Plane.ActualHeight;
         }
+
+  
 
         public virtual void OnRender(DrawingContext dc)
         {
             foreach (GameObject obj in Objects)
             {
-                if (!obj.IsDied)
-                {
-                    obj.OnRender(dc);
-                }
+                if (!obj.ObDied) { obj.OnRender(dc); }
             }
         }
 
         public virtual void OnUpdate()
         {
             Width = Plane.ActualWidth;
-
             Height = Plane.ActualHeight;
-
             ProcessPaddingObjects();
 
             foreach (GameObject obj in Objects)
             {
-                if (!obj.IsDied)
-                {
-                    obj.OnUpdate();
-                }
+                if (!obj.ObDied) { obj.OnUpdate(); }
             }
-
             ProcessPaddingObjects(true);
         }
 
@@ -62,28 +54,23 @@ namespace twoDTDS.Engine
         {
             if (doUpdate)
             {
-                foreach (GameObject obj in PaddingObjects)
-                {
-                    obj.OnUpdate();
-                }
+                foreach (GameObject obj in PaddingObjects){ obj.OnUpdate(); }
             }
 
-            if (PaddingObjects.Count > 0)
-            {
-                Objects.AddRange(PaddingObjects);
-            }
-
+            if (PaddingObjects.Count > 0) { Objects.AddRange(PaddingObjects); }
             PaddingObjects.Clear();
         }
 
-        public void AddObject(GameObject obj)
-        {
-            PaddingObjects.Add(obj);
-        }
+        public void AddObject(GameObject obj){ PaddingObjects.Add(obj); }
 
-        public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, VerticalAlignment va = VerticalAlignment.Top)
+        public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, 
+                             double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, 
+                             VerticalAlignment va = VerticalAlignment.Top)
         {
-            FormattedText ft = new FormattedText(text, System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Default.Typeface, size, Brushes.Black);
+            FormattedText ft = new FormattedText(text, System.Globalization.
+                                   CultureInfo.CurrentCulture, 
+                                   FlowDirection.LeftToRight, Default.Typeface,
+                                   size, Brushes.Black);
             double xOffset = 0;
             switch (ha)
             {
@@ -94,6 +81,7 @@ namespace twoDTDS.Engine
                     xOffset = -ft.Width;
                     break;
             }
+
             double yOffset = 0;
             switch (va)
             {
@@ -104,7 +92,8 @@ namespace twoDTDS.Engine
                     yOffset = -ft.Height;
                     break;
             }
-            dc.DrawText(ft, new Point(Math.Round(x + xOffset), Math.Round(y + yOffset)));
+            dc.DrawText(ft, new Point(Math.Round(x + xOffset), 
+                        Math.Round(y + yOffset)));
         }
 
         internal void GarbageCollection()
@@ -116,19 +105,12 @@ namespace twoDTDS.Engine
                 if (index >= Objects.Count)
                 {
                     on = false;
-
                     break;
                 }
                 else
                 {
-                    if (Objects[index].IsDied)
-                    {
-                        Objects.RemoveAt(index);
-                    }
-                    else
-                    {
-                        index++;
-                    }
+                    if (Objects[index].ObDied){ Objects.RemoveAt(index); }
+                    else { index++; }
                 }
             }
         }

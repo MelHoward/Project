@@ -17,14 +17,12 @@ namespace twoDTDS.Engine
         public Circle(SolidColorBrush solidColorBursh)
         {
             this.solidColorBursh = solidColorBursh.Clone();
-
             this.solidColorBursh.Freeze();
         }
 
         public Circle(Brush brush, double radius)
         {
             this.brush = brush;
-
             this.radius = radius;
         }
 

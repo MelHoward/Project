@@ -7,17 +7,17 @@ using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
-    public class Rect : Sprite
+    public class Rec : Sprite
     {
-        private Brush _brush;
+        private Brush brush;
 
         public double Width { get; set; }
         public double Height { get; set; }
 
-        public Rect(Brush Brush, double width, double height)
+        public Rec(Brush Brush, double width, double height)
         {
-            _brush = Brush.Clone();
-            _brush.Freeze();
+            brush = Brush.Clone();
+            brush.Freeze();
 
             Width = width;
             Height = height;
@@ -25,7 +25,8 @@ namespace twoDTDS.Engine
 
         public override void Render(GameObject Parent, DrawingContext dc)
         {
-            dc.DrawRectangle(_brush, null, new System.Windows.Rect(Parent.X, Parent.Y, Width, Height));
+            dc.DrawRectangle(brush, null, new System.Windows.Rect
+                            (Parent.X, Parent.Y, Width, Height));
         }
     }
 }

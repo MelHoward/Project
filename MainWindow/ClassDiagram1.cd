@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="twoDTDS.App" Collapsed="true">
+    <Position X="27.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="twoDTDS.Engine.Circle">
+    <Position X="0.75" Y="13.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgA=</HashCode>
+      <FileName>Engine\Circle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.Default" Collapsed="true">
+    <Position X="29.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Default.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.GameObject">
+    <Position X="12" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAABJAAACAAAAAAAEAAABQIAAIAACAAIAEAYAA=</HashCode>
+      <FileName>Engine\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.Map">
+    <Position X="11" Y="12.5" Width="12.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAABAAAAgAAAAAAAEAABAAAAAEAAAIAIAEAIIA=</HashCode>
+      <FileName>Engine\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.PlayArea" Collapsed="true">
+    <Position X="29.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAEBgAARgAIAACAAQAAIACAAAAAAAgABAAQAIAAAA=</HashCode>
+      <FileName>Engine\PlayArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.Sprite">
+    <Position X="3" Y="11.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Engine\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.ammo">
+    <Position X="1.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Game\ammo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.EnemyAmmo">
+    <Position X="13.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\EnemyAmmo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.EnemyGenerator">
+    <Position X="21" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\EnemyGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.Player">
+    <Position X="4.75" Y="6" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEIAAAAAAAAAEIAAAAIAAAAQAAAAABIAEAAAA=</HashCode>
+      <FileName>Game\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.Score" Collapsed="true">
+    <Position X="29.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAACAAIEAEAQBAIBAAAAAAAAQIQAAA=</HashCode>
+      <FileName>Game\Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.SingleEnemy">
+    <Position X="24.25" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAIAIAAAAAAAAAAAAAAAAAAAAABAAAAAAEAAAA=</HashCode>
+      <FileName>Game\SingleEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Properties.Resources" Collapsed="true">
+    <Position X="27.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Properties.Settings" Collapsed="true">
+    <Position X="31" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.Random" Collapsed="true">
+    <Position X="31" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Engine\Random.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.AmmoInGame">
+    <Position X="0.5" Y="16.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAABAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\AmmoInGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.BulletOnPath">
+    <Position X="14.75" Y="8.5" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>BAAEQAAAAAAAAAAAIACAAAAAAAAAAQAAAAAAAAFBACA=</HashCode>
+      <FileName>Game\BulletOnPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.CNormAmmo">
+    <Position X="0.5" Y="19.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Game\CNormAmmo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.CNormBullet">
+    <Position X="8.5" Y="8.5" Width="5.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAKAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Game\CNormBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Game.InGamePlane" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAABAAAAAAgAAAABA=</HashCode>
+      <FileName>Game\InGamePlane.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="twoDTDS.Game.Level">
+    <Position X="15.75" Y="17" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAA=</HashCode>
+      <FileName>Game\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="twoDTDS.Engine.Rec">
+    <Position X="5.25" Y="13.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABgAAAAAAAAAAAEAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Engine\Rec.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="twoDTDS.Engine.IPlayAreaControl" Collapsed="true">
+    <Position X="27.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Engine\IPlayAreaControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -10,51 +10,35 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    public class Random
+    public class Player : GameObject
     {
-        System.Random rand = new System.Random((int)DateTime.UtcNow.TimeOfDay.TotalMilliseconds);
+        public Score score { get; set; }
+        Engine.Random r = new Engine.Random();
 
-        public double NextDouble()
-        {
-            return rand.NextDouble();
-        }
-        public double NextDouble(double min, double max)
-        {
-            return (double)rand.Next((int)(min * 10000), (int)(max * 10000)) / 10000;
-        }
-        public int Next(int min, int max)
-        {
-            return rand.Next(min, max);
-        }
-    }
-
-    public class ObjPlayer : GameObject
-    {
-        Random rand = new Random();
         DispatcherTimer bulletCreate;
-        DispatcherTimer camaraShake;
+        DispatcherTimer camShake;
         int cameraShakeCount = 0;
         double speed = 3;
         double dyingSize = 12;
 
-        public ObjPlayer(Map Map) : base(Map)
+        public Player(Map map) : base(map)
         {
-            X = Math.Round(Map.Width / 2);
-            Y = Map.Height - 50;
+            X = Math.Round(map.Width / 2);
+            Y = map.Height - 50;
 
             Width = 14;
             Height = 14;
-            Score Score = new Score();
-            Sprite = new Rect(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
- 
+
+            sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
+
+            score = new Score();
+            score.isDead += Score_died;
         }
 
-        private void ScoreManager_Dieded(object sender, Score e)
+        private void Score_died(object sender, Score e)
         {
             Console.WriteLine("YOU DIED!");
-
-            if (bulletCreate != null)
-                bulletCreate.Stop();
+            if (bulletCreate != null) { bulletCreate.Stop(); }
 
             DispatcherTimer t = new DispatcherTimer();
             int tcount = 0;
@@ -62,42 +46,21 @@ namespace twoDTDS.Game
             t.Tick += delegate
             {
                 tcount++;
-
-                if (tcount > 60)
-                {
-                    t.Stop();
-
-                    return;
-                }
-
+                if (tcount > 60) { t.Stop(); return; }
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();
         }
 
-    
-
         public override void OnUpdate()
         {
-            if (!Score.IsDied)
+            if (!score.Died)
             {
-                if (Keyboard.IsKeyDown(Key.A))
-                {
-                    X -= speed;
-                }
-                else if (Keyboard.IsKeyDown(Key.D))
-                {
-                    X += speed;
-                }
+                if (Keyboard.IsKeyDown(Key.A)){ X -= speed; }
+                else if (Keyboard.IsKeyDown(Key.D)) { X += speed; }
+                if (Keyboard.IsKeyDown(Key.W)) { Y -= speed; }
+                else if (Keyboard.IsKeyDown(Key.S)) { Y += speed; }
 
-                if (Keyboard.IsKeyDown(Key.W))
-                {
-                    Y -= speed;
-                }
-                else if (Keyboard.IsKeyDown(Key.S))
-                {
-                    Y += speed;
-                }
                 if (Keyboard.IsKeyDown(Key.Space))
                 {
                     if (bulletCreate == null)
@@ -106,67 +69,57 @@ namespace twoDTDS.Game
                         bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
                         bulletCreate.Tick += delegate
                         {
-                            Map.AddObject(new ObjOwnBullet(Map, X + Width / 2, Y));
+                            Map.AddObject(new ammo(Map, X + Width / 2, Y));
                         };
                     }
                     bulletCreate.Start();
                 }
-                else
-                {
-                    if (bulletCreate != null)
-                    {
-                        bulletCreate.Stop();
-                    }
-                }
+                else { if (bulletCreate != null) { bulletCreate.Stop(); }}
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
-
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
 
                 foreach (GameObject obj in Map.Objects)
                 {
-                    if (!obj.IsDied && obj is EnemyBullet)
+                    if (!obj.ObDied && obj is EnemyAmmo)
                     {
-                        if (IsHitted(this, obj))
+                        if (isHit(this, obj))
                         {
-                            Score.HeroHitted(((EnemyBullet)obj).Damage);
+                            score.playerHit(((EnemyAmmo)obj).Damage);
 
-                            if (camaraShake == null)
+                            if (camShake == null)
                             {
-                                camaraShake = new DispatcherTimer();
-                                camaraShake.Interval = TimeSpan.FromMilliseconds(25);
-                                camaraShake.Tick += delegate
+                                camShake = new DispatcherTimer();
+                                camShake.Interval = TimeSpan.FromMilliseconds(25);
+                                camShake.Tick += delegate
                                 {
                                     cameraShakeCount++;
                                     if (cameraShakeCount > 7)
                                     {
-                                        camaraShake.Stop();
+                                        camShake.Stop();
                                         Map.Plane.ViewOffsetX = 0;
                                         Map.Plane.ViewOffsetY = 0;
                                         return;
                                     }
-                                    Map.Plane.ViewOffsetX = rand.NextDouble(-5, 5);
-                                    Map.Plane.ViewOffsetY = rand.NextDouble(-5, 5);
+                                    Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
+                                    Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
                                 };
                             }
-
                             cameraShakeCount = 0;
-                            camaraShake.Start();
+                            camShake.Start();
                         }
                     }
                 }
             }
         }
-
         public override void OnRender(DrawingContext dc)
         {
-            if (!Score.IsDied)
-            {
-                base.OnRender(dc);
-            }
+            if (!score.Died) { base.OnRender(dc); }
             else
             {
-                Map.DrawText(dc, "YOU DIED", Map.Width / 2, Map.Height / 2, dyingSize, System.Windows.HorizontalAlignment.Center, System.Windows.VerticalAlignment.Center);
+                Map.DrawText(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
+                             dyingSize, System.Windows.HorizontalAlignment.Center,
+                             System.Windows.VerticalAlignment.Center );
             }
         }
     }
