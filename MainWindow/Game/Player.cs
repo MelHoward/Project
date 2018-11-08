@@ -29,7 +29,7 @@ namespace twoDTDS.Game
             Width = 14;
             Height = 14;
 
-            sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
+            sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 70, 0)), Width, Height);
 
             score = new Score();
             score.isDead += Score_died;

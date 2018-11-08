@@ -13,7 +13,7 @@ namespace twoDTDS.Game
     {
         Engine.Random rand = new Engine.Random();
         List<AmmoInGame> bullets = new List<AmmoInGame>();
-        DispatcherTimer dispancer;
+        DispatcherTimer dispense;
         Player player;
 
         public SingleEnemy(Map m, Player p) : base(m)
@@ -27,19 +27,16 @@ namespace twoDTDS.Game
 
             this.player = p;
 
-            //bullets.Add(new CircleNormalBulle(this));
-            bullets.Add(new CNormAmmo(this));
-
-            dispancer = new DispatcherTimer();
-            dispancer.Interval = TimeSpan.FromMilliseconds(600);
-            dispancer.Tick += delegate
+            if (dispense == null)
             {
-                int bulletIndex = rand.Next(0, bullets.Count);
-                double wait = bullets[bulletIndex].Shoot();
-                dispancer.Interval = TimeSpan.FromMilliseconds(wait);
-            };
-
-            dispancer.Start();
+                dispense = new DispatcherTimer();
+                dispense.Interval = TimeSpan.FromMilliseconds(75);
+                dispense.Tick += delegate
+                {
+                    Map.AddObject(new ammo(Map, X + Width / 2, Y));
+                };
+            }
+            dispense.Start();
         }
 
         public override void OnUpdate()

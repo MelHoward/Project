@@ -32,7 +32,7 @@ namespace twoDTDS.Game
             Width = 6;
             Height = 6;
 
-            sprite = new Engine.Circle(new SolidColorBrush(Color.FromRgb(77, 190, 255)), 3);
+            sprite = new Engine.Circle(new SolidColorBrush(Color.FromRgb(100, 190, 255)), 3);
 
             angle = GetAngleToTarget(target);
             SetAngle(angle + angleOffset);

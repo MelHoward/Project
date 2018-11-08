@@ -14,12 +14,16 @@ namespace twoDTDS.Engine
         Brush brush;
         private SolidColorBrush solidColorBursh;
 
+
         public Circle(SolidColorBrush solidColorBursh)
         {
+            //deep copy mh
             this.solidColorBursh = solidColorBursh.Clone();
+            //no change mh
             this.solidColorBursh.Freeze();
         }
 
+        //ctor
         public Circle(Brush brush, double radius)
         {
             this.brush = brush;

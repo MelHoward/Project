@@ -36,7 +36,7 @@ namespace twoDTDS
                 {
                     on = false;
                 }
-                else if (low == "suiside")
+                else if (low == "suicide")
                 {
                     Convert.ToInt32("aaaaaaaaaaaaaa");
                 }
