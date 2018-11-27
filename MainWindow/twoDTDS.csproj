@@ -134,7 +134,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,21 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\down.png" />
-    <Resource Include="Resources\down2.png" />
-    <Resource Include="Resources\down3.png" />
-    <Resource Include="Resources\down4.png" />
-    <Resource Include="Resources\left.png" />
-    <Resource Include="Resources\left2.png" />
-    <Resource Include="Resources\left3.png" />
-    <Resource Include="Resources\right.png" />
-    <Resource Include="Resources\right2.png" />
-    <Resource Include="Resources\right3.png" />
-    <Resource Include="Resources\up.png" />
-    <Resource Include="Resources\up2.png" />
-    <Resource Include="Resources\up3.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -169,6 +153,60 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow.png" />
+    <Resource Include="Resources\coin.gif" />
+    <Resource Include="Resources\enemy-death.gif" />
+    <Resource Include="Resources\gem.gif" />
+    <Resource Include="Resources\hero-attack-back-weapon.gif" />
+    <Resource Include="Resources\hero-attack-back.gif" />
+    <Resource Include="Resources\hero-attack-front-weapon.gif" />
+    <Resource Include="Resources\hero-attack-front.gif" />
+    <Resource Include="Resources\hero-attack-side-weapon.gif" />
+    <Resource Include="Resources\hero-attack-side.gif" />
+    <Resource Include="Resources\hero-walk-back.gif" />
+    <Resource Include="Resources\hero-walk-front.gif" />
+    <Resource Include="Resources\hero-walk-side.gif" />
+    <Resource Include="Resources\mole-idle-back.gif" />
+    <Resource Include="Resources\mole-idle-front.gif" />
+    <Resource Include="Resources\mole-idle-side.gif" />
+    <Resource Include="Resources\mole-walk-back.gif" />
+    <Resource Include="Resources\mole-walk-front.gif" />
+    <Resource Include="Resources\mole-walk-side.gif" />
+    <Resource Include="Resources\tileset.png" />
+    <Resource Include="Resources\treant-idle-back.gif" />
+    <Resource Include="Resources\treant-idle-front.gif" />
+    <Resource Include="Resources\treant-idle-side.gif" />
+    <Resource Include="Resources\treant-walk-back.gif" />
+    <Resource Include="Resources\treant-walk-front.gif" />
+    <Resource Include="Resources\treant-walk-side.gif" />
+    <Resource Include="Resources\waterfall.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bullet.png" />
+    <Resource Include="Resources\coin.png" />
+    <Resource Include="Resources\enemy-death.png" />
+    <Resource Include="Resources\gem.png" />
+    <Resource Include="Resources\hero-attack-back-weapon.png" />
+    <Resource Include="Resources\hero-attack-back.png" />
+    <Resource Include="Resources\hero-attack-front-weapon.png" />
+    <Resource Include="Resources\hero-attack-front.png" />
+    <Resource Include="Resources\hero-attack-side-weapon.png" />
+    <Resource Include="Resources\hero-attack-side.png" />
+    <Resource Include="Resources\hero-back-walk.png" />
+    <Resource Include="Resources\hero-idle-back.png" />
+    <Resource Include="Resources\hero-idle-front.png" />
+    <Resource Include="Resources\hero-idle-side.png" />
+    <Resource Include="Resources\hero-walk-front.png" />
+    <Resource Include="Resources\hero-walk-side.png" />
+    <Resource Include="Resources\objects.png" />
+    <Resource Include="Resources\treant-idle-back.png" />
+    <Resource Include="Resources\treant-idle-front.png" />
+    <Resource Include="Resources\treant-idle-side.png" />
+    <Resource Include="Resources\treant-walk-back.png" />
+    <Resource Include="Resources\treant-walk-front.png" />
+    <Resource Include="Resources\treant-walk-side.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
