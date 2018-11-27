@@ -9,6 +9,9 @@ using System.Windows.Media.Animation;
 
 namespace twoDTDS.Engine
 {
+/*---------------------------------------------------------------------------------------
+                         << GAMEOBJECT >> : DEPENDENCYPROPERTY 
+---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
         public static DependencyProperty XProperty = 
@@ -16,36 +19,50 @@ namespace twoDTDS.Engine
         public static DependencyProperty YProperty = 
                       DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
 
-        public double X {
+        /*============================= X >> Acc. ===========================*/
+        public double X
+        {
             get { return (double)GetValue(XProperty); }
             set { SetValue(XProperty, value); }
         }
-        public double Y {
+        /*============================= Y >> Acc. ===========================*/
+        public double Y
+        {
             get { return (double)GetValue(YProperty); }
             set { SetValue(YProperty, value); }
         }
 
+        /*============================= Width ===============================*/
         public double Width { get; set; }
-
+        /*============================== Height =============================*/
         public double Height { get; set; }
 
-        public Sprite sprite { get; set; }
+        /*=========================== Sprite >> CTOR ========================*/
+        public Sprite Sprite { get; set; }
 
+        /*=========================== Map >> CTOR ===========================*/
         public Map Map { get; set; }
 
+        /*============================= ObDied ==============================*/
         public bool ObDied { get; set; } = false;
 
+        /*=========================== GameObject ============================*/
         public GameObject(Map map){ Map = map; }
 
-        public virtual void OnUpdate(){}
+        /*=========================== OnUpdate  =============================*/
+        public virtual void OnUpdate() { }
 
+        /*=========================== <<OnRender>> ==========================*/
         public virtual void OnRender(DrawingContext dc)
         {
-            if (sprite != null)
-                sprite.Render(this, dc);
+            if (Sprite != null)
+                Sprite.Render(this, dc);
         }
 
+        /*========================== MoveToStoryboard =======================*/
         private Storyboard MoveToStoryboard;
+
+        /*============================= MoveTo ==============================*/
         public Storyboard MoveTo(double x, double y, double durationMs)
         {
             if (MoveToStoryboard != null)
@@ -76,7 +93,8 @@ namespace twoDTDS.Engine
             return sb; 
         }
 
-        public static bool isHit(GameObject me, GameObject other)
+        /*============================= IsHit ===============================*/
+        public static bool IsHit(GameObject me, GameObject other)
         {
             // returns true if other is within player bounds
             double leftX = me.X - other.Width,
@@ -91,8 +109,13 @@ namespace twoDTDS.Engine
             return false;
         }
 
-        public bool isHit(GameObject other){ return isHit(this, other); }
+        /*============================= IsHit ===============================*/
+        public bool IsHit(GameObject other)
+        {
+            return IsHit(this, other);
+        }
 
+        /*========================= CheckOutOfBounds ========================*/
         public void CheckOutOfBounds()
         {
             if ((X < -Width)  || (X > Map.Width + Width) || 

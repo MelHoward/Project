@@ -5,21 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Globalization;
 using twoDTDS.Game;
 
 namespace twoDTDS.Engine
 {
+    using HA = HorizontalAlignment;
+    using VA = VerticalAlignment;
+    /*---------------------------------------------------------------------------------------
+                                       << MAP >> 
+    ---------------------------------------------------------------------------------------*/
     public abstract class Map
     {
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
 
         public double Width { get; set; }
-
         public double Height { get; set; }
 
+        /*=========================== Plane >> Acc. =========================*/
         public PlayArea Plane { get; set; }
 
+        /*================================ Map ==============================*/
         public Map(PlayArea Plane)
         {
             this.Plane = Plane;
@@ -27,8 +34,7 @@ namespace twoDTDS.Engine
             Height = Plane.ActualHeight;
         }
 
-  
-
+        /*============================= OnRender ============================*/
         public virtual void OnRender(DrawingContext dc)
         {
             foreach (GameObject obj in Objects)
@@ -37,6 +43,7 @@ namespace twoDTDS.Engine
             }
         }
 
+        /*============================= OnUpdate ============================*/
         public virtual void OnUpdate()
         {
             Width = Plane.ActualWidth;
@@ -50,6 +57,7 @@ namespace twoDTDS.Engine
             ProcessPaddingObjects(true);
         }
 
+        /*======================= ProcessPaddingObjects =====================*/
         internal void ProcessPaddingObjects(bool doUpdate = false)
         {
             if (doUpdate)
@@ -63,12 +71,12 @@ namespace twoDTDS.Engine
 
         public void AddObject(GameObject obj){ PaddingObjects.Add(obj); }
 
-        public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, 
-                             double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, 
-                             VerticalAlignment va = VerticalAlignment.Top)
+        /*============================= DrwTxt ==============================*/
+        public void DrwTxt(DrawingContext dc, string text = "", double x = 0, 
+                             double y = 0, double size = 12, HA ha = HA.Left, 
+                             VA va = VA.Top)
         {
-            FormattedText ft = new FormattedText(text, System.Globalization.
-                                   CultureInfo.CurrentCulture, 
+            FormattedText ft = new FormattedText(text, CultureInfo.CurrentCulture, 
                                    FlowDirection.LeftToRight, Default.Typeface,
                                    size, Brushes.Black);
             double xOffset = 0;
@@ -96,6 +104,7 @@ namespace twoDTDS.Engine
                         Math.Round(y + yOffset)));
         }
 
+        /*============================= GarbageCollection ===================*/
         internal void GarbageCollection()
         {
             bool on = true;
@@ -109,8 +118,14 @@ namespace twoDTDS.Engine
                 }
                 else
                 {
-                    if (Objects[index].ObDied){ Objects.RemoveAt(index); }
-                    else { index++; }
+                    if (Objects[index].ObDied)
+                    {
+                        Objects.RemoveAt(index);
+                    }
+                    else
+                    {
+                        index++;
+                    }
                 }
             }
         }

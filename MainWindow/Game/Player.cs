@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,9 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+/*---------------------------------------------------------------------------------------
+                              PLAYER : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
     public class Player : GameObject
     {
         public Score score { get; set; }
@@ -21,6 +25,7 @@ namespace twoDTDS.Game
         double speed = 3;
         double dyingSize = 12;
 
+        /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
         {
             X = Math.Round(map.Width / 2);
@@ -29,12 +34,13 @@ namespace twoDTDS.Game
             Width = 14;
             Height = 14;
 
-            sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 70, 0)), Width, Height);
+            Sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 70, 0)), Width, Height);
 
             score = new Score();
             score.isDead += Score_died;
         }
 
+        /*================================== Score_died ==========================*/
         private void Score_died(object sender, Score e)
         {
             Console.WriteLine("YOU DIED!");
@@ -51,6 +57,8 @@ namespace twoDTDS.Game
             };
             t.Start();
         }
+
+        /*================================== OnUpdate =============================*/
 
         public override void OnUpdate()
         {
@@ -83,7 +91,7 @@ namespace twoDTDS.Game
                 {
                     if (!obj.ObDied && obj is EnemyAmmo)
                     {
-                        if (isHit(this, obj))
+                        if (IsHit(this, obj))
                         {
                             score.playerHit(((EnemyAmmo)obj).Damage);
 
@@ -112,13 +120,15 @@ namespace twoDTDS.Game
                 }
             }
         }
+
+        /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
             if (!score.Died) { base.OnRender(dc); }
             else
             {
-                Map.DrawText(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, System.Windows.HorizontalAlignment.Center,
+                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
+                             dyingSize, HorizontalAlignment.Center,
                              System.Windows.VerticalAlignment.Center );
             }
         }

@@ -8,12 +8,26 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+
+/*---------------------------------------------------------------------------------------
+                               << ENEMYAMMO >> : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
+    public abstract class EnemyAmmo : GameObject
+    {
+        public EnemyAmmo(Map map) : base(map) { }
+        public int Damage { get; set; } = 1;
+    }
+
+/*---------------------------------------------------------------------------------------
+                                CNORMBULLET : ENEMYAMMO
+---------------------------------------------------------------------------------------*/
     public class CNormBullet : EnemyAmmo
     {
         double x_vec;
         double y_vec;
         double radius;
 
+        /*============================= CNormBullet =========================*/
         public CNormBullet(Map map, double x, double y, double x_vec,
                            double y_vec, double radius) : base(map){
             X = x;
@@ -24,9 +38,10 @@ namespace twoDTDS.Game
             this.radius = radius;
 
             Damage = Score.Norm;
-            sprite = new Circle(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
+            Sprite = new Circle(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
 
+        /*=============================== OnUpdate ==========================*/
         public override void OnUpdate()
         {
             X += x_vec;

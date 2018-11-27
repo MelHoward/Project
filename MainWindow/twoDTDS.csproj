@@ -91,21 +91,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Engine\Circle.cs" />
     <Compile Include="Engine\Default.cs" />
     <Compile Include="Engine\IPlayAreaControl.cs" />
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\PlayArea.cs" />
     <Compile Include="Engine\Random.cs" />
-    <Compile Include="Engine\Rec.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
     <Compile Include="Game\CNormAmmo.cs" />
     <Compile Include="Game\CNormBullet.cs" />
-    <Compile Include="Game\EnemyAmmo.cs" />
-    <Compile Include="Game\EnemyGenerator.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Score.cs" />
@@ -138,7 +134,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -9,30 +9,28 @@ using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
+
+/*---------------------------------------------------------------------------------------
+                            PLAYAREA : FRAMEWORKELEMENT
+---------------------------------------------------------------------------------------*/
     public class PlayArea : FrameworkElement
     {
         private VisualCollection canvas;
-
+        private Map map;
         public IPlayAreaControl PlaneControl { get; set; }
 
-        private Map map;
+        /*============================= Player >> CTOR ===========================*/
         public virtual Map Map
         {
-            get
-            {
-                return map;
-            }
-            set
-            {
-                map = value;
-            }
+            get { return map; }
+            set { map = value; }
         }
 
         //amount to translate the coordinate 
         public double ViewOffsetX { get; set; }
         public double ViewOffsetY { get; set; }
 
-        //translate -half width and -half height to center the sprite
+        //translate -half width and -half height to center the Sprite
         public double ViewScaleOriginX { get; set; } = 0.5;
         public double ViewScaleOriginY { get; set; } = 0.5;
 
@@ -40,16 +38,29 @@ namespace twoDTDS.Engine
         public double ViewScaleX { get; set; } = 1;
         public double ViewScaleY { get; set; } = 1;
 
-        protected override Visual GetVisualChild(int index){ return canvas[index]; }
+        /*========================= GetVisualChild ==========================*/
+        protected override Visual GetVisualChild(int index)
+        {
+            return canvas[index];
+        }
 
-        protected override int VisualChildrenCount { get{ return canvas.Count; } }
+        /*========================= VisualChildernCount =====================*/
+        protected override int VisualChildrenCount
+        {
+            get
+            {
+                return canvas.Count;
+            }
+        }
 
+        /*========================== PlayArea >> CTOR =======================*/
         public PlayArea()
         {
             canvas = new VisualCollection(this);
             Loaded += PlayArea_Loaded;
         }
 
+        /*========================= GetPlayAreaParent =======================*/
         private IPlayAreaControl GetPlayAreaParent(DependencyObject obj)
         {
             if ((obj != null) && (obj is FrameworkElement))
@@ -61,14 +72,17 @@ namespace twoDTDS.Engine
             return null;
         }
 
+        /*============================= PlayArea_Loaded======================*/
         private void PlayArea_Loaded(object sender, RoutedEventArgs e)
         {
             PlaneControl = GetPlayAreaParent(Parent);
             CompositionTarget.Rendering += RenderCompT;
         }
 
+        /*============================= RenderCompT =========================*/
         private void RenderCompT(object sender, EventArgs e){ Render(); }
 
+        /*============================= Render ==============================*/
         private void Render()
         {
             if (map != null)
@@ -90,7 +104,8 @@ namespace twoDTDS.Engine
                 PushVisual(view);
             }
         }
-        //clear screen push new image
+
+        /*============================= PushVisual ==========================*/
         public void PushVisual(Visual v)
         {
             canvas.Clear();

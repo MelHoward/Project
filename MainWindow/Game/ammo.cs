@@ -16,7 +16,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 3;
             Height = 15;
-            sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 50, 220)), Width, Height);
+            Sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 50, 220)), Width, Height);
         }
 
         public override void OnUpdate()
