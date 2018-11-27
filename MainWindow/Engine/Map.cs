@@ -1,4 +1,8 @@
-﻿using System;
+﻿/**
+*   file: Map.cs
+	author: Mel and Cole
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +11,26 @@ using System.Windows;
 using System.Windows.Media;
 using System.Globalization;
 using twoDTDS.Game;
-
+/*
+TABLE OF CONTENTS
+	* Global
+		+ abstract Map
+            - List<
+		+ Side Menu
+		+ Header
+		+ Hero
+		+ Skills
+		+ Resume
+		+ Services
+		+ Portfolio
+		+ Blog
+			- Blog Page
+		+ Testimonials
+		+ Contact
+		+ footer
+		+ Responsive
+		
+*/
 namespace twoDTDS.Engine
 {
     using HA = HorizontalAlignment;
@@ -72,8 +95,8 @@ namespace twoDTDS.Engine
         public void AddObject(GameObject obj){ PaddingObjects.Add(obj); }
 
         /*============================= DrwTxt ==============================*/
-        public void DrwTxt(DrawingContext dc, string text = "", double x = 0, 
-                             double y = 0, double size = 12, HA ha = HA.Left, 
+        public void DrwTxt(DrawingContext dc, string text="", double x = 0, 
+                             double y = 0, double size = 16, HA ha = HA.Left, 
                              VA va = VA.Top)
         {
             FormattedText ft = new FormattedText(text, CultureInfo.CurrentCulture, 
@@ -82,6 +105,7 @@ namespace twoDTDS.Engine
             double xOffset = 0;
             switch (ha)
             {
+
                 case HorizontalAlignment.Center:
                     xOffset = -ft.Width / 2;
                     break;
