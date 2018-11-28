@@ -10,7 +10,7 @@ namespace twoDTDS.Engine
 {
     public interface IPlayAreaControl
     {
-        void SetTransfrom(Transform t);
-        void SetTransfromOrigin(Point pt);
+        void Settransform(Transform t);
+        void SettransformOrigin(Point pt);
     } 
 }

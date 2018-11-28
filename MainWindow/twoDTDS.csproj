@@ -104,7 +104,7 @@
     <Compile Include="Game\CNormBullet.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\Score.cs" />
+    <Compile Include="Game\ScoreKeep.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Game\InGamePlane.xaml.cs">
       <DependentUpon>InGamePlane.xaml</DependentUpon>
@@ -130,7 +130,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -155,58 +155,118 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\arrow.png" />
-    <Resource Include="Resources\coin.gif" />
-    <Resource Include="Resources\enemy-death.gif" />
-    <Resource Include="Resources\gem.gif" />
-    <Resource Include="Resources\hero-attack-back-weapon.gif" />
-    <Resource Include="Resources\hero-attack-back.gif" />
-    <Resource Include="Resources\hero-attack-front-weapon.gif" />
-    <Resource Include="Resources\hero-attack-front.gif" />
-    <Resource Include="Resources\hero-attack-side-weapon.gif" />
-    <Resource Include="Resources\hero-attack-side.gif" />
-    <Resource Include="Resources\hero-walk-back.gif" />
-    <Resource Include="Resources\hero-walk-front.gif" />
-    <Resource Include="Resources\hero-walk-side.gif" />
-    <Resource Include="Resources\mole-idle-back.gif" />
-    <Resource Include="Resources\mole-idle-front.gif" />
-    <Resource Include="Resources\mole-idle-side.gif" />
-    <Resource Include="Resources\mole-walk-back.gif" />
-    <Resource Include="Resources\mole-walk-front.gif" />
-    <Resource Include="Resources\mole-walk-side.gif" />
-    <Resource Include="Resources\tileset.png" />
-    <Resource Include="Resources\treant-idle-back.gif" />
-    <Resource Include="Resources\treant-idle-front.gif" />
-    <Resource Include="Resources\treant-idle-side.gif" />
-    <Resource Include="Resources\treant-walk-back.gif" />
-    <Resource Include="Resources\treant-walk-front.gif" />
-    <Resource Include="Resources\treant-walk-side.gif" />
-    <Resource Include="Resources\waterfall.gif" />
+    <None Include="Resources\sprites\h_walk\hero-walk-back-1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\bullet.png" />
-    <Resource Include="Resources\coin.png" />
-    <Resource Include="Resources\enemy-death.png" />
-    <Resource Include="Resources\gem.png" />
-    <Resource Include="Resources\hero-attack-back-weapon.png" />
-    <Resource Include="Resources\hero-attack-back.png" />
-    <Resource Include="Resources\hero-attack-front-weapon.png" />
-    <Resource Include="Resources\hero-attack-front.png" />
-    <Resource Include="Resources\hero-attack-side-weapon.png" />
-    <Resource Include="Resources\hero-attack-side.png" />
-    <Resource Include="Resources\hero-back-walk.png" />
-    <Resource Include="Resources\hero-idle-back.png" />
-    <Resource Include="Resources\hero-idle-front.png" />
-    <Resource Include="Resources\hero-idle-side.png" />
-    <Resource Include="Resources\hero-walk-front.png" />
-    <Resource Include="Resources\hero-walk-side.png" />
-    <Resource Include="Resources\objects.png" />
-    <Resource Include="Resources\treant-idle-back.png" />
-    <Resource Include="Resources\treant-idle-front.png" />
-    <Resource Include="Resources\treant-idle-side.png" />
-    <Resource Include="Resources\treant-walk-back.png" />
-    <Resource Include="Resources\treant-walk-front.png" />
-    <Resource Include="Resources\treant-walk-side.png" />
+    <None Include="Resources\sprites\h_walk\hero-walk-back-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\objects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\tileset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sprites\h_walk\hero-walk-back-1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-back-6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-front-6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sprites\h_walk\hero-walk-side-6.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

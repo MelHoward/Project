@@ -7,7 +7,7 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    public class Score
+    public class ScoreKeep
     {
         public static int Norm { get; set; } = 1;
         public static int Guid { get; set; } = 5;
@@ -20,10 +20,10 @@ namespace twoDTDS.Game
 
         public bool Died { get; set; } = false;
 
-        public event EventHandler<Score> isDead;
-        public event EventHandler<Score> Streaks;
+        public event EventHandler<ScoreKeep> IsDead;
+        public event EventHandler<ScoreKeep> Streaks;
 
-        public void playerHit(int Damage)
+        public void PlayerHit(int Damage)
         {
             Streak = 0;
             HP -= Damage;
@@ -31,11 +31,11 @@ namespace twoDTDS.Game
             {
                 HP = 0;
                 Died = true;
-                isDead?.Invoke(this, this);
+                IsDead?.Invoke(this, this);
             }
         }
 
-        public void shotEnemy(int Score)
+        public void ShotEnemy(int Score)
         {
             this.Sc += Score + Streak;
             Streak++;

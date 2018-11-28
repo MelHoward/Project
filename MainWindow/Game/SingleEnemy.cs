@@ -23,7 +23,7 @@ namespace twoDTDS.Game
             Width = 80;
             Height = 48;
 
-            Sprite = new Rec(new SolidColorBrush(Color.FromRgb(0, 255, 0)), Width, Height);
+            Sprite = new Rec(Width, Height);
 
             this.player = p;
 
@@ -45,7 +45,7 @@ namespace twoDTDS.Game
             {
                 if (!obj.ObDied && obj is ammo)
                 {
-                    if(IsHit(this, obj)){ player.score.shotEnemy(Score.Norm); }
+                    if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm); }
                 }
             }
         }

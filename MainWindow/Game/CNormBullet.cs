@@ -37,7 +37,7 @@ namespace twoDTDS.Game
             this.y_vec = y_vec;
             this.radius = radius;
 
-            Damage = Score.Norm;
+            Damage = ScoreKeep.Norm;
             Sprite = new Circle(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
 

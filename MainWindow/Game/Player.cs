@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Drawing;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
@@ -16,7 +17,7 @@ namespace twoDTDS.Game
 ---------------------------------------------------------------------------------------*/
     public class Player : GameObject
     {
-        public Score score { get; set; }
+        public ScoreKeep myScore { get; set; }
         Engine.Random r = new Engine.Random();
 
         DispatcherTimer bulletCreate;
@@ -34,15 +35,15 @@ namespace twoDTDS.Game
             Width = 14;
             Height = 14;
 
-            Sprite = new Rec(new SolidColorBrush(Color.FromRgb(255, 70, 0)), Width, Height);
+            Sprite = new Rec(Width, Height);
 
-            score = new Score();
-            score.isDead += Score_died;
+            myScore = new ScoreKeep();
+            myScore.IsDead += Score_died;
         }
 
         /*================================== Score_died ==========================*/
-        private void Score_died(object sender, Score e)
-        {
+        private void Score_died(object sender, ScoreKeep e) { 
+        
             Console.WriteLine("YOU DIED!");
             if (bulletCreate != null) { bulletCreate.Stop(); }
 
@@ -62,7 +63,7 @@ namespace twoDTDS.Game
 
         public override void OnUpdate()
         {
-            if (!score.Died)
+            if (!myScore.Died)
             {
                 if (Keyboard.IsKeyDown(Key.A)){ X -= speed; }
                 else if (Keyboard.IsKeyDown(Key.D)) { X += speed; }
@@ -93,7 +94,7 @@ namespace twoDTDS.Game
                     {
                         if (IsHit(this, obj))
                         {
-                            score.playerHit(((EnemyAmmo)obj).Damage);
+                            myScore.PlayerHit(((EnemyAmmo)obj).Damage);
 
                             if (camShake == null)
                             {
@@ -124,7 +125,7 @@ namespace twoDTDS.Game
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
-            if (!score.Died) { base.OnRender(dc); }
+            if (!myScore.Died) { base.OnRender(dc); }
             else
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Drawing;
 using System.Windows;
 
 namespace twoDTDS.Engine
 {
+
 /*---------------------------------------------------------------------------------------
                                        << Sprite >>
 ---------------------------------------------------------------------------------------*/
@@ -16,33 +19,38 @@ namespace twoDTDS.Engine
         public abstract void Render(GameObject Parent, DrawingContext dc);
     }
 
+
+
 /*---------------------------------------------------------------------------------------
                                         REC : Sprite
 ---------------------------------------------------------------------------------------*/
     public class Rec : Sprite
     {
-        private Brush brush;
+        BitmapImage src;
+        Rectangle rec;
 
         public double Width { get; set; }
         public double Height { get; set; }
 
         /*============================= Rec << CTOR =========================*/
-        public Rec(Brush Brush, double width, double height)
+        public Rec(double width, double height)
         {
-            brush = Brush.Clone();
-            brush.Freeze();
-
+            src = new BitmapImage();
+            src.BeginInit();
+            src.UriSource = new Uri("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\Resources\\sprites\\h_walk\\hero-walk-back-1.bmp", UriKind.RelativeOrAbsolute); ;
             Width = width;
             Height = height;
+            src.EndInit();
         }
 
         /*============================= Render =================================*/
         public override void Render(GameObject Parent, DrawingContext dc)
         {
-            dc.DrawRectangle(brush, null, new System.Windows.Rect
-                            (Parent.X, Parent.Y, Width, Height));
+            dc.DrawImage(src, new Rect(Parent.X, Parent.Y, Width, Height));
         }
     }
+
+
 
 /*---------------------------------------------------------------------------------------
                               CIRCLE : Sprite
@@ -50,20 +58,20 @@ namespace twoDTDS.Engine
     public class Circle : Sprite
     {
         double radius = 5;
-        Brush brush;
-        private SolidColorBrush solidColorBursh;
+        System.Windows.Media.Brush brush;
+        private SolidColorBrush solColBrush;
 
         /*============================= Circle << CTOR ======================*/
-        public Circle(SolidColorBrush solidColorBursh)
+        public Circle(SolidColorBrush solColBrush)
         {
             //deep copy mh
-            this.solidColorBursh = solidColorBursh.Clone();
+            this.solColBrush = solColBrush.Clone();
             //no change mh
-            this.solidColorBursh.Freeze();
+            this.solColBrush.Freeze();
         }
 
         /*============================= Circle << CTOR ======================*/
-        public Circle(Brush brush, double radius)
+        public Circle( System.Windows.Media.Brush brush, double radius)
         {
             this.brush = brush;
             this.radius = radius;
@@ -73,7 +81,7 @@ namespace twoDTDS.Engine
 
         public override void Render(GameObject Parent, DrawingContext dc)
         {
-            dc.DrawEllipse(brush, null, new Point(Parent.X + radius, Parent.Y + radius), radius, radius);
+            dc.DrawEllipse(brush, null, new System.Windows.Point(Parent.X + radius, Parent.Y + radius), radius, radius);
         }
     }
 }

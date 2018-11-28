@@ -35,12 +35,12 @@ namespace twoDTDS.Game
             plane.Map = new Level(plane);
         }
 
-        public void SetTransfrom(Transform transfrom)
+        public void Settransform(Transform transform)
         {
-            RenderTransform = transfrom;
+            RenderTransform = transform;
         }
 
-        public void SetTransfromOrigin(Point pt)
+        public void SettransformOrigin(Point pt)
         {
             RenderTransformOrigin = pt;
         }

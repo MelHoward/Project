@@ -97,9 +97,9 @@ namespace twoDTDS.Engine
                 group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX,
                                    CenterY = ViewScaleOriginY, ScaleX = ViewScaleX,
                                    ScaleY = ViewScaleY });
-                PlaneControl.SetTransfromOrigin(new Point
+                PlaneControl.SettransformOrigin(new Point
                                                (ViewScaleOriginX, ViewScaleOriginY));
-                PlaneControl.SetTransfrom(group);
+                PlaneControl.Settransform(group);
  
                 PushVisual(view);
             }

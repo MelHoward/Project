@@ -15,20 +15,7 @@ using twoDTDS.Game;
 TABLE OF CONTENTS
 	* Global
 		+ abstract Map
-            - List<
-		+ Side Menu
-		+ Header
-		+ Hero
-		+ Skills
-		+ Resume
-		+ Services
-		+ Portfolio
-		+ Blog
-			- Blog Page
-		+ Testimonials
-		+ Contact
-		+ footer
-		+ Responsive
+            
 		
 */
 namespace twoDTDS.Engine
@@ -62,7 +49,10 @@ namespace twoDTDS.Engine
         {
             foreach (GameObject obj in Objects)
             {
-                if (!obj.ObDied) { obj.OnRender(dc); }
+                if (!obj.ObDied)
+                {
+                    obj.OnRender(dc);
+                }
             }
         }
 
@@ -75,7 +65,10 @@ namespace twoDTDS.Engine
 
             foreach (GameObject obj in Objects)
             {
-                if (!obj.ObDied) { obj.OnUpdate(); }
+                if (!obj.ObDied)
+                {
+                    obj.OnUpdate();
+                }
             }
             ProcessPaddingObjects(true);
         }
@@ -105,22 +98,19 @@ namespace twoDTDS.Engine
             double xOffset = 0;
             switch (ha)
             {
-
-                case HorizontalAlignment.Center:
-                    xOffset = -ft.Width / 2;
+                case HA.Center: xOffset = -ft.Width / 2;
                     break;
-                case HorizontalAlignment.Right:
-                    xOffset = -ft.Width;
+                case HA.Right: xOffset = -ft.Width;
                     break;
             }
 
             double yOffset = 0;
             switch (va)
             {
-                case VerticalAlignment.Center:
+                case VA.Center:
                     yOffset = -ft.Height / 2;
                     break;
-                case VerticalAlignment.Bottom:
+                case VA.Bottom:
                     yOffset = -ft.Height;
                     break;
             }

@@ -24,7 +24,7 @@ namespace twoDTDS.Game
         {
             this.target = target;
 
-            Damage = Score.Guid;
+            Damage = ScoreKeep.Guid;
 
             X = parent.X + parent.Width / 2;
             Y = parent.Y + parent.Height / 2;
@@ -32,8 +32,7 @@ namespace twoDTDS.Game
             Width = 6;
             Height = 6;
 
-            Sprite = new Engine.Circle(new SolidColorBrush(Color.FromRgb(100, 190, 255)), 3);
-
+            Sprite = new Circle(new SolidColorBrush(Color.FromRgb(100, 190, 255)), 3);
             angle = GetAngleToTarget(target);
             SetAngle(angle + angleOffset);
 
@@ -48,20 +47,24 @@ namespace twoDTDS.Game
         t.Start();
         }
 
+        /*================================== GetAngleToTarget =============================*/
         private double GetAngleToTarget(GameObject target)
         {
             double xx = target.X - X;
             double yy = Y - target.Y;
-
             double angle = Math.Atan(Math.Abs(yy) / Math.Abs(xx)) / Math.PI * 180;
 
-            if (xx < 0 && yy > 0) {  angle = 180 - angle;  }
-            else if (xx < 0 && yy < 0) { angle = 180 + angle; }
-            else if (xx > 0 && yy < 0) { angle = 360 - angle; }
+            if (xx < 0 && yy > 0)
+                angle = 180 - angle;
+            else if (xx < 0 && yy < 0)
+                angle = 180 + angle; 
+            else if (xx > 0 && yy < 0)
+                angle = 360 - angle; 
 
             return angle;
         }
 
+        /*================================== SetAngle =============================*/
         private void SetAngle(double angle)
         {
             angle = angle % 360;
@@ -72,6 +75,7 @@ namespace twoDTDS.Game
             yVec = -Math.Sin(angle_rad) * speed;
         }
 
+        /*================================== OnUpdate =============================*/
         public override void OnUpdate()
         {
             double tAngle = GetAngleToTarget(target);
@@ -87,6 +91,7 @@ namespace twoDTDS.Game
             CheckOutOfBounds();
         }
 
+        /*================================== RelativeDouble =============================*/
         private double RelativeDouble(double r)
         {
             if (Math.Abs(r) < 0.0001) {  return 0; }

@@ -44,13 +44,13 @@ namespace twoDTDS.Game
         {
             base.OnRender(dc);
             dc.DrawText(new FormattedText("Score: " +
-                        Player.ObDied.ToString(),
+                        Player.myScore.Sc.ToString(),
                         System.Globalization.CultureInfo.CurrentCulture,
                         System.Windows.FlowDirection.LeftToRight,
                         Default.Typeface, 12, Brushes.Black),
                         new System.Windows.Point(5, 5));
             dc.DrawText(new FormattedText("HP: " +
-                        Player.ObDied.ToString(),
+                        Player.myScore.Sc.ToString(),
                         System.Globalization.CultureInfo.CurrentCulture,
                         System.Windows.FlowDirection.LeftToRight,
                         Default.Typeface, 12, Brushes.Black),
