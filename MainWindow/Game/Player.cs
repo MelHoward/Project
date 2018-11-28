@@ -53,7 +53,10 @@ namespace twoDTDS.Game
             t.Tick += delegate
             {
                 tcount++;
-                if (tcount > 60) { t.Stop(); return; }
+                if (tcount > 60)
+                {
+                    t.Stop(); return;
+                }
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();

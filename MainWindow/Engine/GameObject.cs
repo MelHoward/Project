@@ -16,6 +16,7 @@ namespace twoDTDS.Engine
     {
         public static DependencyProperty XProperty = 
                       DependencyProperty.Register("X", typeof(double), typeof(GameObject));
+
         public static DependencyProperty YProperty = 
                       DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
 
@@ -110,6 +111,7 @@ namespace twoDTDS.Engine
         }
 
         /*============================= IsHit ===============================*/
+
         public bool IsHit(GameObject other)
         {
             return IsHit(this, other);
