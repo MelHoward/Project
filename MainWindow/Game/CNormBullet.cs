@@ -10,7 +10,7 @@ namespace twoDTDS.Game
 {
 
 /*---------------------------------------------------------------------------------------
-                               << ENEMYAMMO >> : GAMEOBJECT
+                               << ENEMYAmmo >> : GAMEOBJECT
 ---------------------------------------------------------------------------------------*/
     public abstract class EnemyAmmo : GameObject
     {
@@ -19,7 +19,7 @@ namespace twoDTDS.Game
     }
 
 /*---------------------------------------------------------------------------------------
-                                CNORMBULLET : ENEMYAMMO
+                                CNORMBULLET : ENEMYAmmo
 ---------------------------------------------------------------------------------------*/
     public class CNormBullet : EnemyAmmo
     {

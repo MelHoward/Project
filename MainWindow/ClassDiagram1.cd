@@ -74,11 +74,11 @@
       <FileName>Engine\Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="twoDTDS.Game.ammo">
+  <Class Name="twoDTDS.Game.Ammo">
     <Position X="12.25" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Game\ammo.cs</FileName>
+      <FileName>Game\Ammo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="twoDTDS.Game.AmmoInGame">

@@ -8,7 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <engine:PlayArea x:Name="plane"/>
-        <Button x:Name="Bt_Restart" Content="restart" Padding="5" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Bt_Restart_Click"/>
+        
+        <engine:PlayArea x:Name="plane" />
+        <Button x:Name="Bt_Restart" Content="Restart" 
+                Padding="1,-4,0,-3" Margin="235,5,8,0" 
+                VerticalAlignment="Top" HorizontalAlignment="Center" 
+                Click="Bt_Restart_Click" FontWeight="Bold" 
+                FontFamily="Niagara Engraved" Opacity="0.75" 
+                FontSize="20" VerticalContentAlignment="Center" 
+                TextOptions.TextFormattingMode="Display" 
+                TextOptions.TextHintingMode="Fixed" SnapsToDevicePixels="True" 
+                Background="#FFF79F9F" Grid.IsSharedSizeScope="True"/>
     </Grid>
 </UserControl>

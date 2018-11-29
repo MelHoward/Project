@@ -29,7 +29,6 @@ namespace twoDTDS.Engine
     {
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
-
         public double Width { get; set; }
         public double Height { get; set; }
 
@@ -78,14 +77,23 @@ namespace twoDTDS.Engine
         {
             if (doUpdate)
             {
-                foreach (GameObject obj in PaddingObjects){ obj.OnUpdate(); }
+                foreach (GameObject obj in PaddingObjects)
+                {
+                    obj.OnUpdate();
+                }
             }
 
-            if (PaddingObjects.Count > 0) { Objects.AddRange(PaddingObjects); }
+            if (PaddingObjects.Count > 0)
+            {
+                Objects.AddRange(PaddingObjects);
+            }
             PaddingObjects.Clear();
         }
 
-        public void AddObject(GameObject obj){ PaddingObjects.Add(obj); }
+        public void AddObject(GameObject obj)
+        {
+            PaddingObjects.Add(obj);
+        }
 
         /*============================= DrwTxt ==============================*/
         public void DrwTxt(DrawingContext dc, string text="", double x = 0, 
@@ -114,6 +122,7 @@ namespace twoDTDS.Engine
                     yOffset = -ft.Height;
                     break;
             }
+
             dc.DrawText(ft, new Point(Math.Round(x + xOffset), 
                         Math.Round(y + yOffset)));
         }

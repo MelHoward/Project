@@ -81,7 +81,7 @@ namespace twoDTDS.Game
                         bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
                         bulletCreate.Tick += delegate
                         {
-                            Map.AddObject(new ammo(Map, X + Width / 2, Y));
+                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
                         };
                     }
                     bulletCreate.Start();

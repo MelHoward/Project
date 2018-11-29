@@ -33,7 +33,7 @@ namespace twoDTDS.Game
                 dispense.Interval = TimeSpan.FromMilliseconds(75);
                 dispense.Tick += delegate
                 {
-                    Map.AddObject(new ammo(Map, X + Width / 2, Y));
+                    Map.AddObject(new Ammo(Map, X + Width / 2, Y));
                 };
             }
             dispense.Start();
@@ -43,7 +43,7 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is ammo)
+                if (!obj.ObDied && obj is Ammo)
                 {
                     if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm); }
                 }

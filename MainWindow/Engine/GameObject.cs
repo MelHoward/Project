@@ -73,7 +73,6 @@ namespace twoDTDS.Engine
             }
 
             Storyboard sb = new Storyboard();
-
             Duration duration = new Duration(TimeSpan.FromMilliseconds(durationMs));
 
             DoubleAnimation xAnimation = new DoubleAnimation(x, duration);

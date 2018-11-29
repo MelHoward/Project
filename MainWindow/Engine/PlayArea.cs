@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
 
-/*---------------------------------------------------------------------------------------
-                            PLAYAREA : FRAMEWORKELEMENT
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                PLAYAREA : FRAMEWORKELEMENT
+    ---------------------------------------------------------------------------------------*/
     public class PlayArea : FrameworkElement
     {
         private VisualCollection canvas;
@@ -29,11 +24,9 @@ namespace twoDTDS.Engine
         //amount to translate the coordinate 
         public double ViewOffsetX { get; set; }
         public double ViewOffsetY { get; set; }
-
         //translate -half width and -half height to center the Sprite
         public double ViewScaleOriginX { get; set; } = 0.5;
         public double ViewScaleOriginY { get; set; } = 0.5;
-
         //set axis scale factor
         public double ViewScaleX { get; set; } = 1;
         public double ViewScaleY { get; set; } = 1;
@@ -47,8 +40,7 @@ namespace twoDTDS.Engine
         /*========================= VisualChildernCount =====================*/
         protected override int VisualChildrenCount
         {
-            get
-            {
+            get{
                 return canvas.Count;
             }
         }
@@ -76,6 +68,7 @@ namespace twoDTDS.Engine
         private void PlayArea_Loaded(object sender, RoutedEventArgs e)
         {
             PlaneControl = GetPlayAreaParent(Parent);
+
             CompositionTarget.Rendering += RenderCompT;
         }
 
@@ -89,16 +82,14 @@ namespace twoDTDS.Engine
             {
                 map.OnUpdate();
                 DrawingVisual view = new DrawingVisual();
-
-                using (DrawingContext dc = view.RenderOpen()){ map.OnRender(dc); }
-
                 TransformGroup group = new TransformGroup();
+                using (DrawingContext dc = view.RenderOpen()) { map.OnRender(dc); }
                 group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
                 group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX,
                                    CenterY = ViewScaleOriginY, ScaleX = ViewScaleX,
                                    ScaleY = ViewScaleY });
-                PlaneControl.SettransformOrigin(new Point
-                                               (ViewScaleOriginX, ViewScaleOriginY));
+                PlaneControl.SettransformOrigin(
+                             new Point(ViewScaleOriginX, ViewScaleOriginY));
                 PlaneControl.Settransform(group);
  
                 PushVisual(view);

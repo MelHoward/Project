@@ -50,7 +50,7 @@ namespace twoDTDS.Game
                         Default.Typeface, 12, Brushes.Black),
                         new System.Windows.Point(5, 5));
             dc.DrawText(new FormattedText("HP: " +
-                        Player.myScore.Sc.ToString(),
+                        Player.myScore.HP.ToString(),
                         System.Globalization.CultureInfo.CurrentCulture,
                         System.Windows.FlowDirection.LeftToRight,
                         Default.Typeface, 12, Brushes.Black),

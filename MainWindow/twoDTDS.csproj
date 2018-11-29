@@ -269,5 +269,8 @@
   <ItemGroup>
     <None Include="Resources\sprites\h_walk\hero-walk-side-6.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bckground.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

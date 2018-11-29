@@ -19,16 +19,13 @@ namespace twoDTDS.Engine
         public abstract void Render(GameObject Parent, DrawingContext dc);
     }
 
-
-
 /*---------------------------------------------------------------------------------------
                                         REC : Sprite
 ---------------------------------------------------------------------------------------*/
     public class Rec : Sprite
     {
         BitmapImage src;
-        Rectangle rec;
-
+        
         public double Width { get; set; }
         public double Height { get; set; }
 
@@ -43,7 +40,7 @@ namespace twoDTDS.Engine
             src.EndInit();
         }
 
-        /*============================= Render =================================*/
+        /*============================= Render ==============================*/
         public override void Render(GameObject Parent, DrawingContext dc)
         {
             dc.DrawImage(src, new Rect(Parent.X, Parent.Y, Width, Height));

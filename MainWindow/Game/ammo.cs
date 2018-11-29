@@ -8,9 +8,13 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    public class ammo : GameObject
+/*---------------------------------------------------------------------------------------
+                            Ammo : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
+    public class Ammo : GameObject
     {
-        public ammo(Map m, double X, double Y) : base(m)
+        /*=============================== Ammo >> CTOR ======================*/
+        public Ammo(Map m, double X, double Y) : base(m)
         {
             this.X = X;
             this.Y = Y;
@@ -19,6 +23,7 @@ namespace twoDTDS.Game
             Sprite = new Rec(Width, Height);
         }
 
+        /*=============================== OnUpdate ==========================*/
         public override void OnUpdate()
         {
             Y -= 15;

@@ -9,21 +9,24 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+/*---------------------------------------------------------------------------------------
+                       BULLETONPATH : ENEMYAMMO
+---------------------------------------------------------------------------------------*/
     public class BulletOnPath : EnemyAmmo
     {
         GameObject target;
         double angle = 0;
         double angleOffset = new Engine.Random().NextDouble(-30, 30);
-
         double xVec = 0;
         double yVec = 0;
         double speed = 2.5;
 
+
+        /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
                             double x, double y) : base(map)
         {
             this.target = target;
-
             Damage = ScoreKeep.Guid;
 
             X = parent.X + parent.Width / 2;
