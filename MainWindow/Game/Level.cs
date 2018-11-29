@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
@@ -34,7 +36,6 @@ namespace twoDTDS.Game
         {
             Player = new Player(this);
             Enemy = new EnemyGenerator(this, Player);
-
             Objects.Add(Player);
             Objects.Add(Enemy);
         }
@@ -43,18 +44,13 @@ namespace twoDTDS.Game
         public override void OnRender(DrawingContext dc)
         {
             base.OnRender(dc);
-            dc.DrawText(new FormattedText("Score: " +
-                        Player.myScore.Sc.ToString(),
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        System.Windows.FlowDirection.LeftToRight,
-                        Default.Typeface, 12, Brushes.Black),
-                        new System.Windows.Point(5, 5));
-            dc.DrawText(new FormattedText("HP: " +
-                        Player.myScore.HP.ToString(),
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        System.Windows.FlowDirection.LeftToRight,
-                        Default.Typeface, 12, Brushes.Black),
-                        new System.Windows.Point(5, 20));
+            dc.DrawText(new FormattedText("Score: " + Player.myScore.Sc.ToString(),
+                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                        Default.Typeface, 12, Brushes.Black), new Point(5, 5));
+
+            dc.DrawText(new FormattedText("HP: " + Player.myScore.HP.ToString(),
+                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
+                        Default.Typeface, 12, Brushes.Black), new Point(5, 20));
         }
     }
 }

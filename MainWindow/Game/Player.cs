@@ -31,10 +31,8 @@ namespace twoDTDS.Game
         {
             X = Math.Round(map.Width / 2);
             Y = map.Height - 50;
-
             Width = 14;
             Height = 14;
-
             Sprite = new Rec(Width, Height);
 
             myScore = new ScoreKeep();
@@ -43,23 +41,20 @@ namespace twoDTDS.Game
 
         /*================================== Score_died ==========================*/
         private void Score_died(object sender, ScoreKeep e) { 
-        
-            Console.WriteLine("YOU DIED!");
+            Console.WriteLine("You Died!");
             if (bulletCreate != null) { bulletCreate.Stop(); }
-
             DispatcherTimer t = new DispatcherTimer();
             int tcount = 0;
             t.Interval = TimeSpan.FromMilliseconds(15);
             t.Tick += delegate
             {
                 tcount++;
-                if (tcount > 60)
-                {
+                if (tcount > 60){
                     t.Stop(); return;
                 }
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
-            t.Start();
+        t.Start();
         }
 
         /*================================== OnUpdate =============================*/

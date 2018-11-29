@@ -11,10 +11,10 @@ using System.Windows.Forms;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 using twoDTDS.Game;
 
@@ -22,9 +22,9 @@ namespace twoDTDS
 {
     public partial class MainWindow : Window
     {
-
-        public MainWindow()
+       public MainWindow()
         {
+
             InitializeComponent();
             bool on = false;
             while (on)
@@ -57,7 +57,6 @@ namespace twoDTDS
                     Console.WriteLine("Unknown Command : " + line);
                 }
             }
-
             grid.Children.Add(new InGamePlane());
         }
         private void ForTest()
@@ -70,7 +69,6 @@ namespace twoDTDS
                 for (int i = 0; i < count; i++)
                 {
                     string output = i.ToString();
-
                     Console.WriteLine(output);
                 }
             }

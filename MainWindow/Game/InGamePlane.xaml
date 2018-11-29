@@ -6,18 +6,22 @@
              xmlns:local="clr-namespace:twoDTDS.Game"
              xmlns:engine="clr-namespace:twoDTDS.Engine"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="350">
     <Grid>
-        
-        <engine:PlayArea x:Name="plane" />
-        <Button x:Name="Bt_Restart" Content="Restart" 
-                Padding="1,-4,0,-3" Margin="235,5,8,0" 
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/bckground.bmp"/>
+        </Grid.Background>
+        <UniformGrid>
+            <engine:PlayArea x:Name="plane" />
+            <Button x:Name="Bt_Restart" Content="Restart" 
+                Padding="1,-4,0,-3" 
                 VerticalAlignment="Top" HorizontalAlignment="Center" 
                 Click="Bt_Restart_Click" FontWeight="Bold" 
                 FontFamily="Niagara Engraved" Opacity="0.75" 
                 FontSize="20" VerticalContentAlignment="Center" 
                 TextOptions.TextFormattingMode="Display" 
                 TextOptions.TextHintingMode="Fixed" SnapsToDevicePixels="True" 
-                Background="#FFF79F9F" Grid.IsSharedSizeScope="True"/>
+                Background="#FFF79F9F" Grid.IsSharedSizeScope="True" Margin="0,0,105,0"/>
+        </UniformGrid>
     </Grid>
 </UserControl>

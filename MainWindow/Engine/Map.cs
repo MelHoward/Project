@@ -14,8 +14,7 @@ using twoDTDS.Game;
 /*
 TABLE OF CONTENTS
 	* Global
-		+ abstract Map
-            
+		+ abstract 
 		
 */
 namespace twoDTDS.Engine

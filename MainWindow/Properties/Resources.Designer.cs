@@ -63,9 +63,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_11 {
+        public static System.Drawing.Bitmap arrow {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_11", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_21 {
+        public static System.Drawing.Bitmap bckground {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_21", resourceCulture);
+                object obj = ResourceManager.GetObject("bckground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_31 {
+        public static System.Drawing.Bitmap bullet {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_31", resourceCulture);
+                object obj = ResourceManager.GetObject("bullet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_41 {
+        public static System.Drawing.Bitmap hero_back_walk {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_41", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_back_walk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_51 {
+        public static System.Drawing.Bitmap hero_idle_back {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_51", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_idle_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_back_61 {
+        public static System.Drawing.Bitmap hero_idle_front {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_back_61", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_idle_front", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_11 {
+        public static System.Drawing.Bitmap hero_idle_side {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_11", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_idle_side", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_21 {
+        public static System.Drawing.Bitmap hero_walk_back {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_21", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_walk_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_31 {
+        public static System.Drawing.Bitmap hero_walk_front {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_31", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_walk_front", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_41 {
+        public static System.Drawing.Bitmap hero_walk_front1 {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_41", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_walk_front1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_51 {
+        public static System.Drawing.Bitmap hero_walk_side {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_51", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_walk_side", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_front_61 {
+        public static System.Drawing.Bitmap hero_walk_side1 {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_front_61", resourceCulture);
+                object obj = ResourceManager.GetObject("hero_walk_side1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_11 {
+        public static System.Drawing.Bitmap treant_idle_back {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_11", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_21 {
+        public static System.Drawing.Bitmap treant_idle_back1 {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_21", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_back1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_31 {
+        public static System.Drawing.Bitmap treant_idle_front {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_31", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_front", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_41 {
+        public static System.Drawing.Bitmap treant_idle_front1 {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_41", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_front1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_51 {
+        public static System.Drawing.Bitmap treant_idle_side {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_51", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_side", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap hero_walk_side_61 {
+        public static System.Drawing.Bitmap treant_idle_side1 {
             get {
-                object obj = ResourceManager.GetObject("hero_walk_side_61", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_idle_side1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap objects {
+        public static System.Drawing.Bitmap treant_walk_back {
             get {
-                object obj = ResourceManager.GetObject("objects", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_walk_back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,49 @@ namespace twoDTDS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap tileset {
+        public static System.Drawing.Bitmap treant_walk_back1 {
             get {
-                object obj = ResourceManager.GetObject("tileset", resourceCulture);
+                object obj = ResourceManager.GetObject("treant_walk_back1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap treant_walk_front {
+            get {
+                object obj = ResourceManager.GetObject("treant_walk_front", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap treant_walk_front1 {
+            get {
+                object obj = ResourceManager.GetObject("treant_walk_front1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap treant_walk_side {
+            get {
+                object obj = ResourceManager.GetObject("treant_walk_side", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap treant_walk_side1 {
+            get {
+                object obj = ResourceManager.GetObject("treant_walk_side1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -24,30 +24,27 @@ namespace twoDTDS.Engine
 ---------------------------------------------------------------------------------------*/
     public class Rec : Sprite
     {
-        BitmapImage src;
-        
+        ImageBrush src;
         public double Width { get; set; }
         public double Height { get; set; }
 
         /*============================= Rec << CTOR =========================*/
         public Rec(double width, double height)
         {
-            src = new BitmapImage();
-            src.BeginInit();
-            src.UriSource = new Uri("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\Resources\\sprites\\h_walk\\hero-walk-back-1.bmp", UriKind.RelativeOrAbsolute); ;
+            src = new ImageBrush();
+
+            src.ImageSource = new BitmapImage(, UriKind.RelativeOrAbsolute));
             Width = width;
             Height = height;
-            src.EndInit();
+
         }
 
         /*============================= Render ==============================*/
         public override void Render(GameObject Parent, DrawingContext dc)
         {
-            dc.DrawImage(src, new Rect(Parent.X, Parent.Y, Width, Height));
+            dc.DrawImage(src.ImageSource, new Rect(Parent.X, Parent.Y, Width, Height));
         }
     }
-
-
 
 /*---------------------------------------------------------------------------------------
                               CIRCLE : Sprite

@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -50,11 +50,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>twoDTDS.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <Win32Resource>D:\Documents\Programs\Project352\Project\MainWindow\ResTempl1.rct</Win32Resource>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -91,7 +91,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Engine\Default.cs" />
     <Compile Include="Engine\IPlayAreaControl.cs" />
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\PlayArea.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
-    <Compile Include="Game\CNormAmmo.cs" />
     <Compile Include="Game\CNormBullet.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
@@ -156,121 +154,76 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\objects.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\tileset.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\sprites\h_walk\hero-walk-back-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\bckground.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-back.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-front.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-side.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-idle-side.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-back.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-front.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-side.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Treant\treant-walk-side.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-back-walk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-idle-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-idle-front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-idle-side.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-walk-back.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-walk-front.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-walk-front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-walk-side.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero\hero-walk-side.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

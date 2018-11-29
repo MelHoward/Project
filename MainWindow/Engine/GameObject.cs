@@ -9,9 +9,20 @@ using System.Windows.Media.Animation;
 
 namespace twoDTDS.Engine
 {
+
 /*---------------------------------------------------------------------------------------
-                         << GAMEOBJECT >> : DEPENDENCYPROPERTY 
+                                DEFAULT -> STATIC
 ---------------------------------------------------------------------------------------*/
+    public static class Default
+    {
+        public static Typeface Typeface = new Typeface("ComicSans");
+        public static Random Random = new Random();
+    }
+
+
+    /*---------------------------------------------------------------------------------------
+                             << GAMEOBJECT >> : DEPENDENCYPROPERTY 
+    ---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
         public static DependencyProperty XProperty = 

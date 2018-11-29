@@ -16,13 +16,12 @@ namespace twoDTDS.Game
         DispatcherTimer dispense;
         Player player;
 
+        /*========================  SinglEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
         {
             MoveToRandom();
-
             Width = 80;
             Height = 48;
-
             Sprite = new Rec(Width, Height);
 
             this.player = p;
@@ -36,9 +35,10 @@ namespace twoDTDS.Game
                     Map.AddObject(new Ammo(Map, X + Width / 2, Y));
                 };
             }
-            dispense.Start();
+         dispense.Start();
         }
 
+        /*======================== OnUpdate ================================*/
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
@@ -50,6 +50,7 @@ namespace twoDTDS.Game
             }
         }
 
+        /*=============================== MoveToRandom ======================*/
         private void MoveToRandom()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -57,15 +58,11 @@ namespace twoDTDS.Game
             timer.Tick += delegate
             {
                 double x = rand.NextDouble(10, Map.Width - 10 - 80);
-
                 double duration = Math.Abs(x - X) * 8;
-
                 timer.Interval = TimeSpan.FromMilliseconds(duration);
-
                 MoveTo(x, rand.NextDouble(10, 30), duration);
             };
-
-            timer.Start();
+           timer.Start();
         }
     }
 }
