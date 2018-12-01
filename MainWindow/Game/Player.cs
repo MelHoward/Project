@@ -25,6 +25,7 @@ namespace twoDTDS.Game
         int cameraShakeCount = 0;
         double speed = 3;
         double dyingSize = 12;
+        string direction = "";
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -76,7 +77,37 @@ namespace twoDTDS.Game
                         bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
                         bulletCreate.Tick += delegate
                         {
-                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                            CNormPlayerBullet a = new CNormPlayerBullet(Map, X + Width / 2, Y);
+                            if (direction == "up")
+                            {
+                                a.upVel = 15;
+                                a.downVel = 0;
+                                a.leftVel = 0;
+                                a.rightVel = 0;
+                            }
+                            if (direction == "down")
+                            {
+                                a.upVel = 0;
+                                a.downVel = 15;
+                                a.leftVel = 0;
+                                a.rightVel = 0;
+                            }
+                            if (direction == "left")
+                            {
+                                a.upVel = 0;
+                                a.downVel = 0;
+                                a.leftVel = 15;
+                                a.rightVel = 0;
+                            }
+                            if (direction == "right")
+                            {
+                                a.upVel = 0;
+                                a.downVel = 0;
+                                a.leftVel = 0;
+                                a.rightVel = 15;
+                            }
+
+                            Map.AddObject(a);
                         };
                     }
                     bulletCreate.Start();

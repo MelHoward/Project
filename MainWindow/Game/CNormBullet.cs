@@ -66,8 +66,7 @@ namespace twoDTDS.Game
         public double rightVel = 0;
 
         /*============================= CNormBullet =========================*/
-        public CNormPlayerBullet(Map map, double x, double y, double x_vec,
-                           double y_vec, double radius) : base(map)
+        public CNormPlayerBullet(Map map, double x, double y) : base(map)
         {
             this.X = X;
             this.Y = Y;
@@ -111,7 +110,7 @@ namespace twoDTDS.Game
 
                 double xvec = Math.Cos(angle_rad) * speed;
                 double yvec = Math.Sin(angle_rad) * speed;
-                Map.AddObject(new CNormBullet(Map, Parent.X + Parent.Width / 2,
+                Map.AddObject(new CNormEnemyBullet(Map, Parent.X + Parent.Width / 2,
                               Parent.Y + Parent.Height / 2, xvec, yvec, 3));
             }
             return 280;
