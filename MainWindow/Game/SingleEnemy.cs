@@ -29,10 +29,10 @@ namespace twoDTDS.Game
             if (dispense == null)
             {
                 dispense = new DispatcherTimer();
-                dispense.Interval = TimeSpan.FromMilliseconds(75);
+                dispense.Interval = TimeSpan.FromMilliseconds(400);
                 dispense.Tick += delegate
                 {
-                    Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                    Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y));
                 };
             }
          dispense.Start();

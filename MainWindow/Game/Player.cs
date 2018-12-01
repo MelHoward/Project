@@ -64,20 +64,36 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
-                if (Keyboard.IsKeyDown(Key.A)){ X -= speed; }
-                else if (Keyboard.IsKeyDown(Key.D)) { X += speed; }
-                if (Keyboard.IsKeyDown(Key.W)) { Y -= speed; }
-                else if (Keyboard.IsKeyDown(Key.S)) { Y += speed; }
+                if (Keyboard.IsKeyDown(Key.A))
+                {
+                    X -= speed;
+                    direction = "left";
+                }
+                else if (Keyboard.IsKeyDown(Key.D))
+                {
+                    X += speed;
+                    direction = "right";
+                }
+                if (Keyboard.IsKeyDown(Key.W))
+                {
+                    Y -= speed;
+                    direction = "up";
+                }
+                else if (Keyboard.IsKeyDown(Key.S))
+                {
+                    Y += speed;
+                    direction = "down";
+                }
 
                 if (Keyboard.IsKeyDown(Key.Space))
                 {
                     if (bulletCreate == null)
                     {
                         bulletCreate = new DispatcherTimer();
-                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(250);
                         bulletCreate.Tick += delegate
                         {
-                            CNormPlayerBullet a = new CNormPlayerBullet(Map, X + Width / 2, Y);
+                            Playerammo a = new Playerammo(Map, X + Width / 2, Y);
                             if (direction == "up")
                             {
                                 a.upVel = 15;

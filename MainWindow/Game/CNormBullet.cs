@@ -58,34 +58,6 @@ namespace twoDTDS.Game
         }
     }
 
-    public class CNormPlayerBullet : PlayerAmmo
-    {
-        public double upVel = 0;
-        public double downVel = 0;
-        public double leftVel = 0;
-        public double rightVel = 0;
-
-        /*============================= CNormBullet =========================*/
-        public CNormPlayerBullet(Map map, double x, double y) : base(map)
-        {
-            this.X = X;
-            this.Y = Y;
-            Width = 3;
-            Height = 15;
-            Sprite = new Rec(Width, Height);
-        }
-
-        /*=============================== OnUpdate ==========================*/
-        public override void OnUpdate()
-        {
-            Y -= upVel;
-            Y += downVel;
-            X += rightVel;
-            X -= leftVel;
-            if (Y < -100) { ObDied = true; }
-        }
-    }
-
 
     /*---------------------------------------------------------------------------------------
                                  CNORMAMMO : AMMOInGAME
