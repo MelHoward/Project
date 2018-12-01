@@ -60,9 +60,10 @@ namespace twoDTDS.Game
 
     public class CNormPlayerBullet : PlayerAmmo
     {
-        double x_vec;
-        double y_vec;
-        double radius;
+        public double upVel = 0;
+        public double downVel = 0;
+        public double leftVel = 0;
+        public double rightVel = 0;
 
         /*============================= CNormBullet =========================*/
         public CNormPlayerBullet(Map map, double x, double y, double x_vec,
@@ -78,9 +79,11 @@ namespace twoDTDS.Game
         /*=============================== OnUpdate ==========================*/
         public override void OnUpdate()
         {
-            
-
-            CheckOutOfBounds();
+            Y -= upVel;
+            Y += downVel;
+            X += rightVel;
+            X -= leftVel;
+            if (Y < -100) { ObDied = true; }
         }
     }
 
