@@ -19,17 +19,23 @@ namespace twoDTDS.Game
         public int Damage { get; set; } = 1;
     }
 
+    public abstract class PlayerAmmo : GameObject
+    {
+        public PlayerAmmo(Map map) : base(map) { }
+        public int Damage { get; set; } = 1;
+    }
+
 /*---------------------------------------------------------------------------------------
                                 CNORMBULLET : ENEMYAmmo
 ---------------------------------------------------------------------------------------*/
-    public class CNormBullet : EnemyAmmo
+    public class CNormEnemyBullet : EnemyAmmo
     {
         double x_vec;
         double y_vec;
         double radius;
 
         /*============================= CNormBullet =========================*/
-        public CNormBullet(Map map, double x, double y, double x_vec,
+        public CNormEnemyBullet(Map map, double x, double y, double x_vec,
                            double y_vec, double radius) : base(map){
             X = x;
             Y = y;
@@ -52,10 +58,36 @@ namespace twoDTDS.Game
         }
     }
 
+    public class CNormPlayerBullet : PlayerAmmo
+    {
+        double x_vec;
+        double y_vec;
+        double radius;
 
-/*---------------------------------------------------------------------------------------
-                             CNORMAMMO : AMMOInGAME
----------------------------------------------------------------------------------------*/
+        /*============================= CNormBullet =========================*/
+        public CNormPlayerBullet(Map map, double x, double y, double x_vec,
+                           double y_vec, double radius) : base(map)
+        {
+            this.X = X;
+            this.Y = Y;
+            Width = 3;
+            Height = 15;
+            Sprite = new Rec(Width, Height);
+        }
+
+        /*=============================== OnUpdate ==========================*/
+        public override void OnUpdate()
+        {
+            
+
+            CheckOutOfBounds();
+        }
+    }
+
+
+    /*---------------------------------------------------------------------------------------
+                                 CNORMAMMO : AMMOInGAME
+    ---------------------------------------------------------------------------------------*/
     public class CNormAmmo : AmmoInGame
     {
         Engine.Random r = new Engine.Random();

@@ -33,7 +33,8 @@ namespace twoDTDS.Engine
         {
             src = new ImageBrush();
 
-            src.ImageSource = new BitmapImage(, UriKind.RelativeOrAbsolute));
+            Uri u = new Uri("https://orig00.deviantart.net/1f39/f/2018/080/a/7/megaman_rotation_thing_by_megamanchannel65-dc6k679.gif");
+            src.ImageSource = new BitmapImage(u);
             Width = width;
             Height = height;
 
