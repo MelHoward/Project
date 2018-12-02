@@ -20,7 +20,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 3;
             Height = 15;
-            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\up.png", Width, Height);
+            Sprite = new Rec("..\\img\\arrow.png", Width, Height);
         }
 
         /*=============================== OnUpdate ==========================*/

@@ -32,7 +32,7 @@ namespace twoDTDS.Game
             Y = map.Height - 50;
             Width = 36;
             Height = 38;
-            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\up.png", Width, Height);
+            Sprite = new Rec("..\\img\\up.png", Width, Height);
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;
         }

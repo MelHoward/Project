@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
@@ -20,7 +22,6 @@ namespace twoDTDS.Engine
     ---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
-
         public static DependencyProperty XProperty = 
                       DependencyProperty.Register("X", typeof(double), typeof(GameObject));
         public static DependencyProperty YProperty = 

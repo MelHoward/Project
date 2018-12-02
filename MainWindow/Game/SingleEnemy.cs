@@ -23,7 +23,7 @@ namespace twoDTDS.Game
             Width = 40;
             Height = 40;
 
-            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\Demon.png", Width, Height);
+            Sprite = new Rec("..\\img\\Demon.png", Width, Height);
             this.player = p;
 
             if (dispense == null)
