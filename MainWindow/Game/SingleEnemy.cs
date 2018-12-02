@@ -43,7 +43,7 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is Ammo)
+                if (!obj.ObDied && obj is TempEnemyammo)
                 {
                     if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm); }
                 }

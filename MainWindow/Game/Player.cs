@@ -135,11 +135,11 @@ namespace twoDTDS.Game
 
                 foreach (GameObject obj in Map.Objects)
                 {
-                    if (!obj.ObDied && obj is EnemyAmmo)
+                    if (!obj.ObDied && obj is TempEnemyammo)
                     {
                         if (IsHit(this, obj))
                         {
-                            myScore.PlayerHit(((EnemyAmmo)obj).Damage);
+                            myScore.PlayerHit(((TempEnemyammo)obj).Damage);
 
                             if (camShake == null)
                             {
