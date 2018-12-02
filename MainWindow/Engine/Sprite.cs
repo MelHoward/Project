@@ -11,30 +11,30 @@ using System.Windows;
 namespace twoDTDS.Engine
 {
 
-/*---------------------------------------------------------------------------------------
-                                       << Sprite >>
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                           << Sprite >>
+    ---------------------------------------------------------------------------------------*/
     public abstract class Sprite
     {
         public abstract void Render(GameObject Parent, DrawingContext dc);
     }
 
-/*---------------------------------------------------------------------------------------
-                                        REC : Sprite
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                            REC : Sprite
+    ---------------------------------------------------------------------------------------*/
     public class Rec : Sprite
     {
         BitmapImage src;
-        
+
         public double Width { get; set; }
         public double Height { get; set; }
 
         /*============================= Rec << CTOR =========================*/
-        public Rec(double width, double height)
+        public Rec(string s, double width, double height)
         {
             src = new BitmapImage();
             src.BeginInit();
-            src.UriSource = new Uri("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\Resources\\sprites\\h_walk\\hero-walk-back-1.bmp", UriKind.RelativeOrAbsolute); ;
+            src.UriSource = new Uri(s, UriKind.Relative); ;
             Width = width;
             Height = height;
             src.EndInit();
@@ -49,9 +49,9 @@ namespace twoDTDS.Engine
 
 
 
-/*---------------------------------------------------------------------------------------
-                              CIRCLE : Sprite
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                  CIRCLE : Sprite
+    ---------------------------------------------------------------------------------------*/
     public class Circle : Sprite
     {
         double radius = 5;

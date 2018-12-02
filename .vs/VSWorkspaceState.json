@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MainWindow"
+    "\\MainWindow",
+    "\\MainWindow\\Engine",
+    "\\MainWindow\\Game"
   ],
-  "SelectedNode": "\\MainWindow\\twoDTDS.sln",
+  "SelectedNode": "\\MainWindow\\Game",
   "PreviewInSolutionExplorer": false
 }

@@ -1,13 +1,29 @@
-﻿using System;
+﻿/*
+ * 
+ **
+  * 
+  *
+  *
+  * 
+  *  
+  */
+using System;
 using System.Windows;
 using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
-
-    /*---------------------------------------------------------------------------------------
-                                PLAYAREA : FRAMEWORKELEMENT
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                          << IPLAYAREACONTROL >>
+---------------------------------------------------------------------------------------*/
+    public interface IPlayAreaControl
+    {
+        void Settransform(Transform t);
+        void SettransformOrigin(Point pt);
+    }
+/*---------------------------------------------------------------------------------------
+                            PLAYAREA : FRAMEWORKELEMENT
+---------------------------------------------------------------------------------------*/
     public class PlayArea : FrameworkElement
     {
         private VisualCollection canvas;
@@ -40,9 +56,7 @@ namespace twoDTDS.Engine
         /*========================= VisualChildernCount =====================*/
         protected override int VisualChildrenCount
         {
-            get{
-                return canvas.Count;
-            }
+            get{ return canvas.Count; }
         }
 
         /*========================== PlayArea >> CTOR =======================*/
@@ -68,7 +82,6 @@ namespace twoDTDS.Engine
         private void PlayArea_Loaded(object sender, RoutedEventArgs e)
         {
             PlaneControl = GetPlayAreaParent(Parent);
-
             CompositionTarget.Rendering += RenderCompT;
         }
 

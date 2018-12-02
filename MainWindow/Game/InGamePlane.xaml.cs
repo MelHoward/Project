@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using twoDTDS.Engine;
 
-
 namespace twoDTDS.Game
 {
     public partial class InGamePlane : UserControl, IPlayAreaControl

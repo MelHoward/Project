@@ -19,7 +19,6 @@ namespace twoDTDS.Game
     {
         public ScoreKeep myScore { get; set; }
         Engine.Random r = new Engine.Random();
-
         DispatcherTimer bulletCreate;
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
@@ -31,22 +30,17 @@ namespace twoDTDS.Game
         {
             X = Math.Round(map.Width / 2);
             Y = map.Height - 50;
-
-            Width = 14;
-            Height = 14;
-
-            Sprite = new Rec(Width, Height);
-
+            Width = 36;
+            Height = 38;
+            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\up.png", Width, Height);
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;
         }
 
         /*================================== Score_died ==========================*/
         private void Score_died(object sender, ScoreKeep e) { 
-        
-            Console.WriteLine("YOU DIED!");
+            Console.WriteLine("You Died!");
             if (bulletCreate != null) { bulletCreate.Stop(); }
-
             DispatcherTimer t = new DispatcherTimer();
             int tcount = 0;
             t.Interval = TimeSpan.FromMilliseconds(15);
@@ -61,7 +55,6 @@ namespace twoDTDS.Game
             };
             t.Start();
         }
-
         /*================================== OnUpdate =============================*/
 
         public override void OnUpdate()
@@ -74,6 +67,58 @@ namespace twoDTDS.Game
                 else if (Keyboard.IsKeyDown(Key.S)) { Y += speed; }
 
                 if (Keyboard.IsKeyDown(Key.Space))
+                {
+                    if (bulletCreate == null)
+                    {
+                        bulletCreate = new DispatcherTimer();
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+                        bulletCreate.Tick += delegate
+                        {
+                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                        };
+                    }
+                    bulletCreate.Start();
+                }
+                if (Keyboard.IsKeyDown(Key.Up))
+                {
+                    if (bulletCreate == null)
+                    {
+                        bulletCreate = new DispatcherTimer();
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+                        bulletCreate.Tick += delegate
+                        {
+                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                        };
+                    }
+                    bulletCreate.Start();
+                }
+                if (Keyboard.IsKeyDown(Key.Down))
+                {
+                    if (bulletCreate == null)
+                    {
+                        bulletCreate = new DispatcherTimer();
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+                        bulletCreate.Tick += delegate
+                        {
+                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                        };
+                    }
+                    bulletCreate.Start();
+                }
+                if (Keyboard.IsKeyDown(Key.Left))
+                {
+                    if (bulletCreate == null)
+                    {
+                        bulletCreate = new DispatcherTimer();
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+                        bulletCreate.Tick += delegate
+                        {
+                            Map.AddObject(new Ammo(Map, X , Y + Height / 2));
+                        };
+                    }
+                    bulletCreate.Start();
+                }
+                if (Keyboard.IsKeyDown(Key.Right))
                 {
                     if (bulletCreate == null)
                     {

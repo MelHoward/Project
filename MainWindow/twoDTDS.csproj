@@ -12,8 +12,9 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -50,11 +50,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>twoDTDS.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <Win32Resource>
+    </Win32Resource>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -91,8 +92,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Engine\Default.cs" />
-    <Compile Include="Engine\IPlayAreaControl.cs" />
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\PlayArea.cs" />
     <Compile Include="Engine\Random.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
-    <Compile Include="Game\CNormAmmo.cs" />
     <Compile Include="Game\CNormBullet.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
@@ -110,6 +108,7 @@
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\SingleEnemy.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -119,22 +118,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,121 +144,30 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\objects.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\tileset.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\sprites\h_walk\hero-walk-back-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-back-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-front-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-1.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-2.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-3.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-4.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-5.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sprites\h_walk\hero-walk-side-6.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\bckground.bmp" />
+    <Resource Include="img\arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Demon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\Stage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\The End.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

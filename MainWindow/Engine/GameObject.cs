@@ -1,19 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace twoDTDS.Engine
 {
-/*---------------------------------------------------------------------------------------
-                         << GAMEOBJECT >> : DEPENDENCYPROPERTY 
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                    DEFAULT -> STATIC
+    ---------------------------------------------------------------------------------------*/
+    public static class Default
+    {
+        public static Typeface Typeface = new Typeface("ComicSans");
+        public static Random Random = new Random();
+    }
+
+
+    /*---------------------------------------------------------------------------------------
+                             << GAMEOBJECT >> : DEPENDENCYPROPERTY 
+    ---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
+
         public static DependencyProperty XProperty = 
                       DependencyProperty.Register("X", typeof(double), typeof(GameObject));
 
@@ -110,7 +117,6 @@ namespace twoDTDS.Engine
         }
 
         /*============================= IsHit ===============================*/
-
         public bool IsHit(GameObject other)
         {
             return IsHit(this, other);

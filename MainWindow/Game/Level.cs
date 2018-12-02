@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
@@ -26,16 +28,15 @@ namespace twoDTDS.Game
 ---------------------------------------------------------------------------------------*/
     public class Level : Map
     {
-        Player Player;
+        Player player;
         EnemyGenerator Enemy;
 
         /*========================= Level >> CTOR ===========================*/
         public Level(PlayArea play) : base(play)
         {
-            Player = new Player(this);
-            Enemy = new EnemyGenerator(this, Player);
-
-            Objects.Add(Player);
+            player = new Player(this);
+            Enemy = new EnemyGenerator(this, player);
+            Objects.Add(player);
             Objects.Add(Enemy);
         }
 
@@ -43,18 +44,13 @@ namespace twoDTDS.Game
         public override void OnRender(DrawingContext dc)
         {
             base.OnRender(dc);
-            dc.DrawText(new FormattedText("Score: " +
-                        Player.myScore.Sc.ToString(),
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        System.Windows.FlowDirection.LeftToRight,
-                        Default.Typeface, 12, Brushes.Black),
-                        new System.Windows.Point(5, 5));
-            dc.DrawText(new FormattedText("HP: " +
-                        Player.myScore.HP.ToString(),
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        System.Windows.FlowDirection.LeftToRight,
-                        Default.Typeface, 12, Brushes.Black),
-                        new System.Windows.Point(5, 20));
+            dc.DrawText(new FormattedText("Score: " + player.myScore.Sc.ToString(),
+                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                        Default.Typeface, 15, Brushes.White), new Point(-93, 90));
+
+            dc.DrawText(new FormattedText("HP: " + player.myScore.HP.ToString(),
+                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
+                        Default.Typeface, 15, Brushes.White), new Point(-93, 120));
         }
     }
 }

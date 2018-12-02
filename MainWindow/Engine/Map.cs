@@ -14,8 +14,7 @@ using twoDTDS.Game;
 /*
 TABLE OF CONTENTS
 	* Global
-		+ abstract Map
-            
+		+ abstract 
 		
 */
 namespace twoDTDS.Engine
@@ -82,7 +81,6 @@ namespace twoDTDS.Engine
                     obj.OnUpdate();
                 }
             }
-
             if (PaddingObjects.Count > 0)
             {
                 Objects.AddRange(PaddingObjects);
@@ -90,6 +88,7 @@ namespace twoDTDS.Engine
             PaddingObjects.Clear();
         }
 
+        /*======================= ProcessPaddingObjects =====================*/
         public void AddObject(GameObject obj)
         {
             PaddingObjects.Add(obj);
@@ -123,8 +122,7 @@ namespace twoDTDS.Engine
                     break;
             }
 
-            dc.DrawText(ft, new Point(Math.Round(x + xOffset), 
-                        Math.Round(y + yOffset)));
+            dc.DrawText(ft, new Point(Math.Round(x + xOffset), Math.Round(y + yOffset)));
         }
 
         /*============================= GarbageCollection ===================*/

@@ -47,7 +47,7 @@ namespace twoDTDS.Game
                 ObDied = true;
                 t.Stop();
             };
-        t.Start();
+            t.Start();
         }
 
         /*================================== GetAngleToTarget =============================*/

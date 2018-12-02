@@ -16,15 +16,14 @@ namespace twoDTDS.Game
         DispatcherTimer dispense;
         Player player;
 
+        /*========================  SingleEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
         {
             MoveToRandom();
+            Width = 40;
+            Height = 40;
 
-            Width = 80;
-            Height = 48;
-
-            Sprite = new Rec(Width, Height);
-
+            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\up.png", Width, Height);
             this.player = p;
 
             if (dispense == null)
@@ -36,36 +35,37 @@ namespace twoDTDS.Game
                     Map.AddObject(new Ammo(Map, X + Width / 2, Y));
                 };
             }
-            dispense.Start();
+         dispense.Start();
         }
 
+        /*======================== OnUpdate ================================*/
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
             {
                 if (!obj.ObDied && obj is Ammo)
                 {
-                    if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm); }
+                    if(IsHit(this, obj))
+                    {
+                        player.myScore.ShotEnemy(ScoreKeep.Norm);
+                    }
                 }
             }
         }
 
+        /*=============================== MoveToRandom ======================*/
         private void MoveToRandom()
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Interval = TimeSpan.FromMilliseconds(700);
             timer.Tick += delegate
             {
                 double x = rand.NextDouble(10, Map.Width - 10 - 80);
-
                 double duration = Math.Abs(x - X) * 8;
-
                 timer.Interval = TimeSpan.FromMilliseconds(duration);
-
                 MoveTo(x, rand.NextDouble(10, 30), duration);
             };
-
-            timer.Start();
+           timer.Start();
         }
     }
 }
