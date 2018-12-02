@@ -26,6 +26,7 @@ namespace twoDTDS.Game
         double speed = 3;
         double dyingSize = 12;
         string direction = "";
+        string uri;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -34,7 +35,8 @@ namespace twoDTDS.Game
             Y = map.Height - 50;
             Width = 14;
             Height = 14;
-            Sprite = new Rec(Width, Height);
+            uri = "C:\\Users\\Shadow\\source\\repos\\MelHoward\\Project\\MainWindow\\Resources\\Hero\\hero-idle-front.png";
+            Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;

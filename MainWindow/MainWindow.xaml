@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:twoDTDS"
         mc:Ignorable="d"
         Title="2D Top-Down Shooter" Height="600" Width="500">
-    <Grid x:Name="grid">
+    <Grid x:Name="grid" Background="Black">
 
     </Grid>
 </Window>

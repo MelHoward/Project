@@ -15,6 +15,7 @@ namespace twoDTDS.Game
 ---------------------------------------------------------------------------------------*/
     public class Ammo : GameObject
     {
+        string uri;
         /*=============================== Ammo >> CTOR ======================*/
         public Ammo(Map m) : base(m)
         {
@@ -22,7 +23,8 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 3;
             Height = 15;
-            Sprite = new Rec(Width, Height);
+     
+            //Sprite = new Rec(Width, Height);
         }
 
         /*=============================== OnUpdate ==========================*/

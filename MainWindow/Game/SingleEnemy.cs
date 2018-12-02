@@ -15,6 +15,7 @@ namespace twoDTDS.Game
         List<AmmoInGame> bullets = new List<AmmoInGame>();
         DispatcherTimer dispense;
         Player player;
+        string uri;
 
         /*========================  SinglEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
@@ -22,7 +23,8 @@ namespace twoDTDS.Game
             MoveToRandom();
             Width = 80;
             Height = 48;
-            Sprite = new Rec(Width, Height);
+            uri = "C:\\Users\\Shadow\\source\\repos\\MelHoward\\Project\\MainWindow\\Resources\\Treant\\treant-idle-front.png";
+            Sprite = new Rec(Width, Height, uri);
 
             this.player = p;
 

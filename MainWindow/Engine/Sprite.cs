@@ -29,11 +29,11 @@ namespace twoDTDS.Engine
         public double Height { get; set; }
 
         /*============================= Rec << CTOR =========================*/
-        public Rec(double width, double height)
+        public Rec(double width, double height, string uri)
         {
             src = new ImageBrush();
-
-            Uri u = new Uri("https://orig00.deviantart.net/1f39/f/2018/080/a/7/megaman_rotation_thing_by_megamanchannel65-dc6k679.gif");
+            
+            Uri u = new Uri(uri);
             src.ImageSource = new BitmapImage(u);
             Width = width;
             Height = height;
@@ -47,9 +47,10 @@ namespace twoDTDS.Engine
         }
     }
 
-/*---------------------------------------------------------------------------------------
-                              CIRCLE : Sprite
----------------------------------------------------------------------------------------*/
+
+    /*---------------------------------------------------------------------------------------
+                                  CIRCLE : Sprite
+    ---------------------------------------------------------------------------------------*/
     public class Circle : Sprite
     {
         double radius = 5;
