@@ -21,6 +21,7 @@ namespace twoDTDS.Engine
         void Settransform(Transform t);
         void SettransformOrigin(Point pt);
     }
+
 /*---------------------------------------------------------------------------------------
                             PLAYAREA : FRAMEWORKELEMENT
 ---------------------------------------------------------------------------------------*/
@@ -96,15 +97,19 @@ namespace twoDTDS.Engine
                 map.OnUpdate();
                 DrawingVisual view = new DrawingVisual();
                 TransformGroup group = new TransformGroup();
-                using (DrawingContext dc = view.RenderOpen()) { map.OnRender(dc); }
+
+                using (DrawingContext dc = view.RenderOpen())
+                {
+                    map.OnRender(dc);
+                }
                 group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
-                group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX,
-                                   CenterY = ViewScaleOriginY, ScaleX = ViewScaleX,
-                                   ScaleY = ViewScaleY });
-                PlaneControl.SettransformOrigin(
-                             new Point(ViewScaleOriginX, ViewScaleOriginY));
+
+                group.Children.Add(new ScaleTransform()
+                                    { CenterX = ViewScaleOriginX, CenterY = ViewScaleOriginY,
+                                      ScaleX = ViewScaleX, ScaleY = ViewScaleY } );
+
+                PlaneControl.SettransformOrigin(new Point(ViewScaleOriginX, ViewScaleOriginY));
                 PlaneControl.Settransform(group);
- 
                 PushVisual(view);
             }
         }

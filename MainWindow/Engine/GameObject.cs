@@ -23,7 +23,6 @@ namespace twoDTDS.Engine
 
         public static DependencyProperty XProperty = 
                       DependencyProperty.Register("X", typeof(double), typeof(GameObject));
-
         public static DependencyProperty YProperty = 
                       DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
 
@@ -125,8 +124,7 @@ namespace twoDTDS.Engine
         /*========================= CheckOutOfBounds ========================*/
         public void CheckOutOfBounds()
         {
-            if ((X < -Width)  || (X > Map.Width + Width) || 
-                (Y < -Height) || (Y > Map.Height + Height)) {
+            if ((X < -Width)  || (X > Map.Width + Width) || (Y < -Height) || (Y > Map.Height + Height)) {
                 ObDied = true;
             }
         }

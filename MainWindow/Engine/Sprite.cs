@@ -48,7 +48,6 @@ namespace twoDTDS.Engine
     }
 
 
-
     /*---------------------------------------------------------------------------------------
                                   CIRCLE : Sprite
     ---------------------------------------------------------------------------------------*/
@@ -75,7 +74,6 @@ namespace twoDTDS.Engine
         }
 
         /*============================= Render =================================*/
-
         public override void Render(GameObject Parent, DrawingContext dc)
         {
             dc.DrawEllipse(brush, null, new System.Windows.Point(Parent.X + radius, Parent.Y + radius), radius, radius);

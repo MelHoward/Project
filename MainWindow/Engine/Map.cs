@@ -28,10 +28,9 @@ namespace twoDTDS.Engine
     {
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
+
         public double Width { get; set; }
         public double Height { get; set; }
-
-        /*=========================== Plane >> Acc. =========================*/
         public PlayArea Plane { get; set; }
 
         /*================================ Map ==============================*/

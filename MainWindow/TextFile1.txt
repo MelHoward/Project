@@ -1,7 +1,0 @@
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\up.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\down.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\left.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\right.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\Demon.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\stage.png"
-"D:\Documents\Programs\Project352\Project\MainWindow\Resources\The End.png"

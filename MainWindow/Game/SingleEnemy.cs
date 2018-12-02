@@ -23,19 +23,19 @@ namespace twoDTDS.Game
             Width = 40;
             Height = 40;
 
-            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\up.png", Width, Height);
+            Sprite = new Rec("D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\img\\Demon.png", Width, Height);
             this.player = p;
 
             if (dispense == null)
             {
                 dispense = new DispatcherTimer();
-                dispense.Interval = TimeSpan.FromMilliseconds(75);
+                dispense.Interval = TimeSpan.FromMilliseconds(90);
                 dispense.Tick += delegate
                 {
                     Map.AddObject(new Ammo(Map, X + Width / 2, Y));
                 };
             }
-         dispense.Start();
+            dispense.Start();
         }
 
         /*======================== OnUpdate ================================*/

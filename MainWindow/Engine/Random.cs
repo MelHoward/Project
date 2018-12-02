@@ -15,6 +15,7 @@ namespace twoDTDS.Engine
         {
             return (double)rand.Next((int)(min * 10000), (int)(max * 10000)) / 10000;
         }
+
         public int Next(int min, int max) { return rand.Next(min, max); }
     }
 }

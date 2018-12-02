@@ -61,12 +61,29 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
-                if (Keyboard.IsKeyDown(Key.A)){ X -= speed; }
-                else if (Keyboard.IsKeyDown(Key.D)) { X += speed; }
+                if (Keyboard.IsKeyDown(Key.A)) { X -= speed; }
                 if (Keyboard.IsKeyDown(Key.W)) { Y -= speed; }
+                else if (Keyboard.IsKeyDown(Key.D)) { X += speed; }
                 else if (Keyboard.IsKeyDown(Key.S)) { Y += speed; }
 
-                if (Keyboard.IsKeyDown(Key.Space))
+                
+
+                if (Keyboard.IsKeyDown(Key.Up) || Keyboard.IsKeyDown(Key.Down) || 
+                    Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Right))
+                {
+                    if (bulletCreate == null)
+                    {
+                        bulletCreate = new DispatcherTimer();
+                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
+
+                        bulletCreate.Tick += delegate
+                        {
+                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
+                        };
+                    }
+                    bulletCreate.Start();
+                }
+                else if (Keyboard.IsKeyDown(Key.Down))
                 {
                     if (bulletCreate == null)
                     {
@@ -79,33 +96,7 @@ namespace twoDTDS.Game
                     }
                     bulletCreate.Start();
                 }
-                if (Keyboard.IsKeyDown(Key.Up))
-                {
-                    if (bulletCreate == null)
-                    {
-                        bulletCreate = new DispatcherTimer();
-                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
-                        bulletCreate.Tick += delegate
-                        {
-                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
-                        };
-                    }
-                    bulletCreate.Start();
-                }
-                if (Keyboard.IsKeyDown(Key.Down))
-                {
-                    if (bulletCreate == null)
-                    {
-                        bulletCreate = new DispatcherTimer();
-                        bulletCreate.Interval = TimeSpan.FromMilliseconds(75);
-                        bulletCreate.Tick += delegate
-                        {
-                            Map.AddObject(new Ammo(Map, X + Width / 2, Y));
-                        };
-                    }
-                    bulletCreate.Start();
-                }
-                if (Keyboard.IsKeyDown(Key.Left))
+                else if (Keyboard.IsKeyDown(Key.Left))
                 {
                     if (bulletCreate == null)
                     {
@@ -118,7 +109,7 @@ namespace twoDTDS.Game
                     }
                     bulletCreate.Start();
                 }
-                if (Keyboard.IsKeyDown(Key.Right))
+                else if (Keyboard.IsKeyDown(Key.Right))
                 {
                     if (bulletCreate == null)
                     {
@@ -131,7 +122,15 @@ namespace twoDTDS.Game
                     }
                     bulletCreate.Start();
                 }
-                else { if (bulletCreate != null) { bulletCreate.Stop(); }}
+
+                else
+                {
+                    if (bulletCreate != null)
+                    {
+                        bulletCreate.Stop();
+                    }
+                }
+
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
@@ -173,12 +172,14 @@ namespace twoDTDS.Game
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
-            if (!myScore.Died) { base.OnRender(dc); }
+            if (!myScore.Died)
+            {
+                base.OnRender(dc);
+            }
             else
             {
-                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center );
+                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2), dyingSize, 
+                             HorizontalAlignment.Center, VerticalAlignment.Center );
             }
         }
     }
