@@ -119,11 +119,6 @@ namespace twoDTDS.Game
                 }
                 else { if (bulletCreate != null) { bulletCreate.Stop(); } }
 
-
-
-
-
-
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
 

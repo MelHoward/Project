@@ -15,6 +15,7 @@ namespace twoDTDS.Game
         List<AmmoInGame> bullets = new List<AmmoInGame>();
         DispatcherTimer dispense;
         Player player;
+        int Health;
         string uri;
 
         /*========================  SinglEnemy  ===========================*/
@@ -23,6 +24,7 @@ namespace twoDTDS.Game
             MoveToRandom();
             Width = 80;
             Height = 48;
+            Health = 100;
             uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Resources\Treant\treant-idle-front.png";
             Sprite = new Rec(Width, Height, uri);
 
@@ -39,15 +41,24 @@ namespace twoDTDS.Game
             }
          dispense.Start();
         }
-
+        /// <summary>
+        /// Enemies die
+        /// </summary>
         /*======================== OnUpdate ================================*/
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is TempEnemyammo)
+                if (!obj.ObDied && obj is Playerammo)
                 {
-                    if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm); }
+                    if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm);
+                        Health -= 25;
+                    }
+                }
+                if(Health == 0)
+                {
+                    this.ObDied = true;
+                    dispense.Stop();
                 }
             }
         }
