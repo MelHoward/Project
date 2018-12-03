@@ -69,25 +69,21 @@ namespace twoDTDS.Game
                 if (Keyboard.IsKeyDown(Key.A))
                 {
                     X -= speed;
-                    direction = "left";
                 }
                 else if (Keyboard.IsKeyDown(Key.D))
                 {
                     X += speed;
-                    direction = "right";
                 }
                 if (Keyboard.IsKeyDown(Key.W))
                 {
                     Y -= speed;
-                    direction = "up";
                 }
                 else if (Keyboard.IsKeyDown(Key.S))
                 {
                     Y += speed;
-                    direction = "down";
                 }
 
-                if (Keyboard.IsKeyDown(Key.Space))
+                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
                 {
                     if (bulletCreate == null)
                     {
@@ -96,41 +92,37 @@ namespace twoDTDS.Game
                         bulletCreate.Tick += delegate
                         {
                             Playerammo a = new Playerammo(Map, X + Width / 2, Y);
-                            if (direction == "up")
+
+                            if (Keyboard.IsKeyDown(Key.Up))
                             {
-                                a.upVel = 15;
-                                a.downVel = 0;
-                                a.leftVel = 0;
-                                a.rightVel = 0;
+                                a.direction = "up";
                             }
-                            if (direction == "down")
+                            if (Keyboard.IsKeyDown(Key.Down))
                             {
-                                a.upVel = 0;
-                                a.downVel = 15;
-                                a.leftVel = 0;
-                                a.rightVel = 0;
+                                a.direction = "down";
                             }
-                            if (direction == "left")
+                            if (Keyboard.IsKeyDown(Key.Left))
                             {
-                                a.upVel = 0;
-                                a.downVel = 0;
-                                a.leftVel = 15;
-                                a.rightVel = 0;
+                                a.direction = "left";
                             }
-                            if (direction == "right")
+                            if (Keyboard.IsKeyDown(Key.Right))
                             {
-                                a.upVel = 0;
-                                a.downVel = 0;
-                                a.leftVel = 0;
-                                a.rightVel = 15;
+                                a.direction = "right";
                             }
 
                             Map.AddObject(a);
                         };
-                    }
+
+
+                    };
                     bulletCreate.Start();
                 }
-                else { if (bulletCreate != null) { bulletCreate.Stop(); }}
+                else { if (bulletCreate != null) { bulletCreate.Stop(); } }
+
+
+
+
+
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
@@ -168,6 +160,7 @@ namespace twoDTDS.Game
                 }
             }
         }
+        
 
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)

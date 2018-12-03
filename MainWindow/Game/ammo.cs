@@ -39,10 +39,7 @@ namespace twoDTDS.Game
     /// </summary>
     public class Playerammo : Ammo
     {
-        public double upVel = 0;
-        public double downVel = 0;
-        public double leftVel = 0;
-        public double rightVel = 0;
+        public string direction;
 
         public Playerammo(Map m, double X, double Y) : base(m)
         {
@@ -55,10 +52,11 @@ namespace twoDTDS.Game
 
         public override void OnUpdate()
         {
-            Y -= upVel;
-            Y += downVel;
-            X += rightVel;
-            X -= leftVel;
+            if (direction == "up") { Y -= 15; }
+            if (direction == "down") { Y += 15; }
+            if (direction == "left") { X -= 15; }
+            if (direction == "right") { X += 15; }
+
             if (Y < -100) { ObDied = true; }
         }
     }
