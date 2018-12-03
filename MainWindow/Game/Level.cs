@@ -1,19 +1,14 @@
-﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Windows;
 using System.Globalization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
 
-/*---------------------------------------------------------------------------------------
-                                ENEMYGENERATOR : GAMEOBJECT
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                    ENEMYGENERATOR : GAMEOBJECT
+    ---------------------------------------------------------------------------------------*/
     public class EnemyGenerator : GameObject
     {
         /*==================== EnemyGenerator >> CTOR =======================*/

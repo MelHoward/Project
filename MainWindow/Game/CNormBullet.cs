@@ -1,18 +1,12 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
 
-/*---------------------------------------------------------------------------------------
-                               << ENEMYAMMO >> : GAMEOBJECT
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                   << ENEMYAMMO >> : GAMEOBJECT
+    ---------------------------------------------------------------------------------------*/
     public abstract class EnemyAmmo : GameObject
     {
         public EnemyAmmo(Map map) : base(map) { }

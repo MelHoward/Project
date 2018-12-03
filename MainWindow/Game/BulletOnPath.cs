@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-/*---------------------------------------------------------------------------------------
-                       BULLETONPATH : ENEMYAMMO
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                           BULLETONPATH : ENEMYAMMO
+    ---------------------------------------------------------------------------------------*/
     public class BulletOnPath : EnemyAmmo
     {
         GameObject target;
