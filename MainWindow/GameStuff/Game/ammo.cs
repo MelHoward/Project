@@ -47,8 +47,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 6;
             Height = 15;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            Sprite = new Rec(Width, Height, uri);
+            Sprite = new PlayerammoSprite(Width, Height);
         }
 
         public override void OnUpdate()
@@ -74,8 +73,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 15;
             Height = 15;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            Sprite = new Rec(Width, Height, uri);
+            Sprite = new PlayerammoSprite(Width, Height);
         }
 
         public override void OnUpdate()
@@ -84,5 +82,31 @@ namespace twoDTDS.Game
             if (Y < -100) { ObDied = true; }
         }
     }
-  
+    /// <summary>
+    /// This doesnt need to exist but it is used 
+    /// </summary>
+    public class PlayerammoSprite : Sprite
+    {
+        ImageBrush src;
+        public double Width { get; set; }
+        public double Height { get; set; }
+
+        /*============================= Rec << CTOR =========================*/
+        public PlayerammoSprite(double width, double height)
+        {
+            src = new ImageBrush();
+
+            Uri u = new Uri("http://pixelartmaker.com/art/f59eaa826d4e49f.png");
+            src.ImageSource = new BitmapImage(u);
+            Width = width;
+            Height = height;
+
+        }
+
+        /*============================= Render ==============================*/
+        public override void Render(GameObject Parent, DrawingContext dc)
+        {
+            dc.DrawImage(src.ImageSource, new Rect(Parent.X, Parent.Y, Width, Height));
+        }
+    }
 }

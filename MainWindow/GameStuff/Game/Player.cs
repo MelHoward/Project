@@ -12,9 +12,9 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    /*---------------------------------------------------------------------------------------
-                                  PLAYER : GAMEOBJECT
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                              PLAYER : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
     public class Player : GameObject
     {
         public ScoreKeep myScore { get; set; }
@@ -25,8 +25,8 @@ namespace twoDTDS.Game
         int cameraShakeCount = 0;
         double speed = 3;
         double dyingSize = 40;
-        int rollFrames = 0;
-        int speedFrames;
+        string direction = "";
+        int frames = 0;
         string uri;
         bool invincible = false;
 
@@ -45,8 +45,7 @@ namespace twoDTDS.Game
         }
 
         /*================================== Score_died ==========================*/
-        private void Score_died(object sender, ScoreKeep e)
-        {
+        private void Score_died(object sender, ScoreKeep e) { 
             Console.WriteLine("You Died!");
             if (bulletCreate != null) { bulletCreate.Stop(); }
             DispatcherTimer t = new DispatcherTimer();
@@ -55,13 +54,12 @@ namespace twoDTDS.Game
             t.Tick += delegate
             {
                 tcount++;
-                if (tcount > 60)
-                {
+                if (tcount > 60){
                     t.Stop(); return;
                 }
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
-            t.Start();
+        t.Start();
         }
 
         /*================================== OnUpdate =============================*/
@@ -83,16 +81,16 @@ namespace twoDTDS.Game
 
                 IsHit();
 
-                if (Keyboard.IsKeyDown(Key.E))
+                if(Keyboard.IsKeyDown(Key.E))
                 {
                     Roll();
-
+                    
                 }
                 RollReset();
 
-                SpeedUp(this);
-
-                rollFrames++;
+                SpeedUp();
+                
+                frames++;
             }
         }
         /// <summary>
@@ -100,11 +98,11 @@ namespace twoDTDS.Game
         /// </summary>
         private void Roll()
         {
-            if (rollFrames < 50 && rollFrames > 0)
+            if (frames < 50 && frames > 0)
             {
-                if (rollFrames >= 0 && invincible != true)
+                if(frames >= 0 && invincible != true)
                 {
-                    rollFrames = 0;
+                    frames = 0;
                 }
                 invincible = true;
                 Sprite = new Rec(30, 35, uri);
@@ -115,11 +113,11 @@ namespace twoDTDS.Game
         /// </summary>
         private void RollReset()
         {
-            if (rollFrames == 50)
+            if (frames == 50)
             {
                 invincible = false;
                 Sprite = new Rec(40, 45, uri);
-                rollFrames = -25;
+                frames = -25;
             }
         }
         /// <summary>
@@ -221,46 +219,16 @@ namespace twoDTDS.Game
             }
         }
 
-        private void SpeedUp(GameObject player)
+        private void SpeedUp()
         {
-            SpeedPowerUp test = new SpeedPowerUp(Map, X + 100, Y - 100);
-            if (Keyboard.IsKeyDown(Key.Space))
-            {
+            Playerammo test = new Playerammo(Map, X + 20, Y + 20);
+            test.Width = 40;
+            test.Height = 40;
+            
 
-                test.Width = 40;
-                test.Height = 40;
-
-
-                Map.AddObject(test);
-            }
-
-            foreach (GameObject obj in Map.Objects)
-            {
-                if (!obj.ObDied && obj is SpeedPowerUp)
-                {
-                    if (IsHit(this, obj))
-                    {
-                        speedFrames = 300;
-
-                        obj.ObDied = true;
-                        obj.Sprite = null;
-                        obj.Width = 0;
-                        obj.Height = 0;
-                    }
-                }
-            }
-
-            if (speedFrames > 0)
-            {
-                speed = 5;
-            }
-            else
-            {
-                speed = 3;
-            }
-            speedFrames--;
+            Map.AddObject(test);
         }
-
+        
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
@@ -269,23 +237,8 @@ namespace twoDTDS.Game
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
                              dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center);
+                             System.Windows.VerticalAlignment.Center );
             }
-        }
-    }
-
-    public class SpeedPowerUp : GameObject
-    {
-        public string direction;
-
-        public SpeedPowerUp(Map m, double X, double Y) : base(m)
-        {
-            this.X = X;
-            this.Y = Y;
-            Width = 20;
-            Height = 20;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            Sprite = new Rec(Width, Height, uri);
         }
     }
 }
