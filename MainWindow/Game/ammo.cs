@@ -15,7 +15,7 @@ namespace twoDTDS.Game
 ---------------------------------------------------------------------------------------*/
     public class Ammo : GameObject
     {
-        string uri;
+        //string uri;
         /*=============================== Ammo >> CTOR ======================*/
         public Ammo(Map m) : base(m)
         {
