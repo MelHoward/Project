@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Drawing;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-/*---------------------------------------------------------------------------------------
-                              PLAYER : GAMEOBJECT
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                  PLAYER : GAMEOBJECT
+    ---------------------------------------------------------------------------------------*/
     public class Player : GameObject
     {
         public ScoreKeep myScore { get; set; }

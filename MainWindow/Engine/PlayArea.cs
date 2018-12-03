@@ -2,7 +2,12 @@
  * 
  **
   * 
-  *
+  *public class CarCollection : IEnumerable<Car>
+{
+    private List<Car> cars = new List<Car>();
+
+    public IEnumerator<Car> GetEnumerator() { return this.cars.GetEnumerator(); }
+}
   *
   * 
   *  
