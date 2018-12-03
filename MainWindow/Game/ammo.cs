@@ -34,7 +34,9 @@ namespace twoDTDS.Game
             if (Y < -100) {  ObDied = true;  }
         }
     }
-
+    /// <summary>
+    /// Player ammo class that allows player ammo to have its own logic
+    /// </summary>
     public class Playerammo : Ammo
     {
         public double upVel = 0;
@@ -60,7 +62,9 @@ namespace twoDTDS.Game
             if (Y < -100) { ObDied = true; }
         }
     }
-
+    /// <summary>
+    /// Enemy ammo class that allows enemy ammo to have its own logic
+    /// </summary>
     public class TempEnemyammo : Ammo
     {
         public int Damage { get; set; } = 10;
@@ -80,7 +84,9 @@ namespace twoDTDS.Game
             if (Y < -100) { ObDied = true; }
         }
     }
-
+    /// <summary>
+    /// This doesnt need to exist but it is used 
+    /// </summary>
     public class PlayerammoSprite : Sprite
     {
         ImageBrush src;

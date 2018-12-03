@@ -19,12 +19,6 @@ namespace twoDTDS.Game
         public int Damage { get; set; } = 1;
     }
 
-    public abstract class PlayerAmmo : GameObject
-    {
-        public PlayerAmmo(Map map) : base(map) { }
-        public int Damage { get; set; } = 1;
-    }
-
 /*---------------------------------------------------------------------------------------
                                 CNORMBULLET : ENEMYAmmo
 ---------------------------------------------------------------------------------------*/

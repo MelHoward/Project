@@ -35,7 +35,7 @@ namespace twoDTDS.Game
             Y = map.Height - 50;
             Width = 14;
             Height = 14;
-            uri = "C:\\Users\\Shadow\\source\\repos\\MelHoward\\Project\\MainWindow\\Resources\\Hero\\hero-idle-front.png";
+            uri = "C:\\Users\\Corey\\Source\\Repos\\Project\\MainWindow\\Resources\\Hero\\hero-idle-front.png";
             Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();

@@ -29,6 +29,8 @@ namespace twoDTDS.Engine
         public double Height { get; set; }
 
         /*============================= Rec << CTOR =========================*/
+
+            //Added a string uri to parameters to get sprite image for each sprite created
         public Rec(double width, double height, string uri)
         {
             src = new ImageBrush();

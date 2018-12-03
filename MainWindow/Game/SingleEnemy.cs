@@ -23,7 +23,7 @@ namespace twoDTDS.Game
             MoveToRandom();
             Width = 80;
             Height = 48;
-            uri = "C:\\Users\\Shadow\\source\\repos\\MelHoward\\Project\\MainWindow\\Resources\\Treant\\treant-idle-front.png";
+            uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Resources\Treant\treant-idle-front.png";
             Sprite = new Rec(Width, Height, uri);
 
             this.player = p;
