@@ -24,17 +24,19 @@ namespace twoDTDS.Game
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
         double speed = 3;
-        double dyingSize = 12;
+        double dyingSize = 40;
         string direction = "";
+        int frames = 0;
         string uri;
+        bool invincable = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
         {
             X = Math.Round(map.Width / 2);
             Y = map.Height - 50;
-            Width = 14;
-            Height = 14;
+            Width = 40;
+            Height = 45;
             uri = "C:\\Users\\Corey\\Source\\Repos\\Project\\MainWindow\\Resources\\Hero\\hero-idle-front.png";
             Sprite = new Rec(Width, Height, uri);
 
@@ -128,31 +130,57 @@ namespace twoDTDS.Game
                     {
                         if (IsHit(this, obj))
                         {
-                            myScore.PlayerHit(((TempEnemyammo)obj).Damage);
-
-                            if (camShake == null)
+                            if (invincable == false)
                             {
-                                camShake = new DispatcherTimer();
-                                camShake.Interval = TimeSpan.FromMilliseconds(25);
-                                camShake.Tick += delegate
+                                myScore.PlayerHit(((TempEnemyammo)obj).Damage);
+
+
+                                if (camShake == null)
                                 {
-                                    cameraShakeCount++;
-                                    if (cameraShakeCount > 7)
+                                    camShake = new DispatcherTimer();
+                                    camShake.Interval = TimeSpan.FromMilliseconds(25);
+                                    camShake.Tick += delegate
                                     {
-                                        camShake.Stop();
-                                        Map.Plane.ViewOffsetX = 0;
-                                        Map.Plane.ViewOffsetY = 0;
-                                        return;
-                                    }
-                                    Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
-                                    Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
-                                };
+                                        cameraShakeCount++;
+                                        if (cameraShakeCount > 7)
+                                        {
+                                            camShake.Stop();
+                                            Map.Plane.ViewOffsetX = 0;
+                                            Map.Plane.ViewOffsetY = 0;
+                                            return;
+                                        }
+                                        Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
+                                        Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
+                                    };
+                                }
+                                cameraShakeCount = 0;
+                                camShake.Start();
                             }
-                            cameraShakeCount = 0;
-                            camShake.Start();
                         }
                     }
                 }
+
+                if(Keyboard.IsKeyDown(Key.D1))
+                {
+                    roll();
+                    
+                }
+                if(frames == 100)
+                {
+                    invincable = false;
+                    Sprite = new Rec(40, 45, uri);
+                    frames = 0;
+                }
+                frames++;
+            }
+        }
+
+        private void roll()
+        {
+            if (frames < 100)
+            {
+                invincable = true;
+                Sprite = new Rec(30, 35, uri);
             }
         }
         

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace twoDTDS.Game
         DispatcherTimer dispense;
         Player player;
         int Health;
+        int frames;
         string uri;
 
         /*========================  SinglEnemy  ===========================*/
@@ -24,7 +26,7 @@ namespace twoDTDS.Game
             MoveToRandom();
             Width = 80;
             Height = 48;
-            Health = 100;
+            Health = 400;
             uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Resources\Treant\treant-idle-front.png";
             Sprite = new Rec(Width, Height, uri);
 
@@ -51,8 +53,11 @@ namespace twoDTDS.Game
             {
                 if (!obj.ObDied && obj is Playerammo)
                 {
-                    if(IsHit(this, obj)){ player.myScore.ShotEnemy(ScoreKeep.Norm);
+                    if(IsHit(this, obj))
+                    {
+                        player.myScore.ShotEnemy(ScoreKeep.Norm);
                         Health -= 25;
+                        EnemyHit(this);
                     }
                 }
                 if(Health == 0)
@@ -60,6 +65,14 @@ namespace twoDTDS.Game
                     this.ObDied = true;
                     dispense.Stop();
                 }
+                if(frames == 30)
+                {
+                    frames = 0;
+                    Sprite = new Rec(Width, Height, uri);
+                    Width = 80;
+                    Height = 48;
+                }
+                frames++;
             }
         }
 
@@ -76,6 +89,17 @@ namespace twoDTDS.Game
                 MoveTo(x, rand.NextDouble(10, 30), duration);
             };
            timer.Start();
+        }
+
+        private void EnemyHit(GameObject enemy)
+        {
+            if(frames < 30)
+            {
+                Sprite = null;
+                enemy.Width = 0;
+                enemy.Height = 0;
+            }
+            
         }
     }
 }
