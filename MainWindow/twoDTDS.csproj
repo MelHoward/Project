@@ -118,21 +118,11 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -154,80 +144,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\bckground.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-back.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-front.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-side.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-idle-side.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-back.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-front.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-side.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Treant\treant-walk-side.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-back-walk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-idle-back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-idle-front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-idle-side.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-walk-back.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-walk-front.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-walk-front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-walk-side.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hero\hero-walk-side.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bullet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\arrow.png" />
+    <Resource Include="Assets\Demon.png" />
+    <Resource Include="Assets\down.png" />
+    <Resource Include="Assets\left.png" />
+    <Resource Include="Assets\right.png" />
+    <Resource Include="Assets\Stage.png" />
+    <Resource Include="Assets\The End.png" />
+    <Resource Include="Assets\up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

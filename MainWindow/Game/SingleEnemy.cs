@@ -25,7 +25,7 @@ namespace twoDTDS.Game
             Width = 80;
             Height = 48;
             Health = 100;
-            uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Resources\Treant\treant-idle-front.png";
+            uri = @"D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\Assets\\Demon.png";
             Sprite = new Rec(Width, Height, uri);
 
             this.player = p;

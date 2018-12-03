@@ -24,8 +24,8 @@ namespace twoDTDS.Game
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
         double speed = 3;
-        double dyingSize = 12;
-        string direction = "";
+        double dyingSize = 20;
+       // string direction = "";
         string uri;
 
         /*============================= Player >> CTOR ===========================*/
@@ -33,9 +33,9 @@ namespace twoDTDS.Game
         {
             X = Math.Round(map.Width / 2);
             Y = map.Height - 50;
-            Width = 14;
-            Height = 14;
-            uri = "C:\\Users\\Corey\\Source\\Repos\\Project\\MainWindow\\Resources\\Hero\\hero-idle-front.png";
+            Width = 42;
+            Height = 42;
+            uri = "D:\\Documents\\Programs\\Project352\\Project\\MainWindow\\Assets\\up.png";
             Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();
@@ -61,7 +61,6 @@ namespace twoDTDS.Game
         }
 
         /*================================== OnUpdate =============================*/
-
         public override void OnUpdate()
         {
             if (!myScore.Died)

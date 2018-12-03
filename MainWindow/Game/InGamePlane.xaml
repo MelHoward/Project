@@ -5,15 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:twoDTDS.Game"
              xmlns:engine="clr-namespace:twoDTDS.Engine"
-             mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="350">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/bckground.bmp"/>
-        </Grid.Background>
-        <UniformGrid>
-            <engine:PlayArea x:Name="plane" />
-            <Button x:Name="Bt_Restart" Content="Restart" 
+             mc:Ignorable="d" Background="Black" Width="1024" Height="610">
+    <Grid Margin="120,10,100,10">
+    <Grid.Background>
+        <ImageBrush x:Name="stage" ImageSource="..\Assets\Stage.png" />
+    </Grid.Background>
+    <engine:PlayArea x:Name="plane" Margin="0"/>
+    <Button x:Name="Bt_Restart" Content="Restart" 
                 Padding="1,-4,0,-3" 
                 VerticalAlignment="Top" HorizontalAlignment="Center" 
                 Click="Bt_Restart_Click" FontWeight="Bold" 
@@ -21,7 +19,15 @@
                 FontSize="20" VerticalContentAlignment="Center" 
                 TextOptions.TextFormattingMode="Display" 
                 TextOptions.TextHintingMode="Fixed" SnapsToDevicePixels="True" 
-                Background="#FFF79F9F" Grid.IsSharedSizeScope="True" Margin="0,0,105,0"/>
-        </UniformGrid>
+                Background="#FFDAB6B6" Grid.IsSharedSizeScope="True" RenderTransformOrigin="0.5,0.5" Height="30" Width="54" Margin="-93,40,843,0">
+        <Button.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Button.RenderTransform>
+    </Button>
     </Grid>
 </UserControl>
