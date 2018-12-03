@@ -16,7 +16,7 @@ namespace twoDTDS.Game
         List<AmmoInGame> bullets = new List<AmmoInGame>();
         DispatcherTimer dispense;
         Player player;
-        int Health;
+        int HitPoints;
         int frames;
         string uri;
 
@@ -26,7 +26,7 @@ namespace twoDTDS.Game
             MoveToRandom();
             Width = 80;
             Height = 48;
-            Health = 400;
+            HitPoints = 4;
             uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Assets\Demon.png";
             Sprite = new Rec(Width, Height, uri);
 
@@ -56,11 +56,12 @@ namespace twoDTDS.Game
                     if(IsHit(this, obj))
                     {
                         player.myScore.ShotEnemy(ScoreKeep.Norm);
-                        Health -= 25;
+                        obj.ObDied = true;
+                        HitPoints -= 1;
                         EnemyHit(this);
                     }
                 }
-                if(Health == 0)
+                if(HitPoints == 0)
                 {
                     this.ObDied = true;
                     dispense.Stop();

@@ -103,6 +103,7 @@
     <Compile Include="Game\CNormBullet.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\PowerUp.cs" />
     <Compile Include="Game\ScoreKeep.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Game\InGamePlane.xaml.cs">

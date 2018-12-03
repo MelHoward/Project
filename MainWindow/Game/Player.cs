@@ -23,10 +23,9 @@ namespace twoDTDS.Game
         DispatcherTimer bulletCreate;
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
-        double speed = 3;
+        public double speed = 3;
         double dyingSize = 40;
         int rollFrames = 0;
-        int speedFrames;
         string uri;
         bool invincible = false;
 
@@ -90,7 +89,7 @@ namespace twoDTDS.Game
                 }
                 RollReset();
 
-                SpeedUp(this);
+                CheckPowerUp();
 
                 rollFrames++;
             }
@@ -186,14 +185,20 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is TempEnemyammo)
+                if (!obj.ObDied && obj is TempEnemyammo || obj is SingleEnemy)
                 {
                     if (IsHit(this, obj))
                     {
                         if (invincible == false)
                         {
-                            myScore.PlayerHit(((TempEnemyammo)obj).Damage);
-
+                            if(obj is TempEnemyammo)
+                            {
+                                myScore.PlayerHit(((TempEnemyammo)obj).Damage);
+                            }
+                            else
+                            {
+                                myScore.PlayerHit(20);
+                            }
 
                             if (camShake == null)
                             {
@@ -221,44 +226,19 @@ namespace twoDTDS.Game
             }
         }
 
-        private void SpeedUp(GameObject player)
+        public void CheckPowerUp()
         {
-            SpeedPowerUp test = new SpeedPowerUp(Map, X + 100, Y - 100);
+            SpeedPowerUp speed = new SpeedPowerUp(Map, this, X + 100  , Y - 100 );
             if (Keyboard.IsKeyDown(Key.Space))
             {
 
-                test.Width = 40;
-                test.Height = 40;
+                Width = 40;
+                Height = 40;
 
 
-                Map.AddObject(test);
+                Map.AddObject(speed);
             }
 
-            foreach (GameObject obj in Map.Objects)
-            {
-                if (!obj.ObDied && obj is SpeedPowerUp)
-                {
-                    if (IsHit(this, obj))
-                    {
-                        speedFrames = 300;
-
-                        obj.ObDied = true;
-                        obj.Sprite = null;
-                        obj.Width = 0;
-                        obj.Height = 0;
-                    }
-                }
-            }
-
-            if (speedFrames > 0)
-            {
-                speed = 5;
-            }
-            else
-            {
-                speed = 3;
-            }
-            speedFrames--;
         }
 
         /*================================== OnRender =============================*/
@@ -271,21 +251,6 @@ namespace twoDTDS.Game
                              dyingSize, HorizontalAlignment.Center,
                              System.Windows.VerticalAlignment.Center);
             }
-        }
-    }
-
-    public class SpeedPowerUp : GameObject
-    {
-        public string direction;
-
-        public SpeedPowerUp(Map m, double X, double Y) : base(m)
-        {
-            this.X = X;
-            this.Y = Y;
-            Width = 20;
-            Height = 20;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            Sprite = new Rec(Width, Height, uri);
         }
     }
 }
