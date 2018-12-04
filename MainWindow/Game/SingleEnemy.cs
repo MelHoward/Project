@@ -19,6 +19,7 @@ namespace twoDTDS.Game
         int HitPoints;
         int frames;
         string uri;
+        string spawnPoint = "down";
 
         /*========================  SinglEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
@@ -29,6 +30,7 @@ namespace twoDTDS.Game
             HitPoints = 4;
             uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Assets\Demon.png";
             Sprite = new Rec(Width, Height, uri);
+            Spawner();
 
             this.player = p;
 
@@ -87,9 +89,34 @@ namespace twoDTDS.Game
                 double x = rand.NextDouble(10, Map.Width - 10 - 80);
                 double duration = Math.Abs(x - X) * 8;
                 timer.Interval = TimeSpan.FromMilliseconds(duration);
+                
                 MoveTo(x, rand.NextDouble(10, 30), duration);
             };
            timer.Start();
+        }
+
+        private void Spawner()
+        {
+            System.Random spawn = new System.Random();
+
+            if(spawnPoint == "top")
+            {
+                X = 400;
+            }
+            if(spawnPoint == "left")
+            {
+                Y = 300;
+            }
+            if(spawnPoint == "right")
+            {
+                Y = 300;
+                X = 750;
+            }
+            if(spawnPoint == "down")
+            {
+                Y = 500;
+                X = 400;
+            }
         }
 
         private void EnemyHit(GameObject enemy)

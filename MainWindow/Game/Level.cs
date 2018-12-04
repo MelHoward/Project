@@ -2,6 +2,8 @@
 using System.Globalization;
 using System.Windows.Media;
 using twoDTDS.Engine;
+using System.Windows.Threading;
+using System;
 
 namespace twoDTDS.Game
 {
@@ -14,7 +16,14 @@ namespace twoDTDS.Game
         /*==================== EnemyGenerator >> CTOR =======================*/
         public EnemyGenerator(Map m, Player p) : base(m)
         {
-            Map.AddObject(new SingleEnemy(m, p));
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Tick += delegate
+            {
+                timer.Interval = TimeSpan.FromSeconds(5);
+                Map.AddObject(new SingleEnemy(m, p));
+            };
+            timer.Start();
         }
     }
 
