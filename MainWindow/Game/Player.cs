@@ -91,7 +91,6 @@ namespace twoDTDS.Game
 
                 CheckPowerUp();
 
-                rollFrames++;
             }
         }
         /// <summary>
@@ -120,6 +119,8 @@ namespace twoDTDS.Game
                 Sprite = new Rec(40, 45, uri);
                 rollFrames = -25;
             }
+
+            rollFrames++;
         }
         /// <summary>
         /// Lets you move using WASD
@@ -185,20 +186,13 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is TempEnemyammo || obj is SingleEnemy)
+                if (!obj.ObDied && obj is TempEnemyammo)
                 {
                     if (IsHit(this, obj))
                     {
                         if (invincible == false)
                         {
-                            if(obj is TempEnemyammo)
-                            {
-                                myScore.PlayerHit(((TempEnemyammo)obj).Damage);
-                            }
-                            else
-                            {
-                                myScore.PlayerHit(20);
-                            }
+                            myScore.PlayerHit(((TempEnemyammo)obj).Damage);
 
                             if (camShake == null)
                             {

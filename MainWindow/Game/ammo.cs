@@ -81,8 +81,9 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             Y += 5;
-            if (Y < -100) { ObDied = true; }
+            CheckOutOfBounds();
         }
+
     }
   
 }
