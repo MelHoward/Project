@@ -26,8 +26,7 @@ namespace twoDTDS.Game
     {
         double x_vec;
         double y_vec;
-        double radius;
-
+                         
         /*============================= CNormBullet =========================*/
         public CNormEnemyBullet(Map map, double x, double y, double x_vec,
                            double y_vec, double radius) : base(map){
@@ -50,16 +49,12 @@ namespace twoDTDS.Game
 
             CheckOutOfBounds();
         }
-    }
-
-
-    /*---------------------------------------------------------------------------------------
-                                 CNORMAMMO : AMMOInGAME
-    ---------------------------------------------------------------------------------------*/
-    public class CNormAmmo : AmmoInGame
-    {
-        Engine.Random r = new Engine.Random();
-        public CNormAmmo(GameObject parent) : base(parent) { }
+ *//---------------------------------------------------------------------------------------*/        
+        CNORMAMMO : AMMOInGAME
+      ?---------------------------------------------------------------------------------------*/
+    public class CNormAmmo : AmmoInGam
+            this.r = r;
+        }
 
         /*================================= Shoot ===========================*/
         public override double Shoot()
@@ -82,4 +77,9 @@ namespace twoDTDS.Game
             return 280;
         }
     }
+    
+    
+    
+    
+    6
 }

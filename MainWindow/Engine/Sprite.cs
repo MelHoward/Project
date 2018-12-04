@@ -1,35 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Drawing;
 using System.Windows;
 
 namespace twoDTDS.Engine
 {
 
-/*---------------------------------------------------------------------------------------
-                                       << Sprite >>
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                           << Sprite >>
+    ---------------------------------------------------------------------------------------*/
     public abstract class Sprite
     {
-        public abstract void Render(GameObject Parent, DrawingContext dc);
+        public abstract void Render(GameObject parent, DrawingContext dc);
     }
-
 /*---------------------------------------------------------------------------------------
                                         REC : Sprite
 ---------------------------------------------------------------------------------------*/
     public class Rec : Sprite
     {
         ImageBrush src;
+
+        public Rec (int v1, int v2, string uri)
+        {
+        }
+
+        public Rec (object p, double height, string uri)
+        {
+            Height = height;
+        }
+
         public double Width { get; set; }
         public double Height { get; set; }
 
-        /*============================= Rec << CTOR =========================*/
-
+        /*============================= Rec << CTOR
             //Added a string uri to parameters to get sprite image for each sprite created
         public Rec(double width, double height, string uri)
         {
@@ -39,16 +42,17 @@ namespace twoDTDS.Engine
             src.ImageSource = new BitmapImage(u);
             Width = width;
             Height = height;
-
         }
 
         /*============================= Render ==============================*/
-        public override void Render(GameObject Parent, DrawingContext dc)
+    public override void Render(GameObject parent, DrawingContext dc)
         {
-            dc.DrawImage(src.ImageSource, new Rect(Parent.X, Parent.Y, Width, Height));
+            if (parent != null)
+            {
+                dc.DrawImage(src.ImageSource, new Rect(parent.X, parent.Y, Width, Height));
+            }
         }
     }
-
 
     /*---------------------------------------------------------------------------------------
                                   CIRCLE : Sprite
@@ -56,20 +60,20 @@ namespace twoDTDS.Engine
     public class Circle : Sprite
     {
         double radius = 5;
-        System.Windows.Media.Brush brush;
+        Brush brush;
         private SolidColorBrush solColBrush;
 
         /*============================= Circle << CTOR ======================*/
         public Circle(SolidColorBrush solColBrush)
         {
             //deep copy mh
-            this.solColBrush = solColBrush.Clone();
+            if (solColBrush != null) this.solColBrush = solColBrush.Clone();
             //no change mh
-            this.solColBrush.Freeze();
+            this.solColBrush?.Freeze();
         }
 
         /*============================= Circle << CTOR ======================*/
-        public Circle( System.Windows.Media.Brush brush, double radius)
+        public Circle(Brush brush, double radius)
         {
             this.brush = brush;
             this.radius = radius;
@@ -77,9 +81,19 @@ namespace twoDTDS.Engine
 
         /*============================= Render =================================*/
 
-        public override void Render(GameObject Parent, DrawingContext dc)
+        public override void Render(GameObject parent, DrawingContext dc)
         {
-            dc.DrawEllipse(brush, null, new System.Windows.Point(Parent.X + radius, Parent.Y + radius), radius, radius);
+            if (parent == null)
+            {
+                throw new ArgumentNullException(nameof(parent));
+            }
+
+            if (dc != null) dc.DrawEllipse(brush, null, Point(parent.X + radius, parent.Y + radius), radius, radius);
+        }
+
+        private Point Point (double v1, double v2)
+        {
+            throw new NotImplementedException( );
         }
     }
 }

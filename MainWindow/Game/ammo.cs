@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using twoDTDS.Engine;
+﻿using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-/*---------------------------------------------------------------------------------------
-                            Ammo : GAMEOBJECT
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                Ammo : GAMEOBJECT
+    ---------------------------------------------------------------------------------------*/
     public class Ammo : GameObject
     {
         //string uri;
@@ -47,7 +39,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 6;
             Height = 15;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            string uri =;
             Sprite = new Rec(Width, Height, uri);
         }
 
@@ -74,7 +66,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 15;
             Height = 15;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            string uri = ";
             Sprite = new Rec(Width, Height, uri);
         }
 
@@ -83,7 +75,5 @@ namespace twoDTDS.Game
             Y += 5;
             CheckOutOfBounds();
         }
-
-    }
-  
+    }  
 }

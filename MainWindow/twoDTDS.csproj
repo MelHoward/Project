@@ -145,12 +145,14 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\arrow.png" />
-    <Resource Include="Assets\Demon.png" />
+    <Folder Include="Assets\Panels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Hero\arrow.png" />
+    <Resource Include="Assets\Hero\Demon.png" />
     <Resource Include="Assets\down.png" />
-    <Resource Include="Assets\left.png" />
+    <Resource Include="left.png" />
     <Resource Include="Assets\right.png" />
     <Resource Include="Assets\Stage.png" />
     <Resource Include="Assets\The End.png" />

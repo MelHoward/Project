@@ -1,12 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Drawing;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
@@ -36,13 +32,12 @@ namespace twoDTDS.Game
             Y = map.Height - 50;
             Width = 40;
             Height = 45;
-            uri = "C:\\Users\\Corey\\Source\\Repos\\Project\\MainWindow\\Assets\\down.png";
+            uri = @"...\Assets\Up.png";
             Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;
         }
-
         /*================================== Score_died ==========================*/
         private void Score_died(object sender, ScoreKeep e)
         {
@@ -62,7 +57,6 @@ namespace twoDTDS.Game
             };
             t.Start();
         }
-
         /*================================== OnUpdate =============================*/
 
         public override void OnUpdate()
@@ -71,31 +65,37 @@ namespace twoDTDS.Game
             {
                 Move();
 
-                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
+                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) ||
+                    Keyboard.IsKeyDown(Key.Up))
                 {
                     Shoot();
                 }
-                else { if (bulletCreate != null) { bulletCreate.Stop(); } }
+                else
+                    bulletCreate?.Stop();
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
-
-                IsHit();
+              ();
 
                 if (Keyboard.IsKeyDown(Key.E))
                 {
                     Roll();
-
                 }
                 RollReset();
-
                 CheckPowerUp();
-
             }
         }
-        /// <summary>
-        /// Makes it to where you are invincible
-        /// </summary>
+
+        private void Shoot ()
+        {
+            throw new NotImplementedException( );
+        }
+
+        private void CheckPowerUp ()
+        {
+            throw new NotImplementedException( );
+        }
+
         private void Roll()
         {
             if (rollFrames < 50 && rollFrames > 0)
@@ -108,9 +108,7 @@ namespace twoDTDS.Game
                 Sprite = new Rec(30, 35, uri);
             }
         }
-        /// <summary>
-        /// Makes you not invincible after a short time
-        /// </summary>
+
         private void RollReset()
         {
             if (rollFrames == 50)
@@ -122,31 +120,22 @@ namespace twoDTDS.Game
 
             rollFrames++;
         }
-        /// <summary>
-        /// Lets you move using WASD
-        /// </summary>
+
         private void Move()
         {
             if (Keyboard.IsKeyDown(Key.A))
-            {
                 X -= speed;
-            }
             else if (Keyboard.IsKeyDown(Key.D))
-            {
                 X += speed;
-            }
+
             if (Keyboard.IsKeyDown(Key.W))
-            {
                 Y -= speed;
-            }
             else if (Keyboard.IsKeyDown(Key.S))
-            {
+
                 Y += speed;
-            }
         }
-        /// <summary>
-        /// Lets you shoot using the arrow keys
-        /// </summary>
+}
+
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -179,9 +168,7 @@ namespace twoDTDS.Game
             };
             bulletCreate.Start();
         }
-        /// <summary>
-        /// Detects when you get hit and shakes "camera" when you do
-        /// </summary>
+
         private void IsHit()
         {
             foreach (GameObject obj in Map.Objects)
@@ -204,6 +191,7 @@ namespace twoDTDS.Game
                                     if (cameraShakeCount > 7)
                                     {
                                         camShake.Stop();
+                                        Debug.Assert(Map.Plane != null, "Map.Plane != null");
                                         Map.Plane.ViewOffsetX = 0;
                                         Map.Plane.ViewOffsetY = 0;
                                         return;
@@ -222,19 +210,18 @@ namespace twoDTDS.Game
 
         public void CheckPowerUp()
         {
-            SpeedPowerUp speed = new SpeedPowerUp(Map, this, X + 100  , Y - 100 );
-            if (Keyboard.IsKeyDown(Key.Space))
+            if (!Keyboard.IsKeyDown(Key.Space))
             {
-
-                Width = 40;
-                Height = 40;
-
-
-                Map.AddObject(speed);
+                return;
             }
+            Width = 40;
+            Height = 40;
 
+            if (Map != null)
+                {
+                Map.AddObject(new SpeedPowerUp(Map, this, X + 100, Y - 100));
+            n}
         }
-
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
@@ -242,8 +229,7 @@ namespace twoDTDS.Game
             else
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center);
+                     dyingSize, HorizontalAlignment.Center".\Elipse",VerticalAlignment.Center);
             }
         }
     }

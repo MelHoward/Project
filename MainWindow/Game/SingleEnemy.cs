@@ -27,7 +27,7 @@ namespace twoDTDS.Game
             Width = 50;
             Height = 48;
             HitPoints = 4;
-            uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Assets\Demon.png";
+            uri = @"D:Documents\_PROGRAMMING\Repos\Project\MainWindow\Assets\Demon.png";
             Sprite = new Rec(Width, Height, uri);
             Spawner();
 
