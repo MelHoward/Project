@@ -26,8 +26,8 @@ namespace twoDTDS.Game
         public double speed = 3;
         double dyingSize = 40;
         int rollFrames = 0;
-        string uri;
-        bool invincible = false;
+        public string uri;
+        public bool invincible = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -85,7 +85,6 @@ namespace twoDTDS.Game
                 if (Keyboard.IsKeyDown(Key.E))
                 {
                     Roll();
-
                 }
                 RollReset();
 
@@ -222,14 +221,12 @@ namespace twoDTDS.Game
 
         public void CheckPowerUp()
         {
-            SpeedPowerUp speed = new SpeedPowerUp(Map, this, X + 100  , Y - 100 );
+            InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100  , Y - 100 );
             if (Keyboard.IsKeyDown(Key.Space))
             {
 
                 Width = 40;
                 Height = 40;
-
-
                 Map.AddObject(speed);
             }
 

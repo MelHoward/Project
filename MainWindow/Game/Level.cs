@@ -13,6 +13,8 @@ namespace twoDTDS.Game
     ---------------------------------------------------------------------------------------*/
     public class EnemyGenerator : GameObject
     {
+        public int EnemiesSpawned = 0;
+        public int EnemyCap = 5;
         /*==================== EnemyGenerator >> CTOR =======================*/
         public EnemyGenerator(Map m, Player p) : base(m)
         {
@@ -22,6 +24,11 @@ namespace twoDTDS.Game
             {
                 timer.Interval = TimeSpan.FromSeconds(5);
                 Map.AddObject(new SingleEnemy(m, p));
+                EnemiesSpawned++;
+                if(EnemiesSpawned == EnemyCap)
+                {
+                    timer.Stop();
+                }
             };
             timer.Start();
         }
@@ -34,6 +41,7 @@ namespace twoDTDS.Game
     {
         Player Player;
         EnemyGenerator Enemy;
+        bool LevelComplete;
 
         /*========================= Level >> CTOR ===========================*/
         public Level(PlayArea play) : base(play)
@@ -55,6 +63,11 @@ namespace twoDTDS.Game
             dc.DrawText(new FormattedText("HP: " + Player.myScore.HP.ToString(),
                         CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
                         Default.Typeface, 12, Brushes.White), new Point(-93,120));
+
+            if (Enemy.EnemiesSpawned == Enemy.EnemyCap)
+            {
+                LevelComplete = true;
+            }
         }
     }
 }
