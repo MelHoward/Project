@@ -19,13 +19,12 @@ namespace twoDTDS.Game
         int HitPoints;
         int frames;
         string uri;
-        string spawnPoint = "down";
 
         /*========================  SinglEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
         {
             MoveToRandom();
-            Width = 80;
+            Width = 50;
             Height = 48;
             HitPoints = 4;
             uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Assets\Demon.png";
@@ -98,22 +97,27 @@ namespace twoDTDS.Game
         private void Spawner()
         {
             System.Random spawn = new System.Random();
+            int spawnNum = spawn.Next(0, 100);
 
-            if(spawnPoint == "top")
+            if(spawnNum <= 25)
             {
+                //Top
                 X = 400;
             }
-            if(spawnPoint == "left")
+            if (spawnNum <= 50 && spawnNum > 25) 
             {
+                //Left
                 Y = 300;
             }
-            if(spawnPoint == "right")
+            if(spawnNum <= 75 && spawnNum > 50 )
             {
+                //Right
                 Y = 300;
                 X = 750;
             }
-            if(spawnPoint == "down")
+            if(spawnNum <= 100 && spawnNum > 75)
             {
+                //Bot
                 Y = 500;
                 X = 400;
             }
