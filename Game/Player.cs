@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Drawing;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
@@ -48,7 +43,11 @@ namespace twoDTDS.Game
         private void Score_died(object sender, ScoreKeep e)
         {
             Console.WriteLine("You Died!");
-            if (bulletCreate != null) { bulletCreate.Stop(); }
+            if (bulletCreate != null)
+            {
+                bulletCreate.Stop();
+            }
+
             DispatcherTimer t = new DispatcherTimer();
             int tcount = 0;
             t.Interval = TimeSpan.FromMilliseconds(15);
@@ -57,15 +56,16 @@ namespace twoDTDS.Game
                 tcount++;
                 if (tcount > 60)
                 {
-                    t.Stop(); return;
+                    t.Stop();
+                    return;
                 }
+
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();
         }
 
         /*================================== OnUpdate =============================*/
-
         public override void OnUpdate()
         {
             if (!myScore.Died)
@@ -73,11 +73,18 @@ namespace twoDTDS.Game
 
                 Move();
 
-                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
+                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) ||
+                    Keyboard.IsKeyDown(Key.Up))
                 {
                     Shoot();
                 }
-                else { if (bulletCreate != null) { bulletCreate.Stop(); } }
+                else
+                {
+                    if (bulletCreate != null)
+                    {
+                        bulletCreate.Stop();
+                    }
+                }
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
@@ -88,12 +95,14 @@ namespace twoDTDS.Game
                 {
                     Roll();
                 }
+
                 RollReset();
 
                 CheckPowerUp();
 
             }
         }
+
         /// <summary>
         /// Makes it to where you are invincible
         /// </summary>
@@ -105,10 +114,12 @@ namespace twoDTDS.Game
                 {
                     rollFrames = 0;
                 }
+
                 invincible = true;
                 Sprite = new Rec(30, 35, uri);
             }
         }
+
         /// <summary>
         /// Makes you not invincible after a short time
         /// </summary>
@@ -123,39 +134,42 @@ namespace twoDTDS.Game
 
             rollFrames++;
         }
+
         /// <summary>
         /// Lets you move using WASD
         /// </summary>
         private void Move()
         {
-            foreach (GameObject obj in Map.Objects)
+            //foreach (GameObject obj in Map.Objects)
+            //{
+            //    if (!obj.ObDied && obj is Rock)
+            //    {
+            //        if (obj.IsHit(obj))
+            //        {
+
+            //        }
+            //    }
+            //}
+            if (Keyboard.IsKeyDown(Key.A))
             {
-                if (!obj.ObDied && obj is Rock)
-                {
-                    if (obj.IsHit(obj))
-                    {
-                        
-                    }
-                }
+                X -= speed;
             }
-                if (Keyboard.IsKeyDown(Key.A))
-                {
-                    X -= speed;
-                }
-                else if (Keyboard.IsKeyDown(Key.D))
-                {
-                    X += speed;
-                }
-                if (Keyboard.IsKeyDown(Key.W))
-                {
-                    Y -= speed;
-                }
-                else if (Keyboard.IsKeyDown(Key.S))
-                {
-                    Y += speed;
-                }
-            
+            else if (Keyboard.IsKeyDown(Key.D))
+            {
+                X += speed;
+            }
+
+            if (Keyboard.IsKeyDown(Key.W))
+            {
+                Y -= speed;
+            }
+            else if (Keyboard.IsKeyDown(Key.S))
+            {
+                Y += speed;
+            }
+
         }
+
         /// <summary>
         /// Lets you shoot using the arrow keys
         /// </summary>
@@ -173,14 +187,17 @@ namespace twoDTDS.Game
                     {
                         a.direction = "up";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "down";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left))
                     {
                         a.direction = "left";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right))
                     {
                         a.direction = "right";
@@ -188,9 +205,12 @@ namespace twoDTDS.Game
 
                     Map.AddObject(a);
                 };
-            };
+            }
+
+            ;
             bulletCreate.Start();
         }
+
         /// <summary>
         /// Detects when you get hit and shakes "camera" when you do
         /// </summary>
@@ -205,16 +225,17 @@ namespace twoDTDS.Game
                         if (invincible == false)
                         {
                             invincibilityFrames = 50;
-                            if(invincibilityFrames > 0)
+                            if (invincibilityFrames > 0)
                             {
                                 invincible = true;
                                 invincibilityFrames--;
                             }
-                            if(invincibilityFrames == 0)
+
+                            if (invincibilityFrames == 0)
                             {
                                 invincible = false;
                             }
-                            
+
                             myScore.PlayerHit(10);
 
                             if (camShake == null)
@@ -231,10 +252,12 @@ namespace twoDTDS.Game
                                         Map.Plane.ViewOffsetY = 0;
                                         return;
                                     }
+
                                     Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
                                     Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
                                 };
                             }
+
                             cameraShakeCount = 0;
                             camShake.Start();
                         }
@@ -245,30 +268,33 @@ namespace twoDTDS.Game
 
         public void CheckPowerUp()
         {
-            InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100  , Y - 100 );
+            InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100, Y - 100);
             if (Keyboard.IsKeyDown(Key.Space))
             {
 
-               
+
                 Map.AddObject(speed);
             }
-            if(Keyboard.IsKeyDown(Key.D3))
-            {
-              //  Rock rock = new Rock(Map, 300, 300);
-                Map.AddObject(rock);
-            }
+            //if(Keyboard.IsKeyDown(Key.D3))
+            //{
+            //  //  Rock rock = new Rock(Map, 300, 300);
+            //    Map.AddObject(rock);
+            //}
 
         }
 
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
-            if (!myScore.Died) { base.OnRender(dc); }
+            if (!myScore.Died)
+            {
+                base.OnRender(dc);
+            }
             else
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center);
+                    dyingSize, HorizontalAlignment.Center,
+                    System.Windows.VerticalAlignment.Center);
             }
         }
     }

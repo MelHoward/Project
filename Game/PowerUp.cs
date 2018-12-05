@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using twoDTDS.Engine;
+﻿using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
@@ -65,11 +59,9 @@ namespace twoDTDS.Game
                 this.ObDied = true;
                 player.speed = 3;
             }
-
             speedFrames--;
            
         }
-
         public override void OnUpdate()
         {
             SpeedUp(p);

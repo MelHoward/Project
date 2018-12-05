@@ -11,7 +11,4 @@ namespace twoDTDS.Game
         public EnemyAmmo(Map map) : base(map) { }
         public int Damage { get; set; } = 1;
     }
-
-
-
 }
