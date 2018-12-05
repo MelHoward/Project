@@ -23,7 +23,7 @@ namespace twoDTDS.Game
         /*========================  SinglEnemy  ===========================*/
         public Enemy(Map m, Player p) : base(m)
         {
-            Width = 50;
+            Width = 80;
             Height = 48;
             HitPoints = 4;
             uri = Asset.paths[1];
@@ -54,6 +54,8 @@ namespace twoDTDS.Game
                 {
                     SpawnPowerUp(Map, player);
                     this.ObDied = true;
+                    Width = 0;
+                    Height = 0;
                     if(this is EnemyMoveToRandom)
                     {
                         dispense.Stop();

@@ -27,6 +27,7 @@ namespace twoDTDS.Game
         double dyingSize = 40;
         int rollFrames = 0;
         public string uri;
+        bool roll = false;
         public bool invincible = false;
         int invincibilityFrames;
 
@@ -84,13 +85,36 @@ namespace twoDTDS.Game
 
                 IsPlayerHit();
 
+                
+
+                CheckPowerUp();
+
+                if (invincibilityFrames > 0)
+                {
+                    invincible = true;
+                    invincibilityFrames--;
+                }
+                if (invincibilityFrames == 0)
+                {
+                    invincible = false;
+                }
+                if (invincible == true)
+                {
+                    if (invincibilityFrames % 2 == 0)
+                    {
+                        Sprite = null;
+                    }
+                    else
+                    {
+                        Sprite = new Rec(40, 45, uri);
+                    }
+                }
+
                 if (Keyboard.IsKeyDown(Key.E))
                 {
                     Roll();
                 }
                 RollReset();
-
-                CheckPowerUp();
 
             }
         }
@@ -105,7 +129,15 @@ namespace twoDTDS.Game
                 {
                     rollFrames = 0;
                 }
-                invincible = true;
+                roll = true;
+                if(roll == true)
+                {
+                    invincible = true;
+                }
+                else
+                {
+                    invincible = false;
+                }
                 Sprite = new Rec(30, 35, uri);
             }
         }
@@ -116,7 +148,7 @@ namespace twoDTDS.Game
         {
             if (rollFrames == 50)
             {
-                invincible = false;
+                roll = false;
                 Sprite = new Rec(40, 45, uri);
                 rollFrames = -25;
             }
@@ -205,16 +237,7 @@ namespace twoDTDS.Game
                         if (invincible == false)
                         {
                             invincibilityFrames = 50;
-                            if(invincibilityFrames > 0)
-                            {
-                                invincible = true;
-                                invincibilityFrames--;
-                            }
-                            if(invincibilityFrames == 0)
-                            {
-                                invincible = false;
-                            }
-                            
+                           
                             myScore.PlayerHit(10);
 
                             if (camShake == null)

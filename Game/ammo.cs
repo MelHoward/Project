@@ -70,7 +70,7 @@ namespace twoDTDS.Game
 
         public override void OnUpdate()
         {
-            Y += 5;
+            Y += 3;
             CheckOutOfBounds();
         }
 

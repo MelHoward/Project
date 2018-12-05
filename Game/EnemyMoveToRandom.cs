@@ -25,7 +25,7 @@ namespace twoDTDS.Game
             if (dispense == null)
             {
                 dispense = new DispatcherTimer();
-                dispense.Interval = TimeSpan.FromMilliseconds(200);
+                dispense.Interval = TimeSpan.FromMilliseconds(400);
                 dispense.Tick += delegate
                 {
                     Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y));
