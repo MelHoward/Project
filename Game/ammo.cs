@@ -66,8 +66,6 @@ namespace twoDTDS.Game
     /// </summary>
     public class TempEnemyammo : Ammo
     {
-        public int Damage { get; set; } = 10;
-
         public TempEnemyammo(Map m, double X, double Y) : base(m)
         {
             this.X = X;

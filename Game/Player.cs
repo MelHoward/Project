@@ -28,7 +28,7 @@ namespace twoDTDS.Game
         int rollFrames = 0;
         public string uri;
         public bool invincible = false;
-        bool isTouchingObstacle = false;
+        int invincibilityFrames;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -130,30 +130,31 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is Obstacle)
+                if (!obj.ObDied && obj is Rock)
                 {
                     if (obj.IsHit(obj))
                     {
-                        isTouchingObstacle = true;
+                        
                     }
                 }
             }
-            if (Keyboard.IsKeyDown(Key.A))
-            {
-                X -= speed;
-            }
-            else if (Keyboard.IsKeyDown(Key.D))
-            {
-                X += speed;
-            }
-            if (Keyboard.IsKeyDown(Key.W))
-            {
-                Y -= speed;
-            }
-            else if (Keyboard.IsKeyDown(Key.S))
-            {
-                Y += speed;
-            }
+                if (Keyboard.IsKeyDown(Key.A))
+                {
+                    X -= speed;
+                }
+                else if (Keyboard.IsKeyDown(Key.D))
+                {
+                    X += speed;
+                }
+                if (Keyboard.IsKeyDown(Key.W))
+                {
+                    Y -= speed;
+                }
+                else if (Keyboard.IsKeyDown(Key.S))
+                {
+                    Y += speed;
+                }
+            
         }
         /// <summary>
         /// Lets you shoot using the arrow keys
@@ -197,13 +198,24 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is TempEnemyammo)
+                if (!obj.ObDied && obj is TempEnemyammo || obj is Enemy)
                 {
                     if (IsHit(this, obj))
                     {
                         if (invincible == false)
                         {
-                            myScore.PlayerHit(((TempEnemyammo)obj).Damage);
+                            invincibilityFrames = 50;
+                            if(invincibilityFrames > 0)
+                            {
+                                invincible = true;
+                                invincibilityFrames--;
+                            }
+                            if(invincibilityFrames == 0)
+                            {
+                                invincible = false;
+                            }
+                            
+                            myScore.PlayerHit(10);
 
                             if (camShake == null)
                             {
@@ -237,8 +249,7 @@ namespace twoDTDS.Game
             if (Keyboard.IsKeyDown(Key.Space))
             {
 
-                Width = 40;
-                Height = 40;
+               
                 Map.AddObject(speed);
             }
             if(Keyboard.IsKeyDown(Key.D3))

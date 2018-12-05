@@ -14,16 +14,18 @@ namespace twoDTDS.Game
     public class EnemyGenerator : GameObject
     {
         public int EnemiesSpawned = 0;
-        public int EnemyCap = 5;
+        public int EnemyCap = 50;
+        private double spawnRate = 3;
         /*==================== EnemyGenerator >> CTOR =======================*/
         public EnemyGenerator(Map m, Player p) : base(m)
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Interval = TimeSpan.FromSeconds(spawnRate);
             timer.Tick += delegate
             {
-                timer.Interval = TimeSpan.FromSeconds(5);
-                Map.AddObject(new SingleEnemy(m, p));
+                setSpawnRate();
+                timer.Interval = TimeSpan.FromSeconds(spawnRate);
+                createEnemy(m, p);
                 EnemiesSpawned++;
                 if(EnemiesSpawned == EnemyCap)
                 {
@@ -31,6 +33,37 @@ namespace twoDTDS.Game
                 }
             };
             timer.Start();
+        }
+
+        private void setSpawnRate()
+        {
+            if(EnemiesSpawned < 10)
+            {
+                spawnRate = 3;
+            }
+            if(EnemiesSpawned > 10 && EnemiesSpawned < 25)
+            {
+                spawnRate = 2;
+            }
+            else
+            {
+                spawnRate = 1.5;
+            }
+        }
+
+        private void createEnemy(Map m, Player p)
+        {
+            Engine.Random rand = new Engine.Random();
+            double generator = rand.NextDouble(0, 100);
+
+            if(generator <= 20)
+            {
+                Map.AddObject(new EnemyMoveToRandom(m, p));
+            }
+            if(generator > 20)
+            {
+                Map.AddObject(new EnemyMoveToPlayer(m,p));
+            }
         }
     }
 
@@ -41,7 +74,6 @@ namespace twoDTDS.Game
     {
         Player Player;
         EnemyGenerator Enemy;
-        bool LevelComplete;
 
         /*========================= Level >> CTOR ===========================*/
         public Level(PlayArea play) : base(play)
@@ -64,10 +96,6 @@ namespace twoDTDS.Game
                         CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
                         Default.Typeface, 12, Brushes.White), new Point(-93,120));
 
-            if (Enemy.EnemiesSpawned == Enemy.EnemyCap)
-            {
-                LevelComplete = true;
-            }
         }
     }
 }

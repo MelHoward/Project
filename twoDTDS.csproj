@@ -102,6 +102,8 @@
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
     <Compile Include="Game\CNormBullet.cs" />
+    <Compile Include="Game\EnemyMoveToPlayer.cs" />
+    <Compile Include="Game\EnemyMoveToRandom.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Obstacle.cs" />
     <Compile Include="Game\Player.cs" />
@@ -111,7 +113,7 @@
     <Compile Include="Game\InGamePlane.xaml.cs">
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\SingleEnemy.cs" />
+    <Compile Include="Game\Enemy.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
