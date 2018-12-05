@@ -39,7 +39,6 @@ namespace twoDTDS.Engine
             src.ImageSource = new BitmapImage(u);
             Width = width;
             Height = height;
-
         }
 
         /*============================= Render ==============================*/

@@ -148,16 +148,22 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\arrow.png" />
-    <Resource Include="Assets\Demon.png" />
-    <Resource Include="Assets\down.png" />
-    <Resource Include="Assets\left.png" />
-    <Resource Include="Assets\right.png" />
+    <Resource Include="Assets\0_dn.png" />
+    <Resource Include="Assets\0_lb.png" />
+    <Resource Include="Assets\0_rb.png" />
+    <Resource Include="Assets\0_up.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\Stage.png" />
     <Resource Include="Assets\The End.png" />
-    <Resource Include="Assets\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\1.png" />
+    <Resource Include="Assets\2.png" />
+    <Resource Include="Assets\3.png" />
+    <Resource Include="Assets\4.png" />
+    <Resource Include="Assets\5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

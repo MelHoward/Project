@@ -1,4 +1,5 @@
-﻿using twoDTDS.Engine;
+﻿using System;
+using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
@@ -32,23 +33,40 @@ namespace twoDTDS.Game
     public class Playerammo : Ammo
     {
         public string direction;
-
+        public string uri = Asset.paths[3];
+        
         public Playerammo(Map m, double X, double Y) : base(m)
         {
             this.X = X;
             this.Y = Y;
             Width = 6;
             Height = 15;
-            /*/string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";*/
-            Sprite = new Rec(Width, Height, Asset.paths[0]);
+            uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            
+            Sprite = new Rec(Width, Height, uri);
         }
 
         public override void OnUpdate()
         {
-            if (direction == "up") { Y -= 15; }
-            if (direction == "down") { Y += 15; }
-            if (direction == "left") { X -= 15; }
-            if (direction == "right") { X += 15; }
+            if (direction == "up")
+            {
+                Y -= 15;
+            }
+
+            if (direction == "down")
+            {
+                Y += 15;
+            }
+
+            if (direction == "left")
+            {
+                X -= 15;
+            }
+
+            if (direction == "right")
+            {
+                X += 15;
+            }
 
             if (Y < -100) { ObDied = true; }
         }
