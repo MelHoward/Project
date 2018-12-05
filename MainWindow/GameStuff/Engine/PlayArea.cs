@@ -4,7 +4,6 @@ using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
-
     /*---------------------------------------------------------------------------------------
                                 PLAYAREA : FRAMEWORKELEMENT
     ---------------------------------------------------------------------------------------*/
@@ -68,7 +67,6 @@ namespace twoDTDS.Engine
         private void PlayArea_Loaded(object sender, RoutedEventArgs e)
         {
             PlaneControl = GetPlayAreaParent(Parent);
-
             CompositionTarget.Rendering += RenderCompT;
         }
 

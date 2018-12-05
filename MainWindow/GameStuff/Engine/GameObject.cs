@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -10,15 +6,14 @@ using System.Windows.Media.Animation;
 namespace twoDTDS.Engine
 {
 
-/*---------------------------------------------------------------------------------------
-                                DEFAULT -> STATIC
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                    DEFAULT -> STATIC
+    ---------------------------------------------------------------------------------------*/
     public static class Default
     {
         public static Typeface Typeface = new Typeface("ComicSans");
         public static Random Random = new Random();
     }
-
 
     /*---------------------------------------------------------------------------------------
                              << GAMEOBJECT >> : DEPENDENCYPROPERTY 
@@ -30,7 +25,7 @@ namespace twoDTDS.Engine
 
         public static DependencyProperty YProperty = 
                       DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
-
+            
         /*============================= X >> Acc. ===========================*/
         public double X
         {
@@ -46,6 +41,7 @@ namespace twoDTDS.Engine
 
         /*============================= Width ===============================*/
         public double Width { get; set; }
+
         /*============================== Height =============================*/
         public double Height { get; set; }
 
@@ -121,7 +117,6 @@ namespace twoDTDS.Engine
         }
 
         /*============================= IsHit ===============================*/
-
         public bool IsHit(GameObject other)
         {
             return IsHit(this, other);
