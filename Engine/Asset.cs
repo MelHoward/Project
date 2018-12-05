@@ -6,9 +6,12 @@ namespace twoDTDS.Engine
 {
     public static class Asset
     {
-        private static string Cd = Directory.GetCurrentDirectory();
-        private static string[] Paths = Directory.GetFiles(Cd, "*.png", SearchOption.AllDirectories);
+        private static string[] Hero = Directory.GetFiles(@".\Assets\Hero", "*.png", SearchOption.AllDirectories);
+        private static string[] Bullet = Directory.GetFiles(@".\Assets\Bullet", "*.png", SearchOption.AllDirectories);
+        private static string[] Enemy = Directory.GetFiles(@".\Assets\Enemy", "*.png", SearchOption.AllDirectories);
 
-        public static string[] paths { get => Paths; set => Paths = value; }
+        public static string[] hero  { get => Hero; set => Hero = value; }
+        public static string[] bullet { get => Bullet; set => Bullet = value; }
+        public static string[] enemy { get => Enemy; set => Enemy = value; }
     }
 }

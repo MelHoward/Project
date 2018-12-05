@@ -37,7 +37,7 @@ namespace twoDTDS.Game
             Y = map.Height - 50;
             Width = 40;
             Height = 45;
-            uri = Asset.paths[2];
+            uri = Asset.hero[0];
             Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();
@@ -254,7 +254,7 @@ namespace twoDTDS.Game
             }
             if(Keyboard.IsKeyDown(Key.D3))
             {
-                Rock rock = new Rock(Map, 300, 300);
+              //  Rock rock = new Rock(Map, 300, 300);
                 Map.AddObject(rock);
             }
 

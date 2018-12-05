@@ -33,7 +33,7 @@ namespace twoDTDS.Game
     public class Playerammo : Ammo
     {
         public string direction;
-        public string uri = Asset.paths[3];
+        public string uri = Asset.bullet[1];
         
         public Playerammo(Map m, double X, double Y) : base(m)
         {
@@ -41,7 +41,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 6;
             Height = 15;
-            uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            //uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
             
             Sprite = new Rec(Width, Height, uri);
         }
@@ -83,7 +83,7 @@ namespace twoDTDS.Game
             Width = 15;
             Height = 15;
             /*string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";*/
-            Sprite = new Rec(Width, Height, Asset.paths[2]);
+            Sprite = new Rec(Width, Height, Asset.bullet[0]);
         }
 
         public override void OnUpdate()

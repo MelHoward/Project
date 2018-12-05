@@ -16,7 +16,7 @@ namespace twoDTDS.Game
             Width = 50;
             Height = 48;
             HitPoints = 2;
-            uri = Asset.paths[1];
+            uri = Asset.enemy[1];
             Sprite = new Rec(Width, Height, uri);
             Spawner();
 

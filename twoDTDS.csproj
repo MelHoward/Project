@@ -154,26 +154,23 @@
     <Resource Include="Assets\The End.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\1.png" />
-    <Resource Include="Assets\front.png" />
-    <Resource Include="Assets\3.png" />
-    <Resource Include="Assets\4.png" />
-    <Resource Include="Assets\back.png" />
+    <Resource Include="Assets\Enemy\1.png" />
+    <Resource Include="Assets\Hero\front.png" />
+    <Resource Include="Assets\Hero\3.png" />
+    <Resource Include="Assets\Hero\4.png" />
+    <Resource Include="Assets\Hero\back.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\dungeon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\herobullet.png" />
+    <Resource Include="Assets\Bullet\herobullet.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\enemybullet.png" />
+    <Resource Include="Assets\Bullet\enemybullet.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Hero\example.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Stage2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
