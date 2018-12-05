@@ -28,6 +28,7 @@ namespace twoDTDS.Game
         int rollFrames = 0;
         public string uri;
         public bool invincible = false;
+        bool isTouchingObstacle = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -69,6 +70,7 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
+
                 Move();
 
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
@@ -80,7 +82,7 @@ namespace twoDTDS.Game
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
 
-                IsHit();
+                IsPlayerHit();
 
                 if (Keyboard.IsKeyDown(Key.E))
                 {
@@ -126,6 +128,16 @@ namespace twoDTDS.Game
         /// </summary>
         private void Move()
         {
+            foreach (GameObject obj in Map.Objects)
+            {
+                if (!obj.ObDied && obj is Obstacle)
+                {
+                    if (obj.IsHit(obj))
+                    {
+                        isTouchingObstacle = true;
+                    }
+                }
+            }
             if (Keyboard.IsKeyDown(Key.A))
             {
                 X -= speed;
@@ -181,7 +193,7 @@ namespace twoDTDS.Game
         /// <summary>
         /// Detects when you get hit and shakes "camera" when you do
         /// </summary>
-        private void IsHit()
+        private void IsPlayerHit()
         {
             foreach (GameObject obj in Map.Objects)
             {
@@ -228,6 +240,11 @@ namespace twoDTDS.Game
                 Width = 40;
                 Height = 40;
                 Map.AddObject(speed);
+            }
+            if(Keyboard.IsKeyDown(Key.D3))
+            {
+                Rock rock = new Rock(Map, 300, 300);
+                Map.AddObject(rock);
             }
 
         }

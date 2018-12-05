@@ -10,6 +10,9 @@ namespace twoDTDS.Game
 {
     public abstract class PowerUp : GameObject
     {
+        protected Player p;
+        protected bool pickedUp;
+
         public PowerUp(Map map) : base(map)
         {
            
@@ -19,7 +22,6 @@ namespace twoDTDS.Game
     public class SpeedPowerUp : PowerUp
     {
         public int speedFrames = 0;
-        public Player p;
 
         public SpeedPowerUp(Map m, Player player, double X, double Y) : base(m)
         {
@@ -30,6 +32,7 @@ namespace twoDTDS.Game
             Height = 20;
             string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
             Sprite = new Rec(Width, Height, uri);
+            pickedUp = false;
         }
 
         public void SpeedUp(Player player)
@@ -41,10 +44,14 @@ namespace twoDTDS.Game
                 {
                     if (IsHit(player, obj))
                     {
-                        speedFrames = 300;
-                        obj.Sprite = null;
-                        obj.Width = 0;
-                        obj.Height = 0;
+                        if (pickedUp == false)
+                        {
+                            speedFrames = 300;
+                            obj.Sprite = null;
+                            obj.Width = 0;
+                            obj.Height = 0;
+                            pickedUp = true;
+                        }
                     }
                 }
             }
@@ -73,8 +80,6 @@ namespace twoDTDS.Game
 
     public class InvincibilityPowerUp : PowerUp
     {
-        Player p;
-        bool inv = true;
         int InvincibilityFrames;
 
         public InvincibilityPowerUp(Map m, Player player, double X, double Y) : base(m)
@@ -86,6 +91,7 @@ namespace twoDTDS.Game
             Height = 20;
             string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
             Sprite = new Rec(Width, Height, uri);
+            pickedUp = false;
         }
 
         public void BecomeInvincible(Player player)
@@ -96,10 +102,14 @@ namespace twoDTDS.Game
                 {
                     if (IsHit(player, obj))
                     {
-                        InvincibilityFrames = 300;
-                        obj.Sprite = null;
-                        obj.Width = 0;
-                        obj.Height = 0;
+                        if (pickedUp == false)
+                        {
+                            InvincibilityFrames = 300;
+                            obj.Sprite = null;
+                            obj.Width = 0;
+                            obj.Height = 0;
+                            pickedUp = true;
+                        }
                     }
                 }
             }
@@ -119,7 +129,7 @@ namespace twoDTDS.Game
             else if (InvincibilityFrames == -1)
             {
                 player.invincible = false;
-              
+                this.ObDied = true;
             }
 
             InvincibilityFrames--;

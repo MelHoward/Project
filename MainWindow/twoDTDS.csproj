@@ -102,6 +102,7 @@
     <Compile Include="Game\BulletOnPath.cs" />
     <Compile Include="Game\CNormBullet.cs" />
     <Compile Include="Game\Level.cs" />
+    <Compile Include="Game\Obstacle.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\PowerUp.cs" />
     <Compile Include="Game\ScoreKeep.cs" />
