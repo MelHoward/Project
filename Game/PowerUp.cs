@@ -28,8 +28,8 @@ namespace twoDTDS.Game
             p = player;
             this.X = X;
             this.Y = Y;
-            Width = 20;
-            Height = 20;
+            Width = 40;
+            Height = 40;
             string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
             Sprite = new Rec(Width, Height, uri);
             pickedUp = false;
@@ -87,8 +87,8 @@ namespace twoDTDS.Game
             p = player;
             this.X = X;
             this.Y = Y;
-            Width = 20;
-            Height = 20;
+            Width = 40;
+            Height = 40;
             string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
             Sprite = new Rec(Width, Height, uri);
             pickedUp = false;
