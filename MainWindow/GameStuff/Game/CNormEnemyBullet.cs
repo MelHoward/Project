@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-/*---------------------------------------------------------------------------------------
-                                CNORMBULLET : ENEMYAmmo
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                    CNORMBULLET : ENEMYAmmo
+    ---------------------------------------------------------------------------------------*/
     public class CNormEnemyBullet : EnemyAmmo
     {
         double x_vec;
