@@ -1,26 +1,33 @@
 ﻿using System;
 using System.Windows;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Drawing;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    /*---------------------------------------------------------------------------------------
-                                  PLAYER : GAMEOBJECT
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                              PLAYER : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
     public class Player : GameObject
-    {     
+    {
         public ScoreKeep myScore { get; set; }
         Engine.Random r = new Engine.Random();
+
         DispatcherTimer bulletCreate;
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
         double speed = 3;
         double dyingSize = 40;
+        string direction = "";
         int frames = 0;
-        
+        string uri;
         bool invincible = false;
 
         /*============================= Player >> CTOR ===========================*/
@@ -29,8 +36,9 @@ namespace twoDTDS.Game
             X = Math.Round(map.Width / 2);
             Y = map.Height - 50;
             Width = 40;
-            Height = 45;            
-            Sprite = new Rec(Width, Height, Asset.Paths[2]);
+            Height = 45;
+            uri = "C:\\Users\\Corey\\Source\\Repos\\Project\\MainWindow\\Assets\\down.png";
+            Sprite = new Rec(Width, Height, uri);
 
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;
@@ -55,6 +63,7 @@ namespace twoDTDS.Game
         }
 
         /*================================== OnUpdate =============================*/
+
         public override void OnUpdate()
         {
             if (!myScore.Died)
@@ -84,8 +93,9 @@ namespace twoDTDS.Game
                 frames++;
             }
         }
-
-        /*================================== Roll =============================*/
+        /// <summary>
+        /// Makes it to where you are invincible
+        /// </summary>
         private void Roll()
         {
             if (frames < 50 && frames > 0)
@@ -95,22 +105,24 @@ namespace twoDTDS.Game
                     frames = 0;
                 }
                 invincible = true;
-                Sprite = new Rec(30, 35, Asset.Paths[2]);
+                Sprite = new Rec(30, 35, uri);
             }
         }
-
-        /*================================== RollReset =============================*/
+        /// <summary>
+        /// Makes you not invincible after a short time
+        /// </summary>
         private void RollReset()
         {
             if (frames == 50)
             {
                 invincible = false;
-                Sprite = new Rec(40, 45, Asset.Paths[2]);
+                Sprite = new Rec(40, 45, uri);
                 frames = -25;
             }
         }
-
-        /*================================== Move =============================*/
+        /// <summary>
+        /// Lets you move using WASD
+        /// </summary>
         private void Move()
         {
             if (Keyboard.IsKeyDown(Key.A))
@@ -130,8 +142,9 @@ namespace twoDTDS.Game
                 Y += speed;
             }
         }
-
-/*================================== OnRender =============================*/
+        /// <summary>
+        /// Lets you shoot using the arrow keys
+        /// </summary>
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -140,7 +153,7 @@ namespace twoDTDS.Game
                 bulletCreate.Interval = TimeSpan.FromMilliseconds(250);
                 bulletCreate.Tick += delegate
                 {
-                    PlayerAmmo a = new PlayerAmmo(Map, X + Width / 2, Y);
+                    Playerammo a = new Playerammo(Map, X + Width / 2, Y);
 
                     if (Keyboard.IsKeyDown(Key.Up))
                     {
@@ -164,8 +177,9 @@ namespace twoDTDS.Game
             };
             bulletCreate.Start();
         }
-
-        /*================================== IsHit =============================*/
+        /// <summary>
+        /// Detects when you get hit and shakes "camera" when you do
+        /// </summary>
         private void IsHit()
         {
             foreach (GameObject obj in Map.Objects)
@@ -177,6 +191,8 @@ namespace twoDTDS.Game
                         if (invincible == false)
                         {
                             myScore.PlayerHit(((TempEnemyammo)obj).Damage);
+
+
                             if (camShake == null)
                             {
                                 camShake = new DispatcherTimer();
@@ -203,26 +219,25 @@ namespace twoDTDS.Game
             }
         }
 
-        /*================================== SpeedUp =============================*/
         private void SpeedUp()
         {
-            PlayerAmmo test = new PlayerAmmo(Map, X + 20, Y + 20);
+            Playerammo test = new Playerammo(Map, X + 20, Y + 20);
             test.Width = 40;
-            test.Height = 40;            
+            test.Height = 40;
+            
+
             Map.AddObject(test);
         }
         
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
-            if (!myScore.Died)
-            {
-                base.OnRender(dc);
-            }
+            if (!myScore.Died) { base.OnRender(dc); }
             else
             {
-                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2), dyingSize,
-                           HorizontalAlignment.Center,VerticalAlignment.Center );
+                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
+                             dyingSize, HorizontalAlignment.Center,
+                             System.Windows.VerticalAlignment.Center );
             }
         }
     }

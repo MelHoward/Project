@@ -4,9 +4,13 @@
 */
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Globalization;
+using twoDTDS.Game;
 /*
 TABLE OF CONTENTS
 	* Global
@@ -77,6 +81,7 @@ namespace twoDTDS.Engine
                     obj.OnUpdate();
                 }
             }
+
             if (PaddingObjects.Count > 0)
             {
                 Objects.AddRange(PaddingObjects);
@@ -84,7 +89,6 @@ namespace twoDTDS.Engine
             PaddingObjects.Clear();
         }
 
-        /*============================= AddObject =========================*/
         public void AddObject(GameObject obj)
         {
             PaddingObjects.Add(obj);
@@ -106,6 +110,7 @@ namespace twoDTDS.Engine
                 case HA.Right: xOffset = -ft.Width;
                     break;
             }
+
             double yOffset = 0;
             switch (va)
             {
