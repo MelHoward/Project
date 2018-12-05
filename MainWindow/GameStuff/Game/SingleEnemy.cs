@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
@@ -18,17 +13,16 @@ namespace twoDTDS.Game
         Player player;
         int Health;
         int frames;
-        string uri;
+        string[] uri = Asset.Paths;
 
-        /*========================  SinglEnemy  ===========================*/
+        /*========================  SingleEnemy  ===========================*/
         public SingleEnemy(Map m, Player p) : base(m)
         {
             MoveToRandom();
             Width = 80;
             Height = 48;
             Health = 400;
-            uri = @"C:\Users\Corey\Source\Repos\Project\MainWindow\Assets\Demon.png";
-            Sprite = new Rec(Width, Height, uri);
+            Sprite = new Rec(Width, Height, Asset.Paths[1]);
 
             this.player = p;
 
@@ -43,15 +37,13 @@ namespace twoDTDS.Game
             }
          dispense.Start();
         }
-        /// <summary>
-        /// Enemies die
-        /// </summary>
+
         /*======================== OnUpdate ================================*/
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
             {
-                if (!obj.ObDied && obj is Playerammo)
+                if (!obj.ObDied && obj is PlayerAmmo)
                 {
                     if(IsHit(this, obj))
                     {
@@ -68,7 +60,7 @@ namespace twoDTDS.Game
                 if(frames == 30)
                 {
                     frames = 0;
-                    Sprite = new Rec(Width, Height, uri);
+                    Sprite = new Rec(Width, Height, Asset.Paths[1]);
                     Width = 80;
                     Height = 48;
                 }
@@ -91,6 +83,7 @@ namespace twoDTDS.Game
            timer.Start();
         }
 
+        /*=============================== EnemyHit ======================*/
         private void EnemyHit(GameObject enemy)
         {
             if(frames < 30)
