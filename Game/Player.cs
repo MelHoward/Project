@@ -84,31 +84,10 @@ namespace twoDTDS.Game
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
 
                 IsPlayerHit();
-
+                ShowIframes();
                 
 
                 CheckPowerUp();
-
-                if (invincibilityFrames > 0)
-                {
-                    invincible = true;
-                    invincibilityFrames--;
-                }
-                if (invincibilityFrames == 0)
-                {
-                    invincible = false;
-                }
-                if (invincible == true)
-                {
-                    if (invincibilityFrames % 2 == 0)
-                    {
-                        Sprite = null;
-                    }
-                    else
-                    {
-                        Sprite = new Rec(40, 45, uri);
-                    }
-                }
 
                 if (Keyboard.IsKeyDown(Key.E))
                 {
@@ -154,6 +133,30 @@ namespace twoDTDS.Game
             }
 
             rollFrames++;
+        }
+
+        private void ShowIframes()
+        {
+            if (invincibilityFrames > 0)
+            {
+                invincible = true;
+                invincibilityFrames--;
+            }
+            if (invincibilityFrames == 0)
+            {
+                invincible = false;
+            }
+            if (invincible == true)
+            {
+                if (invincibilityFrames % 2 == 0)
+                {
+                    Sprite = null;
+                }
+                else
+                {
+                    Sprite = new Rec(40, 45, uri);
+                }
+            }
         }
         /// <summary>
         /// Lets you move using WASD
