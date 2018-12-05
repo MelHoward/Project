@@ -101,20 +101,17 @@
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
-    <Compile Include="Game\CNormAmmo.cs" />
     <Compile Include="Game\CNormBullet.cs" />
-    <Compile Include="Game\CNormEnemyBullet.cs" />
     <Compile Include="Game\Level.cs" />
+    <Compile Include="Game\Obstacle.cs" />
     <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\PlayerAmmo.cs" />
-    <Compile Include="Game\PlayerAmmoSprite.cs" />
+    <Compile Include="Game\PowerUp.cs" />
     <Compile Include="Game\ScoreKeep.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Game\InGamePlane.xaml.cs">
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\SingleEnemy.cs" />
-    <Compile Include="Game\TempEnemy.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -129,7 +126,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,14 +148,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Engine\Assets\arrow.png" />
-    <Resource Include="Engine\Assets\Demon.png" />
-    <Resource Include="Engine\Assets\down.png" />
-    <Resource Include="Engine\Assets\left.png" />
-    <Resource Include="Engine\Assets\right.png" />
-    <Resource Include="Engine\Assets\Stage.png" />
-    <Resource Include="Engine\Assets\The End.png" />
-    <Resource Include="Engine\Assets\up.png" />
+    <Resource Include="Assets\arrow.png" />
+    <Resource Include="Assets\Demon.png" />
+    <Resource Include="Assets\down.png" />
+    <Resource Include="Assets\left.png" />
+    <Resource Include="Assets\right.png" />
+    <Resource Include="Assets\Stage.png" />
+    <Resource Include="Assets\The End.png" />
+    <Resource Include="Assets\up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
