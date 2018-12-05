@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    /*---------------------------------------------------------------------------------------
-                           BULLETONPATH : ENEMYAMMO
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                       BULLETONPATH : ENEMYAMMO
+---------------------------------------------------------------------------------------*/
     public class BulletOnPath : EnemyAmmo
     {
         GameObject target;
@@ -16,6 +20,7 @@ namespace twoDTDS.Game
         double xVec = 0;
         double yVec = 0;
         double speed = 2.5;
+
 
         /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
