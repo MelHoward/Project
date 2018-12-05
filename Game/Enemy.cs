@@ -115,13 +115,15 @@ namespace twoDTDS.Game
             Engine.Random rand = new Engine.Random();
             double powerUpSpawnRate = rand.NextDouble(0, 100);
 
-            if(powerUpSpawnRate > 0)
+            if(powerUpSpawnRate >= 10 && powerUpSpawnRate <= 20)
             {
                 SpeedPowerUp speed = new SpeedPowerUp(m, p, X, Y);
+                m.AddObject(speed);
             }
             if(powerUpSpawnRate <= 5 && powerUpSpawnRate >= 0)
             {
                 InvincibilityPowerUp inv = new InvincibilityPowerUp(m, p, X, Y);
+                m.AddObject(inv);
             }
         }
     }
