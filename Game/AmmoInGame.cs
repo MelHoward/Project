@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using twoDTDS.Engine;
+﻿using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
 
-/*---------------------------------------------------------------------------------------
-                        << AmmoInGame >>
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                            << AmmoInGame >>
+    ---------------------------------------------------------------------------------------*/
     public abstract class AmmoInGame
     {
         public Map Map { get; set; }
