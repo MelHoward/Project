@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:twoDTDS.Game"
              xmlns:engine="clr-namespace:twoDTDS.Engine"
-             mc:Ignorable="d" Background="Black" Width="1024" Height="610">
+             mc:Ignorable="d" Background="Black" Width="1024" Height="610"
+             >
     <Grid Margin="120,10,100,10">
-    <Grid.Background>
-        <ImageBrush x:Name="stage" ImageSource="..\Assets\Stage.png" />
+
+        <Grid.Background>
+
+            <ImageBrush x:Name="stage" ImageSource="..\Assets\Dungeon.png" Stretch="Fill" />
     </Grid.Background>
-    <engine:PlayArea x:Name="plane" Margin="0"/>
+    <engine:PlayArea x:Name="plane" Margin="0" />
     <Button x:Name="Bt_Restart" Content="Restart" 
                 Padding="1,-4,0,-3" 
                 VerticalAlignment="Top" HorizontalAlignment="Center" 
@@ -28,6 +31,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Button.RenderTransform>
+        
     </Button>
     </Grid>
 </UserControl>

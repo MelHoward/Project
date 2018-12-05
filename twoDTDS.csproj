@@ -150,21 +150,30 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\0_dn.png" />
-    <Resource Include="Assets\0_lb.png" />
-    <Resource Include="Assets\0_rb.png" />
-    <Resource Include="Assets\0_up.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Stage.png" />
     <Resource Include="Assets\The End.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\1.png" />
-    <Resource Include="Assets\2.png" />
+    <Resource Include="Assets\front.png" />
     <Resource Include="Assets\3.png" />
     <Resource Include="Assets\4.png" />
-    <Resource Include="Assets\5.png" />
+    <Resource Include="Assets\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\dungeon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\herobullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\enemybullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Hero\example.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Stage2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
