@@ -16,6 +16,9 @@ namespace twoDTDS.Engine
         public static string[] hero  { get => Hero; set => Hero = value; }
         public static string[] bullet { get => Bullet; set => Bullet = value; }
         public static string[] enemy { get => Enemy; set => Enemy = value; }
-        public static string[] env { get => Environment; set => Environment = value; }
+        public static string[] env
+        {
+            get => Environment; set => Environment = value;
+        }
     }
 }
