@@ -1,6 +1,16 @@
-﻿using System;
+﻿
 using twoDTDS.Engine;
 
+/* *Ammo (in twoDTDS.Game)
+        + Ammo(Map m)
+        + OnUpdate():void
+   * Playerammo (in twoDTDS.Game)
+        + Playerammo(Map m, double X, double Y)
+        + OnUpdate():void
+   * TempEnemyammo (in twoDTDS.Game)
+        + TempEnemyammo(Map m, double X, double Y)
+        + OnUpdate():void
+*/
 namespace twoDTDS.Game
 {
     /*---------------------------------------------------------------------------------------
@@ -8,7 +18,6 @@ namespace twoDTDS.Game
     ---------------------------------------------------------------------------------------*/
     public class Ammo : GameObject
     {
-        //string uri;
         /*=============================== Ammo >> CTOR ======================*/
         public Ammo(Map m) : base(m)
         {
@@ -24,7 +33,10 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             Y -= 15;
-            if (Y < -100) {  ObDied = true;  }
+            if (Y < -100)
+            {
+                ObDied = true;
+            }
         }
     }
     /// <summary>

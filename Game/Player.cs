@@ -4,7 +4,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using twoDTDS.Engine;
-
+/** Player 
+       + Player(Map map)
+       + Score_died(object sender, ScoreKeep e):void
+       + OnUpdate():void
+       + Roll():void
+       + RollReset():void
+       + Move():void
+       + Shoot():void
+       + IsPlayerHit():void
+       + CheckPowerUp():void
+       + OnRender(DrawingContext dc):void   
+*/
 namespace twoDTDS.Game
 {
     /*---------------------------------------------------------------------------------------
@@ -13,17 +24,17 @@ namespace twoDTDS.Game
     public class Player : GameObject
     {
         public ScoreKeep myScore { get; set; }
-        Engine.Random r = new Engine.Random();
 
-        DispatcherTimer bulletCreate;
-        DispatcherTimer camShake;
-        int cameraShakeCount = 0;
-        public double speed = 3;
-        double dyingSize = 40;
-        int rollFrames = 0;
-        public string uri;
-        public bool invincible = false;
-        int invincibilityFrames;
+        Engine.Random r = new Engine.Random();
+        DispatcherTimer bulletCreate,
+                        camShake;
+        int cameraShakeCount = 0,
+            rollFrames = 0,
+            invincibilityFrames;
+        double speed = 3, 
+               dyingSize = 40;
+        string uri;
+        bool invincible = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -71,8 +82,8 @@ namespace twoDTDS.Game
             {
                 Move();
 
-                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) ||
-                    Keyboard.IsKeyDown(Key.Up))
+                if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) ||
+                    Keyboard.IsKeyDown(Key.Down)  || Keyboard.IsKeyDown(Key.Up))
                 {
                     Shoot();
                 }
@@ -86,15 +97,9 @@ namespace twoDTDS.Game
 
                 X = Math.Min(Map.Width - Width, Math.Max(0, X));
                 Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
-
                 IsPlayerHit();
-
-                if (Keyboard.IsKeyDown(Key.E))
-                {
-                    Roll();
-                }
+                if (Keyboard.IsKeyDown(Key.E)) {  Roll();  }
                 RollReset();
-
                 CheckPowerUp();
             }
         }
@@ -144,7 +149,6 @@ namespace twoDTDS.Game
             {
                 Y += speed;
             }
-
         }
 
         /*================================== Shoot =============================*/
@@ -178,8 +182,6 @@ namespace twoDTDS.Game
                     Map.AddObject(a);
                 };
             }
-
-            ;
             bulletCreate.Start();
         }
 
@@ -200,7 +202,6 @@ namespace twoDTDS.Game
                                 invincible = true;
                                 invincibilityFrames--;
                             }
-
                             if (invincibilityFrames == 0)
                             {
                                 invincible = false;
@@ -222,7 +223,6 @@ namespace twoDTDS.Game
                                         Map.Plane.ViewOffsetY = 0;
                                         return;
                                     }
-
                                     Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
                                     Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
                                 };
@@ -235,6 +235,8 @@ namespace twoDTDS.Game
                 }
             }
         }
+
+
         /*================================== CheckPowerUp =============================*/
         public void CheckPowerUp()
         {
@@ -243,11 +245,6 @@ namespace twoDTDS.Game
             {
                 Map.AddObject(speed);
             }
-            //if(Keyboard.IsKeyDown(Key.D3))
-            //{
-            //  //  Rock rock = new Rock(Map, 300, 300);
-            //    Map.AddObject(rock);
-            //}
         }
 
         /*================================== OnRender =============================*/
