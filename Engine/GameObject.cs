@@ -65,7 +65,7 @@ namespace twoDTDS.Engine
         {
             if (Sprite != null)
                 Sprite.Render(this, dc);
-        }
+        }e
 
         /*========================== MoveToStoryboard =======================*/
         private Storyboard MoveToStoryboard;

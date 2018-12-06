@@ -16,7 +16,6 @@ using twoDTDS.Engine;
 
 
 namespace twoDTDS.Game
-{
     public partial class InGamePlane : UserControl, IPlayAreaControl
     {
         public InGamePlane()
