@@ -115,8 +115,8 @@ namespace twoDTDS.Game
         {
             this.X = X;
             this.Y = Y;
-            Width = 6;
-            Height = 6;
+            Width = 8;
+            Height = 8;
             Sprite = new Rec(Width, Height, Asset.bullet[0]);
         }
 

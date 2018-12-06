@@ -122,9 +122,6 @@ namespace twoDTDS.Game
 
                 IsPlayerHit();
                 ShowIframes();
-
-
-                CheckPowerUp();
             }
         }
         /// <summary>
@@ -132,25 +129,17 @@ namespace twoDTDS.Game
         /// </summary>
         private void Roll()
         {
-            if (rollFrames < 50 && rollFrames > 0)
-            {
-                if (rollFrames >= 0 && invincible != true)
+            
+                if (rollFrames >= 0)
+                {
+                if(roll == false)
                 {
                     rollFrames = 0;
-                    roll = true;
                 }
-                
-                if (roll == true)
-                {
                     invincible = true;
+                    roll = true;
                     Sprite = new Rec(30, 35, uri);
                 }
-                else
-                {
-                    invincible = false;
-                }
-                
-            }
         }
         /// <summary>
         /// Makes you not invincible after a short time
@@ -160,6 +149,7 @@ namespace twoDTDS.Game
             if (rollFrames == 50)
             {
                 invincible = false;
+                roll = false;
                 Sprite = new Rec(Width, Height, uri);
                 rollFrames = -25;
             }
@@ -372,23 +362,6 @@ namespace twoDTDS.Game
             {
                 mapWalls[6].HitRightWall(this);
             }
-
-            
-
-            
-        }
-
-        public void CheckPowerUp()
-        {
-            InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100, Y - 100);
-            if (Keyboard.IsKeyDown(Key.Space))
-            {
-
-
-                Map.AddObject(speed);
-            }
-           
-
         }
 
         /*================================== OnRender =============================*/
