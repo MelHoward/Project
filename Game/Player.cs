@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Windows;
+using System.Numerics;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using twoDTDS.Engine;
+using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 /** Player 
        + Player(Map map)
        + Score_died(object sender, ScoreKeep e):void
@@ -23,36 +26,48 @@ namespace twoDTDS.Game
     ---------------------------------------------------------------------------------------*/
     public class Player : GameObject
     {
-        public ScoreKeep myScore { get; set; }
-
+        public static ScoreKeep myScore { get; set; }
         Engine.Random r = new Engine.Random();
-
-        DispatcherTimer bulletCreate,
-                        camShake;
-        public int cameraShakeCount = 0,
-                   rollFrames = 0,
-                   invincibilityFrames;
-
-        public double speed = 3, 
-                      dyingSize = 40;
+        DispatcherTimer bulletCreate, camShake;
+        public int cameraShakeCount = 0, rollFrames = 0, invincibilityFrames;
+        public float speed = 3, dyingSize = 40;
         public string uri;
         public bool invincible = false;
         public bool roll = false;
         GameObject iteration;
         Obstacle Obst;
 
+        enum Direction
+        {
+            left,
+            right,
+            idle,
+            back,
+            forward
+        }
+
+        Direction Currentdirection;
+        Direction PreviousDirection;
+
+
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
         {
-            X = Math.Round(map.Width / 2);
-            Y = map.Height - 50;
+            imgFrames = Asset.heroIdle;
+            iflIndex = 0;
+            X = (float) Math.Round(map.Width / 2);
+            Y = (float) (map.Height - 50);
+            Position = new System.Numerics.Vector2((float) X, Y);
             Width = 40;
             Height = 45;
-            uri = Asset.hero[0];
-            Sprite = new Rec(Width, Height, uri);
-
+        
             myScore = new ScoreKeep();
             myScore.IsDead += Score_died;
+        }
+
+        public override void Render(WriteableBitmap img)
+        {
+            base.Render(img);
         }
 
         /*================================== Score_died ==========================*/
@@ -75,6 +90,7 @@ namespace twoDTDS.Game
                     t.Stop();
                     return;
                 }
+
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();
@@ -86,9 +102,8 @@ namespace twoDTDS.Game
             if (!myScore.Died)
             {
                 Move();
-
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) ||
-                    Keyboard.IsKeyDown(Key.Down)  || Keyboard.IsKeyDown(Key.Up))
+                    Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
                 {
                     Shoot();
                 }
@@ -100,25 +115,21 @@ namespace twoDTDS.Game
                     }
                 }
 
-                X = Math.Min(Map.Width - Width, Math.Max(0, X));
-                Y = Math.Min(Map.Height - Height, Math.Max(0, Y));
+                X = (float) Math.Min(Map.Width - Width, Math.Max(0, X));
+                Y = (float) Math.Min(Map.Height - Height, Math.Max(0, Y));
 
                 if (Keyboard.IsKeyDown(Key.E))
                 {
                     Roll();
                 }
-                RollReset();
 
+                RollReset();
                 IsPlayerHit();
                 ShowIframes();
-
-
                 CheckPowerUp();
             }
         }
-        /// <summary>
-        /// Makes it to where you are invincible
-        /// </summary>
+
         private void Roll()
         {
             if (rollFrames < 50 && rollFrames > 0)
@@ -128,7 +139,7 @@ namespace twoDTDS.Game
                     rollFrames = 0;
                     roll = true;
                 }
-                
+
                 if (roll == true)
                 {
                     invincible = true;
@@ -138,12 +149,9 @@ namespace twoDTDS.Game
                 {
                     invincible = false;
                 }
-                
             }
         }
-        /// <summary>
-        /// Makes you not invincible after a short time
-        /// </summary>
+        /*================================== RollReset =============================*/
         private void RollReset()
         {
             if (rollFrames == 50)
@@ -152,10 +160,9 @@ namespace twoDTDS.Game
                 Sprite = new Rec(Width, Height, uri);
                 rollFrames = -25;
             }
-
             rollFrames++;
         }
-
+        /*================================== ShowIframes =============================*/
         private void ShowIframes()
         {
             if (invincibilityFrames > 0)
@@ -163,10 +170,9 @@ namespace twoDTDS.Game
                 invincible = true;
                 invincibilityFrames--;
             }
-            if (invincibilityFrames == 0)
-            {
-                invincible = false;
-            }
+
+            if (invincibilityFrames == 0)  {  invincible = false; } 
+
             if (invincible == true)
             {
                 if (invincibilityFrames % 2 == 0)
@@ -179,17 +185,17 @@ namespace twoDTDS.Game
                 }
             }
         }
-        /// <summary>
-        /// Lets you move using WASD
-        /// </summary>
+
+        /*================================== Mover =============================*/
         private void Move()
         {
+            PreviousDirection = Currentdirection;
             for (int i = 0; i < Map.Objects.Count; i++)
             {
                 iteration = Map.Objects[i];
                 if (!iteration.ObDied && iteration is Obstacle)
                 {
-                    Obst = (Obstacle)iteration;
+                    Obst = (Obstacle) iteration;
                     if (IsHit(this, Obst))
                     {
                         Obst.CollisionSetBack(this);
@@ -197,35 +203,61 @@ namespace twoDTDS.Game
                     }
                 }
             }
+
             if (Keyboard.IsKeyDown(Key.A))
             {
-                uri = Asset.hero[3];
-                Sprite = new Rec(Width, Height, uri);
-                X -= speed;
+                Currentdirection = Direction.left;
             }
             else if (Keyboard.IsKeyDown(Key.D))
             {
-                uri = Asset.hero[4];
-                Sprite = new Rec(Width, Height, uri);
-                X += speed;
+                Currentdirection = Direction.right;
             }
-            if (Keyboard.IsKeyDown(Key.W))
+            else if (Keyboard.IsKeyDown(Key.W))
             {
-                uri = Asset.hero[0];
-                Sprite = new Rec(Width, Height, uri);
-                Y -= speed;
+                Currentdirection = Direction.forward;
             }
             else if (Keyboard.IsKeyDown(Key.S))
             {
-                uri = Asset.hero[2];
-                Sprite = new Rec(Width, Height, uri);
-                Y += speed;
+                Currentdirection = Direction.back;
             }
-
+            else {   Currentdirection = Direction.idle;  }
         }
-        /// <summary>
-        /// Lets you shoot using the arrow keys
-        /// </summary>
+
+        /*================================== SetRate =============================*/
+        public override void SetRate()
+        {
+            Move();
+            if (PreviousDirection != Currentdirection) iflIndex = 0;
+            switch (Currentdirection)
+            {
+                case Direction.idle:
+                    Rate = new Vector2(Rate.X, Rate.Y);
+                    break;
+                case Direction.forward:
+                    Rate = new Vector2(Rate.X, speed);
+                    imgFrames = Asset.heroBack;
+                    break;
+                case Direction.back:
+                    Rate = new Vector2(Rate.X, -speed);
+                    imgFrames = Asset.heroFront;
+                    break;
+                case Direction.left:
+                    Rate = new Vector2(-speed, Rate.Y);
+                    imgFrames = Asset.heroLeft;
+                    break;
+                case Direction.right:
+                    Rate = new Vector2(speed, Rate.Y);
+                    imgFrames = Asset.heroRight;
+                    break;
+            }
+        }
+
+        /*================================== Duration =============================*/
+        public override void Duration(double durationMS)
+        {
+            base.Duration(durationMS);
+        }
+        /*================================== Shoot =============================*/
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -240,30 +272,37 @@ namespace twoDTDS.Game
                     {
                         a.direction = "up";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "down";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left))
                     {
                         a.direction = "left";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right))
                     {
                         a.direction = "right";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Up))
                     {
                         a.direction = "upLeft";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "downLeft";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Up))
                     {
                         a.direction = "upRight";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "downRight";
@@ -271,12 +310,12 @@ namespace twoDTDS.Game
 
                     Map.AddObject(a);
                 };
-            };
+            }
+
+            ;
             bulletCreate.Start();
         }
-        /// <summary>
-        /// Detects when you get hit and shakes "camera" when you do
-        /// </summary>
+        /*================================== IsPlayerHit =============================*/
         private void IsPlayerHit()
         {
             foreach (GameObject obj in Map.Objects)
@@ -316,15 +355,13 @@ namespace twoDTDS.Game
                 }
             }
         }
-
+        /*================================== CheckPowerUp()=================*/
         public void CheckPowerUp()
         {
-            InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100, Y - 100);
+            InvincibilityPowerUp sp= new InvincibilityPowerUp(Map, this, X + 100, Y - 100);
             if (Keyboard.IsKeyDown(Key.Space))
             {
-
-
-                Map.AddObject(speed);
+                Map.AddObject(sp);
             }
             if (Keyboard.IsKeyDown(Key.D3))
             {
@@ -335,15 +372,16 @@ namespace twoDTDS.Game
         }
 
         /*================================== OnRender =============================*/
-        public override void OnRender(DrawingContext dc)
-        {
-            if (!myScore.Died) { base.OnRender(dc); }
-            else
-            {
-                Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center);
-            }
-        }
+        //    public override void OnRender(DrawingContext dc)
+        //    {
+        //        if (!myScore.Died) { base.OnRender(dc); }
+        //        else
+        //        {
+        //            Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
+        //                         dyingSize, HorizontalAlignment.Center,
+        //                         System.Windows.VerticalAlignment.Center);
+        //        }
+        //    }
+        //}
     }
 }

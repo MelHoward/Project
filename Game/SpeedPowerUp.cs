@@ -1,4 +1,6 @@
-﻿using twoDTDS.Engine;
+﻿using System.Windows;
+using System.Windows.Media.Imaging;
+using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 { 
@@ -12,8 +14,8 @@ namespace twoDTDS.Game
         public SpeedPowerUp(Map m, Player player, double X, double Y) : base(m)
         {
             p = player;
-            this.X = X;
-            this.Y = Y;
+            this.X = (float) X;
+            this.Y = (float) Y;
             Width = 40;
             Height = 40;
             string uri = Asset.env[1];
@@ -58,6 +60,41 @@ namespace twoDTDS.Game
             SpeedUp(p);
             if (speedFrames <= 0)
                 speedFrames--;
+        }
+
+        public override string ToString ()
+        {
+            return base.ToString( );
+        }
+
+        protected override void OnPropertyChanged (DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+        }
+
+        protected override bool ShouldSerializeProperty (DependencyProperty dp)
+        {
+            return base.ShouldSerializeProperty(dp);
+        }
+
+        public override void SetRate ()
+        {
+            base.SetRate( );
+        }
+
+        public override void Duration (double durationMS)
+        {
+            base.Duration(durationMS);
+        }
+
+        public override void Render (WriteableBitmap img)
+        {
+            base.Render(img);
+        }
+
+        public override bool IsHit (GameObject other)
+        {
+            return base.IsHit(other);
         }
     }
 

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Globalization;
 /*
 TABLE OF CONTENTS
@@ -24,6 +25,7 @@ namespace twoDTDS.Engine
     {
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
+
         public double Width { get; set; }
         public double Height { get; set; }
 
@@ -49,7 +51,6 @@ namespace twoDTDS.Engine
                 }
             }
         }
-
         /*============================= OnUpdate ============================*/
         public virtual void OnUpdate()
         {
@@ -69,19 +70,18 @@ namespace twoDTDS.Engine
         {
             if (doUpdate)
             {
-                foreach (GameObject obj in PaddingObjects)
+                foreach (GameObject obj in PaddingObjects) 
                 {
                     obj.OnUpdate();
                 }
             }
-
             if (PaddingObjects.Count > 0)
             {
                 Objects.AddRange(PaddingObjects);
             }
             PaddingObjects.Clear();
         }
-
+ 
         public void AddObject(GameObject obj)
         {
             PaddingObjects.Add(obj);
@@ -103,7 +103,6 @@ namespace twoDTDS.Engine
                 case HA.Right: xOffset = -ft.Width;
                     break;
             }
-
             double yOffset = 0;
             switch (va)
             {
@@ -114,7 +113,6 @@ namespace twoDTDS.Engine
                     yOffset = -ft.Height;
                     break;
             }
-
             dc.DrawText(ft, new Point(Math.Round(x + xOffset), 
                         Math.Round(y + yOffset)));
         }

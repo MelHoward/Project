@@ -51,15 +51,14 @@ namespace twoDTDS.Engine
             dc.DrawImage(src.ImageSource, new Rect(Parent.X, Parent.Y, Width, Height));
         }
     }
-
-
+    
 /*---------------------------------------------------------------------------------------
                               CIRCLE : Sprite
 ---------------------------------------------------------------------------------------*/
     public class Circle : Sprite
     {
         double radius = 5;
-        System.Windows.Media.Brush brush;
+        Brush brush;
         private SolidColorBrush solColBrush;
 
         /*============================= Circle << CTOR ======================*/
@@ -79,10 +78,9 @@ namespace twoDTDS.Engine
         }
 
         /*============================= Render =================================*/
-
         public override void Render(GameObject Parent, DrawingContext dc)
         {
-            dc.DrawEllipse(brush, null, new System.Windows.Point(Parent.X + radius, Parent.Y + radius), radius, radius);
+            dc.DrawEllipse(brush, null, new Point(Parent.X + radius, Parent.Y + radius), radius, radius);
         }
     }
 }

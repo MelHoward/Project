@@ -16,8 +16,7 @@ namespace twoDTDS.Game
             Width = 50;
             Height = 48;
             HitPoints = 2;
-            uri = Asset.enemy[0];
-            Sprite = new Rec(Width, Height, uri);
+            
             Spawner();
 
             this.player = p;
@@ -45,7 +44,7 @@ namespace twoDTDS.Game
                 double duration = Math.Abs(x - X) * 8;
                 timer.Interval = TimeSpan.FromMilliseconds(duration);
 
-                MoveTo(x, rand.NextDouble(10, 30), duration);
+                MoveTo(x, rand.NextDouble(10, 30), dispense);
             };
             timer.Start();
         }

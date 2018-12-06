@@ -11,15 +11,15 @@ namespace twoDTDS.Game
     public class BulletOnPath : EnemyAmmo
     {
         GameObject target;
-        double angle = 0;
+        float angle = 0;
         double angleOffset = new Engine.Random().NextDouble(-30, 30);
-        double xVec = 0;
-        double yVec = 0;
+        float xVec = 0;
+        float yVec = 0;
         double speed = 2.5;
 
         /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
-                                               double x, double y) : base(map)
+                                               float x, float y) : base(map)
         {
             this.target = target;
             Damage = ScoreKeep.Guide;
@@ -32,7 +32,7 @@ namespace twoDTDS.Game
 
             Sprite = new Circle(new SolidColorBrush(Color.FromRgb(120, 190, 255)), 3);
             angle = GetAngleToTarget(target);
-            SetAngle(angle + angleOffset);
+            SetAngle((float) (angle + angleOffset));
             DispatcherTimer t = new DispatcherTimer();
             t.Interval = TimeSpan.FromSeconds(2.5);
 
@@ -45,10 +45,10 @@ namespace twoDTDS.Game
         }
 
         /*================================== GetAngleToTarget =============================*/
-        private double GetAngleToTarget(GameObject target)
+        private float GetAngleToTarget(GameObject target)
         {
-            double xx = target.X - X;
-            double yy = Y - target.Y;
+            float xx = target.X - X;
+            float yy = Y - target.Y;
             double angle = Math.Atan(Math.Abs(yy) / Math.Abs(xx)) / Math.PI * 180;
 
             if (xx < 0 && yy > 0)
@@ -57,27 +57,27 @@ namespace twoDTDS.Game
                 angle = 180 + angle; 
             else if (xx > 0 && yy < 0)
                 angle = 360 - angle; 
-            return angle;
+            return (float) angle;
         }
 
         /*================================== SetAngle =============================*/
-        private void SetAngle(double angle)
+        private void SetAngle(float angle)
         {
             angle = angle % 360;
 
             double angle_rad = angle / 180 * Math.PI;
 
-            xVec = Math.Cos(angle_rad) * speed;
-            yVec = -Math.Sin(angle_rad) * speed;
+            xVec = (float) (Math.Cos(angle_rad) * speed);
+            yVec = (float) (-Math.Sin(angle_rad) * speed);
         }
 
         /*================================== OnUpdate =============================*/
         public override void OnUpdate()
         {
-            double tAngle = GetAngleToTarget(target);
+            float tAngle = (float) GetAngleToTarget(target);
             angle = angle + (tAngle - angle) / 120;
             speed += 0.07;
-            SetAngle(angle + angleOffset);
+            SetAngle((float) (angle + angleOffset));
 
             X += xVec;
             Y += yVec;
@@ -85,8 +85,8 @@ namespace twoDTDS.Game
             CheckOutOfBounds();
         }
 
-        /*================================== RelativeDouble =============================*/
-        private double RelativeDouble(double r)
+        /*================================== Relativefloat =============================*/
+        private float Relativefloat(float r)
         {
             if (Math.Abs(r) < 0.0001) {  return 0; }
             else return r;

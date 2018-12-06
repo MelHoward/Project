@@ -61,6 +61,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,6 +75,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WriteableBitmapEx.Wpf, Version=1.5.0.0, Culture=neutral, PublicKeyToken=50375ca6144f1c69, processorArchitecture=MSIL">
+      <HintPath>packages\WriteableBitmapEx.1.5.0.0\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -95,6 +99,7 @@
     <Compile Include="Engine\Asset.cs" />
     <Compile Include="Engine\IPlayAreaControl.cs" />
     <Compile Include="Engine\Map.cs" />
+    <Compile Include="Engine\MapBasis.cs" />
     <Compile Include="Engine\PlayArea.cs" />
     <Compile Include="Engine\Random.cs" />
     <Compile Include="Engine\Sprite.cs" />
@@ -131,6 +136,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,23 +176,46 @@
     <Resource Include="Environnment\The End.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Hero\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Hero\example.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Hero\front.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Hero\left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Hero\right.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Environnment\pwatch.png" />
     <Resource Include="Environnment\rubis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HeroRight\tile003.png" />
+    <Resource Include="HeroRight\tile007.png" />
+    <Resource Include="HeroRight\tile011.png" />
+    <Resource Include="HeroRight\tile015.png" />
+    <Resource Include="HeroRight\tile019.png" />
+    <Resource Include="HeroRight\tile023.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HeroBack\tile001.png" />
+    <Resource Include="HeroBack\tile005.png" />
+    <Resource Include="HeroBack\tile009.png" />
+    <Resource Include="HeroBack\tile013.png" />
+    <Resource Include="HeroBack\tile017.png" />
+    <Resource Include="HeroBack\tile021.png" />
+    <Resource Include="HeroFront\tile000.png" />
+    <Resource Include="HeroFront\tile004.png" />
+    <Resource Include="HeroFront\tile008.png" />
+    <Resource Include="HeroFront\tile012.png" />
+    <Resource Include="HeroFront\tile016.png" />
+    <Resource Include="HeroFront\tile020.png" />
+    <Resource Include="HeroFront\tile024.png" />
+    <Resource Include="HeroFront\tile025.png" />
+    <Resource Include="HeroFront\tile026.png" />
+    <Resource Include="HeroFront\tile027.png" />
+    <Resource Include="HeroLeft\tile002.png" />
+    <Resource Include="HeroLeft\tile006.png" />
+    <Resource Include="HeroLeft\tile010.png" />
+    <Resource Include="HeroLeft\tile014.png" />
+    <Resource Include="HeroLeft\tile018.png" />
+    <Resource Include="HeroLeft\tile022.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HeroIdle\1.png" />
+    <Resource Include="HeroIdle\1_1.png" />
+    <Resource Include="HeroIdle\2.png" />
+    <Resource Include="HeroIdle\2_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

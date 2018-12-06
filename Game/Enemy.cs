@@ -36,27 +36,23 @@ namespace twoDTDS.Game
 
             this.player = p;
         }
-        /// <summary>
-        /// Enemies die
-        /// </summary>
         /*======================== OnUpdate ================================*/
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
             {
                 IfEnemyDead();
-
                 if (!obj.ObDied && obj is Playerammo)
                 {
                     if (IsHit(this, obj))
                     {
-                        player.myScore.ShotEnemy(ScoreKeep.Norm);
+                        Player.myScore.ShotEnemy(ScoreKeep.Norm);
                         obj.ObDied = true;
                         HitPoints -= 1;
                         EnemyHit(this);
                     }
                 }
-               
+          
                 if (frames == 20)
                 {
                     frames = 0;

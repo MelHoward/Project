@@ -8,11 +8,11 @@ using twoDTDS.Engine;
            + OnUpdate():void
 
    * Playerammo (in twoDTDS.Game)
-           + Playerammo(Map m, double X, double Y)
+           + Playerammo(Map m, float X, float Y)
            + OnUpdate():void
 
    * TempEnemyammo (in twoDTDS.Game)
-            + TempEnemyammo(Map m, double X, double Y)
+            + TempEnemyammo(Map m, float X, float Y)
             + OnUpdate():void
 */
 
@@ -50,38 +50,22 @@ namespace twoDTDS.Game
         public string direction;
         public string uri = Asset.bullet[1];
         
-        public Playerammo(Map m, double X, double Y) : base(m)
+        public Playerammo(Map m, float X, float Y) : base(m)
         {
-            this.X = X;
-            this.Y = Y;
+            this.X = (float) X;
+            this.Y = (float) Y;
             Width = 6;
-            Height = 15;
-            //uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            
+            Height = 15;            
             Sprite = new Rec(Width, Height, uri);
         }
 
         public override void OnUpdate()
         {
-            if (direction == "up")
-            {
-                Y -= 15;
-            }
+            if (direction == "up"){  Y -= 15;  }
+            if (direction == "down"){ Y += 15; }
+            if (direction == "left")  {  X -= 15; }
+            if (direction == "right")  { X += 15; }
 
-            if (direction == "down")
-            {
-                Y += 15;
-            }
-
-            if (direction == "left")
-            {
-                X -= 15;
-            }
-
-            if (direction == "right")
-            {
-                X += 15;
-            }
             if (direction == "upRight")
             {
                 X += 15;
@@ -102,16 +86,15 @@ namespace twoDTDS.Game
                 X += 15;
                 Y += 15;
             }
-
             if (Y < -100) { ObDied = true; }
         }
     }
-    /// <summary>
-    /// Enemy ammo class that allows enemy ammo to have its own logic
-    /// </summary>
+
+
+
     public class TempEnemyammo : Ammo
     {
-        public TempEnemyammo(Map m, double X, double Y) : base(m)
+        public TempEnemyammo(Map m, float X, float Y) : base(m)
         {
             this.X = X;
             this.Y = Y;
@@ -125,7 +108,5 @@ namespace twoDTDS.Game
             Y += 3;
             CheckOutOfBounds();
         }
-
     }
-  
 }

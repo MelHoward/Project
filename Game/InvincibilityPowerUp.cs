@@ -9,8 +9,8 @@ namespace twoDTDS.Game
         public InvincibilityPowerUp(Map m, Player player, double X, double Y) : base(m)
         {
             p = player;
-            this.X = X;
-            this.Y = Y;
+            this.X = (float) X;
+            this.Y = (float) Y;
             Width = 40;
             Height = 40;
             string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";

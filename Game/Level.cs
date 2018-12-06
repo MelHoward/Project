@@ -12,14 +12,14 @@ namespace twoDTDS.Game
     ---------------------------------------------------------------------------------------*/
     public class Level : Map
     {
-        Player Player;
+
         EnemyGenerator Enemy;
         /*========================= Level >> CTOR ===========================*/
         public Level(PlayArea play) : base(play)
         {
-            Player = new Player(this);
+            Player Player= new Player(this);
             Enemy = new EnemyGenerator(this, Player);
-            Objects.Add(Player);
+
             Objects.Add(Enemy);
         }
         /*============================= OnRender ===========================+*/

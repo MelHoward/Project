@@ -35,19 +35,9 @@ namespace twoDTDS.Game
         /*==================== SetSpawnRate =======================*/
         private void SetSpawnRate()
         {
-            if (EnemiesSpawned < 10)
-            {
-                spawnRate = 3;
-            }
-
-            if (EnemiesSpawned > 10 && EnemiesSpawned < 25)
-            {
-                spawnRate = 2;
-            }
-            else
-            {
-                spawnRate = 1.5;
-            }
+            if (EnemiesSpawned < 10)  {  spawnRate = 3;  }
+            if (EnemiesSpawned > 10 && EnemiesSpawned < 25) {  spawnRate = 2;  }
+            else {  spawnRate = 1.5;  }
         }
 
         /*==================== CreateEnemy =======================*/
@@ -55,7 +45,6 @@ namespace twoDTDS.Game
         {
             Engine.Random rand = new Engine.Random();
             double generator = rand.NextDouble(0, 100);
-
             if (generator <= 20)
             {
                 Map.AddObject(new EnemyMoveToRandom(m, p));

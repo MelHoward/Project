@@ -1,7 +1,15 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 
 namespace twoDTDS.Engine
 {
@@ -14,88 +22,76 @@ namespace twoDTDS.Engine
         public static Typeface Typeface = new Typeface("ComicSans");
         public static Random Random = new Random();
     }
-
 /*---------------------------------------------------------------------------------------
                          << GAMEOBJECT >> : DEPENDENCYPROPERTY 
 ---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
         public static DependencyProperty XProperty = 
-                      DependencyProperty.Register("X", typeof(double), typeof(GameObject));
-
+                      DependencyProperty.Register("X", typeof(float), typeof(GameObject));
         public static DependencyProperty YProperty = 
-                      DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
-
+                      DependencyProperty.Register("Y", typeof(float), typeof(GameObject));
+        public int frames = 0,
+                          frameRule = 10,
+                          iflIndex;
+        public Size size = new Size();                  
+        public string[] imgFrames = null;
         /*============================= X >> Acc. ===========================*/
-        public double X
+        public float X
         {
-            get { return (double)GetValue(XProperty); }
+            get { return (float) GetValue(XProperty); }
             set { SetValue(XProperty, value); }
         }
         /*============================= Y >> Acc. ===========================*/
-        public double Y
+        public float Y
         {
-            get { return (double)GetValue(YProperty); }
+            get { return (float)GetValue(YProperty); }
             set { SetValue(YProperty, value); }
         }
-
         /*============================= Width ===============================*/
-        public double Width { get; set; }
+        public float Width { get; set; }
         /*============================== Height =============================*/
-        public double Height { get; set; }
-
-        /*=========================== Sprite >> CTOR ========================*/
+        public float Height { get; set; }
+        /*============================== Position =============================*/
+        public Vector2 Position { get; set; }
+        /*============================== Rate =============================*/
+         public Vector2 Rate  { get; set;  }
+        /*========================== Sprite >> CTOR ========================*/
         public Sprite Sprite { get; set; }
-
         /*=========================== Map >> CTOR ===========================*/
         public Map Map { get; set; }
-
         /*============================= ObDied ==============================*/
         public bool ObDied { get; set; } = false;
-
         /*=========================== GameObject ============================*/
         public GameObject(Map map){ Map = map; }
-
-        /*=========================== OnUpdate  =============================*/
-        public virtual void OnUpdate() { }
-
-        /*=========================== <<OnRender>> ==========================*/
-        public virtual void OnRender(DrawingContext dc)
+        /*============================== SetRate =============================*/
+        public virtual void SetRate () { }
+        /*=========================== Duration ===========================*/
+        public virtual void Duration(double durationMS)
         {
-            if (Sprite != null) Sprite?.Render(this, dc);
+            SetRate();
+            Position += Rate * (float) (durationMS / 1000f);
         }
 
-        /*========================== MoveToStoryboard =======================*/
-        private Storyboard MoveToStoryboard;
 
-        /*============================= MoveTo ==============================*/
-        public Storyboard MoveTo(double x, double y, double durationMs)
+        /*=========================== OnRender ===========================*/
+        public virtual void OnRender (DrawingContext dc)
         {
-            if (MoveToStoryboard != null)
-            {
-                MoveToStoryboard.Stop();
-                MoveToStoryboard.Remove();
-            }
+            if( Sprite != null )
+                Sprite.Render(this, dc);
+        }
+        /*=========================== Render ===========================*/
+        public virtual void Render(WriteableBitmap img)
+        {
+            BitmapImage src = new BitmapImage(new Uri(imgFrames[iflIndex]));
+            WriteableBitmap bitmap = new WriteableBitmap(src);
+            size = new Size(src.PixelWidth, src.PixelHeight);
 
-            Storyboard sb = new Storyboard();
-            Duration duration = new Duration(TimeSpan.FromMilliseconds(durationMs));
+            img.Blit(new Point(Position.X, Position.Y), bitmap,
+                           new Rect(size), Colors.White, BlendMode.Alpha);
 
-            DoubleAnimation xAnimation = new DoubleAnimation(x, duration);
-            DoubleAnimation yAnimation = new DoubleAnimation(y, duration);
-
-            Storyboard.SetTargetProperty(xAnimation, new PropertyPath(XProperty));
-            Storyboard.SetTargetProperty(yAnimation, new PropertyPath(YProperty));
-
-            Storyboard.SetTarget(xAnimation, this);
-            Storyboard.SetTarget(yAnimation, this);
-
-            sb.Children.Add(xAnimation);
-            sb.Children.Add(yAnimation);
-
-            sb.Begin();
-
-            MoveToStoryboard = sb;
-            return sb; 
+            if ( iflIndex >= imgFrames.Length - 1 ) {  iflIndex = 0;  }
+            else if ((frames += 1) > frameRule) { iflIndex += 1; frames = 0;  }
         }
 
         /*============================= IsHit ===============================*/
@@ -115,7 +111,6 @@ namespace twoDTDS.Engine
         }
 
         /*============================= IsHit ===============================*/
-
         public virtual bool IsHit(GameObject other)
         {
             return IsHit(this, other);
@@ -129,5 +124,41 @@ namespace twoDTDS.Engine
                 ObDied = true;
             }
         }
+
+        public virtual void OnUpdate() { }
+
+        private Storyboard MoveToStoryboard;
+
+        /*============================= MoveTo ==============================*/
+        public Storyboard MoveTo (double x, double y, double durationMs)
+        {
+            if( MoveToStoryboard != null )
+            {
+                MoveToStoryboard.Stop( );
+                MoveToStoryboard.Remove( );
+            }
+
+            Storyboard sb = new Storyboard( );
+            Duration duration = new Duration(TimeSpan.FromMilliseconds(durationMs));
+
+            DoubleAnimation xAnimation = new DoubleAnimation(x, duration);
+            DoubleAnimation yAnimation = new DoubleAnimation(y, duration);
+
+            Storyboard.SetTargetProperty(xAnimation, new PropertyPath(XProperty));
+            Storyboard.SetTargetProperty(yAnimation, new PropertyPath(YProperty));
+
+            Storyboard.SetTarget(xAnimation, this);
+            Storyboard.SetTarget(yAnimation, this);
+
+            sb.Children.Add(xAnimation);
+            sb.Children.Add(yAnimation);
+
+            sb.Begin( );
+
+            MoveToStoryboard = sb;
+            return sb;
+        }
+
+
     }
 }
