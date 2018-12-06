@@ -24,7 +24,7 @@ namespace twoDTDS.Game
     public class Player : GameObject
     {
         public ScoreKeep myScore { get; set; }
-
+        MediaPlayer player = new MediaPlayer();
         Engine.Random r = new Engine.Random();
 
         DispatcherTimer bulletCreate,
@@ -215,8 +215,11 @@ namespace twoDTDS.Game
                             {
                                 camShake = new DispatcherTimer();
                                 camShake.Interval = TimeSpan.FromMilliseconds(25);
+                                player.Open(new Uri(SoundAssets.snd[0]));
+
                                 camShake.Tick += delegate
                                 {
+                                    player.Play();
                                     cameraShakeCount++;
                                     if (cameraShakeCount > 7)
                                     {

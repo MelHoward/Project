@@ -16,6 +16,7 @@ using twoDTDS.Engine;
 
 
 namespace twoDTDS.Game
+{
     public partial class InGamePlane : UserControl, IPlayAreaControl
     {
         public InGamePlane()
@@ -28,7 +29,7 @@ namespace twoDTDS.Game
         {
             plane.Map = new Level(plane);
         }
-         
+
         private void Bt_Restart_Click(object sender, RoutedEventArgs e)
         {
             plane.Map = new Level(plane);

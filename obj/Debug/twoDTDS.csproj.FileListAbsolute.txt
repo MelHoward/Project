@@ -78,3 +78,4 @@ D:\Documents\PROJECT\obj\Debug\twoDTDS.g.resources
 D:\Documents\PROJECT\obj\Debug\twoDTDS.csproj.CoreCompileInputs.cache
 D:\Documents\PROJECT\obj\Debug\twoDTDS.exe
 D:\Documents\PROJECT\obj\Debug\twoDTDS.pdb
+D:\Documents\PROJECT\obj\Debug\twoDTDS_Content.g.cs
