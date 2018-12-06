@@ -26,15 +26,17 @@ namespace twoDTDS.Game
         public ScoreKeep myScore { get; set; }
 
         Engine.Random r = new Engine.Random();
+
         DispatcherTimer bulletCreate,
                         camShake;
-        int cameraShakeCount = 0,
-            rollFrames = 0,
-            invincibilityFrames;
-        double speed = 3, 
-               dyingSize = 40;
-        string uri;
-        bool invincible = false;
+        public int cameraShakeCount = 0,
+                   rollFrames = 0,
+                   invincibilityFrames;
+
+        public double speed = 3, 
+                      dyingSize = 40;
+        public string uri;
+        public bool invincible = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -227,7 +229,6 @@ namespace twoDTDS.Game
                                     Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
                                 };
                             }
-
                             cameraShakeCount = 0;
                             camShake.Start();
                         }

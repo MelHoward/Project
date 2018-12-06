@@ -92,9 +92,8 @@ namespace twoDTDS.Game
         {
             this.X = X;
             this.Y = Y;
-            Width = 15;
-            Height = 15;
-            /*string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";*/
+            Width = 5;
+            Height = 5;
             Sprite = new Rec(Width, Height, Asset.bullet[0]);
         }
 
