@@ -38,8 +38,7 @@ namespace twoDTDS.Game
         public string uri;
         public bool invincible = false;
         public bool roll = false;
-        GameObject iteration;
-        Obstacle Obst;
+     
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -326,11 +325,7 @@ namespace twoDTDS.Game
 
                 Map.AddObject(speed);
             }
-            if (Keyboard.IsKeyDown(Key.D3))
-            {
-                Rock rock = new Rock(Map, 300, 300);
-                Map.AddObject(rock);
-            }
+           
 
         }
 
