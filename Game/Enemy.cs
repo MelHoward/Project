@@ -76,17 +76,18 @@ namespace twoDTDS.Game
             if (spawnNum <= 25)
             {
                 //Top
-                X = 400;
+                X = 360;
+                Y = 10;
             }
             if (spawnNum <= 50 && spawnNum > 25)
             {
                 //Left
-                Y = 300;
+                Y = 250;
             }
             if (spawnNum <= 75 && spawnNum > 50)
             {
                 //Right
-                Y = 300;
+                Y = 250;
                 X = 750;
             }
             if (spawnNum <= 100 && spawnNum > 75)

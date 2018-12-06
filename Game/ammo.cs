@@ -82,6 +82,26 @@ namespace twoDTDS.Game
             {
                 X += 15;
             }
+            if (direction == "upRight")
+            {
+                X += 15;
+                Y -= 15;
+            }
+            if (direction == "upLeft")
+            {
+                X -= 15;
+                Y -= 15;
+            }
+            if (direction == "downLeft")
+            {
+                X -= 15;
+                Y += 15;
+            }
+            if (direction == "downRight")
+            {
+                X += 15;
+                Y += 15;
+            }
 
             if (Y < -100) { ObDied = true; }
         }
