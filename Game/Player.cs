@@ -20,6 +20,8 @@ namespace twoDTDS.Game
         public ScoreKeep myScore { get; set; }
         Engine.Random r = new Engine.Random();
 
+        Rock rock;
+        GameObject iteration;
         DispatcherTimer bulletCreate;
         DispatcherTimer camShake;
         int cameraShakeCount = 0;
@@ -163,13 +165,15 @@ namespace twoDTDS.Game
         /// </summary>
         private void Move()
         {
-            foreach (GameObject obj in Map.Objects)
+            for(int i = 0; i  < Map.Objects.Count; i++)
             {
-                if (!obj.ObDied && obj is Rock)
+                iteration = Map.Objects[i];
+                if (!iteration.ObDied && iteration is Rock)
                 {
-                    if (obj.IsHit(obj))
+                    rock = (Rock)iteration;
+                    if (IsHit(this, rock))
                     {
-                        
+                        rock.CollisionSetBackRight(this);
                     }
                 }
             }
@@ -219,6 +223,22 @@ namespace twoDTDS.Game
                     if (Keyboard.IsKeyDown(Key.Right))
                     {
                         a.direction = "right";
+                    }
+                    if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Up))
+                    {
+                        a.direction = "upLeft";
+                    }
+                    if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Down))
+                    {
+                        a.direction = "downLeft";
+                    }
+                    if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Up))
+                    {
+                        a.direction = "upRight";
+                    }
+                    if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Down))
+                    {
+                        a.direction = "downRight";
                     }
 
                     Map.AddObject(a);

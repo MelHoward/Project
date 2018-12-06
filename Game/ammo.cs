@@ -49,6 +49,10 @@ namespace twoDTDS.Game
             if (direction == "down") { Y += 15; }
             if (direction == "left") { X -= 15; }
             if (direction == "right") { X += 15; }
+            if (direction == "upLeft") { X -= 15; Y -= 15; }
+            if (direction == "upRight") { X += 15; Y -= 15; }
+            if (direction == "downLeft") { X -= 15; Y += 15; }
+            if (direction == "downRight") { X += 15; Y += 15; }
 
             if (Y < -100) { ObDied = true; }
         }
@@ -72,6 +76,10 @@ namespace twoDTDS.Game
         {
             Y += 3;
             CheckOutOfBounds();
+            if(Y > Map.Height)
+            {
+                this.ObDied = true;
+            }
         }
 
     }

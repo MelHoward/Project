@@ -7,7 +7,7 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    public abstract class Obstacle : GameObject
+    public class Obstacle : GameObject
     {
         protected string uri;
 
@@ -16,7 +16,26 @@ namespace twoDTDS.Game
             
         }
 
-        //public abstract bool Collision(GameObject other);
+
+
+        public void CollisionSetBackRight(GameObject other)
+        {
+            double leftX = X - other.Width,
+                   rightX = X - Width,
+                   bottomY = Y - other.Height,
+                   topY = Y + Height;
+
+            if (other.Width + other.X >= rightX)
+            {
+                other.X = rightX - 1;
+            }
+            if (other.Width + Width <= leftX)
+            {
+                other.X = leftX + 1;
+            }
+            
+        }
+       
     }
 
     public class Rock : Obstacle
@@ -31,7 +50,7 @@ namespace twoDTDS.Game
             Sprite = new Rec(Width, Height, Asset.paths[2]);
         }
 
-        public override bool IsHit(GameObject other)
+       /* public override bool IsHit(GameObject other)
         {
             double leftX = X - other.Width,
                    rightX = X + Width,
@@ -43,6 +62,6 @@ namespace twoDTDS.Game
                 return true;
             }
             return false;
-        }
+        }*/
     }
 }

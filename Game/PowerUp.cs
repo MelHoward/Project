@@ -51,6 +51,10 @@ namespace twoDTDS.Game
                             obj.Width = 0;
                             obj.Height = 0;
                             pickedUp = true;
+                            if(player.speed == 5)
+                            {
+                                obj.ObDied = true;
+                            }
                         }
                     }
                 }

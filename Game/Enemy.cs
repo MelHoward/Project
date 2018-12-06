@@ -40,6 +40,8 @@ namespace twoDTDS.Game
         {
             foreach (GameObject obj in Map.Objects)
             {
+                IfEnemyDead();
+
                 if (!obj.ObDied && obj is Playerammo)
                 {
                     if (IsHit(this, obj))
@@ -50,18 +52,8 @@ namespace twoDTDS.Game
                         EnemyHit(this);
                     }
                 }
-                if (HitPoints == 0)
-                {
-                    SpawnPowerUp(Map, player);
-                    this.ObDied = true;
-                    Width = 0;
-                    Height = 0;
-                    if(this is EnemyMoveToRandom)
-                    {
-                        dispense.Stop();
-                    }
-                }
-                if (frames == 30)
+               
+                if (frames == 20)
                 {
                     frames = 0;
                     Sprite = new Rec(Width, Height, uri);
@@ -126,6 +118,21 @@ namespace twoDTDS.Game
             {
                 InvincibilityPowerUp inv = new InvincibilityPowerUp(m, p, X, Y);
                 m.AddObject(inv);
+            }
+        }
+
+        private void IfEnemyDead()
+        {
+            if (HitPoints == 0)
+            {
+                SpawnPowerUp(Map, player);
+                this.ObDied = true;
+                this.Width = 0;
+                this.Height = 0;
+                if (this is EnemyMoveToRandom)
+                {
+                    dispense.Stop();
+                }
             }
         }
     }

@@ -65,6 +65,8 @@ namespace twoDTDS.Engine
                 }
             }
             ProcessPaddingObjects(true);
+
+            GarbageCollection();
         }
 
         /*======================= ProcessPaddingObjects =====================*/
