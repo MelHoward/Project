@@ -122,7 +122,7 @@ namespace twoDTDS.Engine
 
         /*============================= IsHit ===============================*/
 
-        public bool IsHit(GameObject other)
+        public virtual bool IsHit(GameObject other)
         {
             return IsHit(this, other);
         }
