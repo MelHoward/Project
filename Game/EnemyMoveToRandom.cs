@@ -29,6 +29,7 @@ namespace twoDTDS.Game
                 dispense.Tick += delegate
                 {
                     Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y)); 
+                    
                 };
             }
             dispense.Start();

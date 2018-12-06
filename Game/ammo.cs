@@ -115,15 +115,15 @@ namespace twoDTDS.Game
         {
             this.X = X;
             this.Y = Y;
-            Width = 5;
-            Height = 5;
+            Width = 6;
+            Height = 6;
             Sprite = new Rec(Width, Height, Asset.bullet[0]);
         }
 
         public override void OnUpdate()
         {
             Y += 3;
-            CheckOutOfBounds();
+            if(Y > 470 && (X > 500) || (X < 340) ) { ObDied = true; }
         }
 
     }

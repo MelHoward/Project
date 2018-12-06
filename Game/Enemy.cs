@@ -20,6 +20,7 @@ namespace twoDTDS.Game
         protected List<AmmoInGame> bullets = new List<AmmoInGame>();
         protected DispatcherTimer dispense;
         protected Player player;
+        double powerUpSpawnRate;
         protected int HitPoints;
         protected int frames;
         protected string uri;
@@ -43,7 +44,7 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
-            {
+            {   
                 IfEnemyDead();
 
                 if (!obj.ObDied && obj is Playerammo)
@@ -77,7 +78,7 @@ namespace twoDTDS.Game
             {
                 //Top
                 X = 360;
-                Y = 10;
+                Y = 20;
             }
             if (spawnNum <= 50 && spawnNum > 25)
             {
@@ -94,7 +95,7 @@ namespace twoDTDS.Game
             {
                 //Bot
                 Y = 500;
-                X = 400;
+                X = 385;
             }
         }
 
@@ -111,17 +112,31 @@ namespace twoDTDS.Game
 
         private void SpawnPowerUp(Map m, Player p)
         {
-            Engine.Random rand = new Engine.Random();
-            double powerUpSpawnRate = rand.NextDouble(0, 100);
-
             if(powerUpSpawnRate >= 10 && powerUpSpawnRate <= 20)
             {
-                SpeedPowerUp speed = new SpeedPowerUp(m, p, X, Y);
+                SpeedPowerUp speed;
+                if (this is EnemyMoveToRandom)
+                {
+                    speed = new SpeedPowerUp(m, p, X + 30, Y + 30);
+                }
+                else
+                {
+                    speed = new SpeedPowerUp(m, p, X, Y);
+                }
                 m.AddObject(speed);
             }
             if(powerUpSpawnRate <= 5 && powerUpSpawnRate >= 0)
             {
-                InvincibilityPowerUp inv = new InvincibilityPowerUp(m, p, X, Y);
+                InvincibilityPowerUp inv;
+                if (this is EnemyMoveToRandom)
+                {
+                   inv = new InvincibilityPowerUp(m, p, X + 30, Y + 30);
+                }
+                else
+                {
+                    inv = new InvincibilityPowerUp(m, p, X, Y);
+                }
+                
                 m.AddObject(inv);
             }
         }
@@ -130,6 +145,8 @@ namespace twoDTDS.Game
         {
             if (HitPoints == 0)
             {
+                rand = new Engine.Random();
+                powerUpSpawnRate = rand.NextDouble(0, 200);
                 SpawnPowerUp(Map, player);
                 this.ObDied = true;
                 this.Width = 0;

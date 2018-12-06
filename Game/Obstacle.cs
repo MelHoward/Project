@@ -7,15 +7,15 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-    public class Obstacle : GameObject
+    /*public class Obstacle : GameObject
     {
-        protected string uri;
+        //protected string uri;
 
         public Obstacle(Map m) : base(m)
         {
             
         }
-
+        /*
         bool hit = false;
         bool leftOrRight = false;
         bool sideHit = false;
@@ -88,31 +88,85 @@ namespace twoDTDS.Game
             }
             
         }
-    }
+    }*/
 
-    public class Wall : Obstacle
+    public class Wall : GameObject
     {
-        public Wall(Map m, double X, double Y) : base(m)
+        public double leftWall = 31;
+        public double rightWall = 770;
+        public double topWall = 70;
+        public double botWall = 470;
+
+        public Wall(Map m, double X, double Y, double Height, double Width) : base(m)
         {
             this.X = X;
+            this.Height = Height;
             this.Y = Y;
-            Height = 50;
-            Width = 50;
-            
+            this.Width = Width;
         }
 
-       /* public override bool IsHit(GameObject other)
+        public void HitLeftWall(GameObject other)
         {
-            double leftX = X - other.Width,
-                   rightX = X + Width,
-                   bottomY = Y - other.Height,
-                   topY = Y + Height;
+            double playerLeft = other.X - Width;
 
-            if (other.X - 3 == rightX || other.X + 3 == leftX || other.Y - 3 == bottomY || other.Y + 3 == topY)
+            if (playerLeft < X)
             {
-                return true;
+                other.X = X + 1;
             }
-            return false;
-        }*/
+        }
+
+        public void HitRightWall(GameObject other)
+        {
+            double playerRight = other.X + other.Width;
+
+            if (playerRight >= X)
+            {
+                other.X = X - other.Width;
+            }
+        }
+
+        public void HitTopWall(GameObject other)
+        {
+            double playerTop = other.Y - other.Height;
+
+            if (playerTop <= topWall)
+            {
+                other.Y = topWall + 1;
+            }
+        }
+
+        public void HitBotWall(GameObject other)
+        {
+            double playerBot = other.Y + other.Height;
+
+            if(playerBot >= botWall)
+            {
+                other.Y = botWall - other.Height - 1;
+            }
+        }
+
+        public void RightTunnel(GameObject other)
+        {
+            double playerRight = other.X + other.Width;
+            double playerTop = other.Y - other.Height;
+            double playerBot = other.Y;
+
+            if (playerRight >= rightWall && (playerTop > 200 && playerBot < 270))
+            {
+                other.X = rightWall - playerRight + other.Width;
+            }
+        }
+        public void LeftTunnel(GameObject other)
+        {
+            double playerRight = other.X + other.Width;
+            double playerTop = other.Y - other.Height;
+            double playerBot = other.Y;
+            double playerLeft = other.X - Width;
+
+            if (playerLeft <= leftWall && (playerTop > 200 && playerBot < 270))
+            {
+                other.X = 700;
+            }
+        }
     }
 }

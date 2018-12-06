@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -38,7 +39,9 @@ namespace twoDTDS.Game
         public string uri;
         public bool invincible = false;
         public bool roll = false;
-     
+        GameObject iteration;
+        List<Wall> mapWalls = new List<Wall>();
+        bool wallsCreated = false;
 
         /*============================= Player >> CTOR ===========================*/
         public Player(Map map) : base(map)
@@ -84,6 +87,15 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
+                if(wallsCreated == false)
+                {
+                    Walls();
+                }
+                else
+                {
+                    CheckWalls();
+                }
+
                 Move();
 
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) ||
@@ -183,19 +195,7 @@ namespace twoDTDS.Game
         /// </summary>
         private void Move()
         {
-            for (int i = 0; i < Map.Objects.Count; i++)
-            {
-                iteration = Map.Objects[i];
-                if (!iteration.ObDied && iteration is Obstacle)
-                {
-                    Obst = (Obstacle)iteration;
-                    if (IsHit(this, Obst))
-                    {
-                        Obst.CollisionSetBack(this);
-                        Obst.checkTopBot(this);
-                    }
-                }
-            }
+            
             if (Keyboard.IsKeyDown(Key.A))
             {
                 uri = Asset.hero[3];
@@ -314,6 +314,68 @@ namespace twoDTDS.Game
                     }
                 }
             }
+        }
+
+        public void Walls()
+        {
+            double sideHeight = 600;
+            double sideWidth = 1;
+            double horizontalHeight = 1;
+            double horizontalWidth = 800;
+            //Left
+            mapWalls.Add(new Wall(Map, 30, 0, sideHeight, sideWidth));
+            //Right
+            mapWalls.Add(new Wall(Map, mapWalls[0].rightWall, 0, sideHeight, sideWidth));
+            //Top
+            mapWalls.Add(new Wall(Map, 0, mapWalls[0].topWall, horizontalHeight, horizontalWidth));
+            //Bottom Left
+            mapWalls.Add(new Wall(Map, 32, mapWalls[0].botWall, horizontalHeight, 320));
+            //Bottom Right
+            mapWalls.Add(new Wall(Map, 505, mapWalls[0].botWall, horizontalHeight, 270));
+            //Entracne Left
+            mapWalls.Add(new Wall(Map, 360, 465, 200, sideWidth));
+            //Entrance Right
+            mapWalls.Add(new Wall(Map, 500, 465, 200, sideWidth));
+
+            for (int i = 0; i < mapWalls.Count; i++)
+            {
+                Map.AddObject(mapWalls[i]);
+            }
+            wallsCreated = true;
+        }
+
+        public void CheckWalls()
+        {
+            if(IsHit(this, mapWalls[0]))
+            {
+                mapWalls[0].HitLeftWall(this);
+                mapWalls[0].LeftTunnel(this);
+            }
+            if(IsHit(this, mapWalls[1]))
+            {
+                mapWalls[1].HitRightWall(this);
+                mapWalls[1].RightTunnel(this);
+            }
+            if(IsHit(this, mapWalls[2]))
+            {
+                mapWalls[2].HitTopWall(this);
+            }
+            if(IsHit(this, mapWalls[3]) || IsHit(this, mapWalls[4]))
+            {
+                mapWalls[3].HitBotWall(this);
+            }
+            if(IsHit(this, mapWalls[5]))
+            {
+                mapWalls[5].HitLeftWall(this);
+            }
+            if(IsHit(this, mapWalls[6]))
+            {
+                mapWalls[6].HitRightWall(this);
+            }
+
+            
+
+            
         }
 
         public void CheckPowerUp()
