@@ -1,16 +1,21 @@
 ﻿
 using twoDTDS.Engine;
+/*
+        Table of Contents
+   ----------------------------------------------------
+     * *Ammo (in twoDTDS.Game)
+           + Ammo(Map m)
+           + OnUpdate():void
 
-/* *Ammo (in twoDTDS.Game)
-        + Ammo(Map m)
-        + OnUpdate():void
    * Playerammo (in twoDTDS.Game)
-        + Playerammo(Map m, double X, double Y)
-        + OnUpdate():void
+           + Playerammo(Map m, double X, double Y)
+           + OnUpdate():void
+
    * TempEnemyammo (in twoDTDS.Game)
-        + TempEnemyammo(Map m, double X, double Y)
-        + OnUpdate():void
+            + TempEnemyammo(Map m, double X, double Y)
+            + OnUpdate():void
 */
+
 namespace twoDTDS.Game
 {
     /*---------------------------------------------------------------------------------------
