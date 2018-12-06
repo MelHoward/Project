@@ -39,7 +39,6 @@ namespace twoDTDS.Game
             {
                 spawnRate = 3;
             }
-
             if (EnemiesSpawned > 10 && EnemiesSpawned < 25)
             {
                 spawnRate = 2;

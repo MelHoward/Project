@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 using twoDTDS.Engine;
 
 
@@ -19,9 +10,12 @@ namespace twoDTDS.Game
 {
     public partial class InGamePlane : UserControl, IPlayAreaControl
     {
+        MediaPlayer player = new MediaPlayer( );
         public InGamePlane()
         {
             InitializeComponent();
+            PlaybackMusic();
+          
             Loaded += InGamePlane_Loaded;
         }
 
@@ -43,6 +37,23 @@ namespace twoDTDS.Game
         public void SettransformOrigin(Point pt)
         {
             RenderTransformOrigin = pt;
+        }
+        public void PlaybackMusic ()
+        {
+            if( player != null )
+            {
+                player.Open(new Uri(SoundAssets.sound[0]));
+                player.MediaEnded += new EventHandler(Media_Ended);
+                player.Play( );
+
+                return;
+            }
+        }
+
+        private void Media_Ended (object sender, EventArgs e)
+        {
+            player.Position = TimeSpan.Zero;
+            player.Play( );
         }
     }
 }

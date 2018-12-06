@@ -11,6 +11,7 @@ namespace twoDTDS.Engine
     public class PlayArea : FrameworkElement
     {
         private VisualCollection canvas;
+
         private Map map;
         public IPlayAreaControl PlaneControl { get; set; }
 
@@ -73,12 +74,16 @@ namespace twoDTDS.Engine
         }
 
         /*============================= RenderCompT =========================*/
-        private void RenderCompT(object sender, EventArgs e){ Render(); }
+        private void RenderCompT(object sender, EventArgs e)
+        {
+            Render();
+        }
 
         /*============================= Render ==============================*/
         private void Render()
         {
-            if (map != null)
+
+            if( map != null)
             {
                 map.OnUpdate();
                 DrawingVisual view = new DrawingVisual();

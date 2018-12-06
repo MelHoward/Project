@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -25,8 +27,8 @@ namespace twoDTDS.Game
     public class Player : GameObject
     {
         public ScoreKeep myScore { get; set; }
-
-        Engine.Random r = new Engine.Random();
+        private MediaPlayer media = new MediaPlayer();
+         Engine.Random r = new Engine.Random();
 
         DispatcherTimer bulletCreate,
                         camShake;
@@ -39,7 +41,7 @@ namespace twoDTDS.Game
         public string uri;
         public bool invincible = false;
         public bool roll = false;
-        GameObject iteration;
+       // GameObject iteration;
         List<Wall> mapWalls = new List<Wall>();
         bool wallsCreated = false;
 
@@ -87,15 +89,8 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
-                if(wallsCreated == false)
-                {
-                    Walls();
-                }
-                else
-                {
-                    CheckWalls();
-                }
-
+                if(wallsCreated == false) {  Walls();  }
+                else {  CheckWalls();  }
                 Move();
 
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) ||
@@ -153,7 +148,6 @@ namespace twoDTDS.Game
                 Sprite = new Rec(Width, Height, uri);
                 rollFrames = -25;
             }
-
             rollFrames++;
         }
 
@@ -180,9 +174,8 @@ namespace twoDTDS.Game
                 }
             }
         }
-        /// <summary>
-        /// Lets you move using WASD
-        /// </summary>
+
+
         private void Move()
         {
             
@@ -212,9 +205,7 @@ namespace twoDTDS.Game
             }
 
         }
-        /// <summary>
-        /// Lets you shoot using the arrow keys
-        /// </summary>
+        
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -263,9 +254,8 @@ namespace twoDTDS.Game
             };
             bulletCreate.Start();
         }
-        /// <summary>
-        /// Detects when you get hit and shakes "camera" when you do
-        /// </summary>
+      
+
         private void IsPlayerHit()
         {
             foreach (GameObject obj in Map.Objects)
@@ -277,15 +267,16 @@ namespace twoDTDS.Game
                         if (invincible == false)
                         {
                             invincibilityFrames = 50;
-
                             myScore.PlayerHit(10);
-
                             if (camShake == null)
                             {
                                 camShake = new DispatcherTimer();
                                 camShake.Interval = TimeSpan.FromMilliseconds(25);
+                      
                                 camShake.Tick += delegate
                                 {
+                                    media.Open(new Uri(SoundAssets.sound[2]));
+                                    media.Play();
                                     cameraShakeCount++;
                                     if (cameraShakeCount > 7)
                                     {

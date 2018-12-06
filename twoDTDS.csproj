@@ -97,6 +97,7 @@
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\PlayArea.cs" />
     <Compile Include="Engine\Random.cs" />
+    <Compile Include="Engine\SoundAssets.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
@@ -187,6 +188,13 @@
   <ItemGroup>
     <Resource Include="Environnment\pwatch.png" />
     <Resource Include="Environnment\rubis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\ancient_path.mp3" />
+    <Content Include="Sounds\enemy-death.mp3" />
+    <Content Include="Sounds\hurt.mp3" />
+    <Content Include="Sounds\item.mp3" />
+    <Content Include="Sounds\slash.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -94,3 +94,4 @@ D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Debug\Game\InGamePlane.baml
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Debug\MainWindow.baml
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Debug\twoDTDS.g.resources
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Debug\twoDTDS.csproj.CoreCompileInputs.cache
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Debug\twoDTDS_Content.g.cs
