@@ -10,6 +10,10 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+
+/*---------------------------------------------------------------------------------------
+                                    ENEMY : GAMEOBJECT 
+---------------------------------------------------------------------------------------*/
     public class Enemy : GameObject
     {
         protected Engine.Random rand = new Engine.Random();
@@ -26,7 +30,7 @@ namespace twoDTDS.Game
             Width = 80;
             Height = 48;
             HitPoints = 4;
-            uri = Asset.paths[1];
+            uri = Asset.enemy[0];
             Sprite = new Rec(Width, Height, uri);
             Spawner();
 

@@ -1,14 +1,19 @@
-﻿using System;
-using System.IO;
-
+﻿using System.IO;
 
 namespace twoDTDS.Engine
 {
+    /*---------------------------------------------------------------------------------------
+                                         ASSET 
+    ---------------------------------------------------------------------------------------*/
     public static class Asset
     {
-        private static string Cd = Directory.GetCurrentDirectory();
-        private static string[] Paths = Directory.GetFiles(Cd, "*.png", SearchOption.AllDirectories);
+        public static string CD = Directory.GetCurrentDirectory();
+        private static string[] Hero = Directory.GetFiles(CD + "/Hero", "*.png");
+        private static string[] Bullet = Directory.GetFiles(CD + "/Bullet", "*.png", SearchOption.AllDirectories);
+        private static string[] Enemy = Directory.GetFiles(CD + "/Enemy", "*.png", SearchOption.AllDirectories);
 
-        public static string[] paths { get => Paths; set => Paths = value; }
+        public static string[] hero  { get => Hero; set => Hero = value; }
+        public static string[] bullet { get => Bullet; set => Bullet = value; }
+        public static string[] enemy { get => Enemy; set => Enemy = value; }
     }
 }
