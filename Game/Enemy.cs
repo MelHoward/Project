@@ -10,6 +10,10 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+
+/*---------------------------------------------------------------------------------------
+                                    ENEMY : GAMEOBJECT 
+---------------------------------------------------------------------------------------*/
     public class Enemy : GameObject
     {
         protected Engine.Random rand = new Engine.Random();

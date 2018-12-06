@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Globalization;
 /*
 TABLE OF CONTENTS
-	* Global
+	* Map
 		+ abstract 
 		
 */

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+        
 namespace twoDTDS.Engine
 {
+
+    /*---------------------------------------------------------------------------------------
+                                         RANDOM 
+    ---------------------------------------------------------------------------------------*/
     public class Random
     {
         System.Random rand = new System.Random((int)DateTime.UtcNow.TimeOfDay.TotalMilliseconds);

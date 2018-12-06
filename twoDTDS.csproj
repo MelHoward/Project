@@ -102,8 +102,10 @@
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
     <Compile Include="Game\CNormBullet.cs" />
+    <Compile Include="Game\EnemyGenerator.cs" />
     <Compile Include="Game\EnemyMoveToPlayer.cs" />
     <Compile Include="Game\EnemyMoveToRandom.cs" />
+    <Compile Include="Game\InvincibilityPowerUp.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Obstacle.cs" />
     <Compile Include="Game\Player.cs" />
@@ -114,6 +116,7 @@
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Enemy.cs" />
+    <Compile Include="Game\SpeedPowerUp.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -156,8 +159,8 @@
   <ItemGroup>
     <Resource Include="Assets\Enemy\1.png" />
     <Resource Include="Assets\Hero\front.png" />
-    <Resource Include="Assets\Hero\3.png" />
-    <Resource Include="Assets\Hero\4.png" />
+    <Resource Include="Assets\Hero\left.png" />
+    <Resource Include="Assets\Hero\right.png" />
     <Resource Include="Assets\Hero\back.png" />
   </ItemGroup>
   <ItemGroup>

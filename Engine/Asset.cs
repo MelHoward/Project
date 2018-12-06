@@ -4,6 +4,10 @@ using System.IO;
 
 namespace twoDTDS.Engine
 {
+
+    /*---------------------------------------------------------------------------------------
+                                         ASSET 
+    ---------------------------------------------------------------------------------------*/
     public static class Asset
     {
         private static string[] Hero = Directory.GetFiles(@".\Assets\Hero", "*.png", SearchOption.AllDirectories);

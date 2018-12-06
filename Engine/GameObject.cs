@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -10,9 +6,9 @@ using System.Windows.Media.Animation;
 namespace twoDTDS.Engine
 {
 
-/*---------------------------------------------------------------------------------------
-                                DEFAULT -> STATIC
----------------------------------------------------------------------------------------*/
+    /*---------------------------------------------------------------------------------------
+                                    DEFAULT -> STATIC
+    ---------------------------------------------------------------------------------------*/
     public static class Default
     {
         public static Typeface Typeface = new Typeface("ComicSans");
@@ -20,9 +16,9 @@ namespace twoDTDS.Engine
     }
 
 
-    /*---------------------------------------------------------------------------------------
-                             << GAMEOBJECT >> : DEPENDENCYPROPERTY 
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                         << GAMEOBJECT >> : DEPENDENCYPROPERTY 
+---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
         public static DependencyProperty XProperty = 

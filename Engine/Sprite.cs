@@ -1,16 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Drawing;
 using System.Windows;
+
+/** Sprite (in twoDTDS.Engine)
+        + Render(GameObject Parent, DrawingContext dc):void
+  * Rec (in twoDTDS.Engine)
+        + Rec(double width, double height, string uri)
+        + Render(GameObject Parent, DrawingContext dc):void
+  * Circle (in twoDTDS.Engine)
+        + Circle(SolidColorBrush solColBrush)
+        + Circle(Brush brush, double radius)
+        + Render(GameObject Parent, DrawingContext dc):void */
 
 namespace twoDTDS.Engine
 {
-
 /*---------------------------------------------------------------------------------------
                                        << Sprite >>
 ---------------------------------------------------------------------------------------*/
@@ -49,9 +53,9 @@ namespace twoDTDS.Engine
     }
 
 
-    /*---------------------------------------------------------------------------------------
-                                  CIRCLE : Sprite
-    ---------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------
+                              CIRCLE : Sprite
+---------------------------------------------------------------------------------------*/
     public class Circle : Sprite
     {
         double radius = 5;

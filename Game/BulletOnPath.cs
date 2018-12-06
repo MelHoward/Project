@@ -17,7 +17,6 @@ namespace twoDTDS.Game
         double yVec = 0;
         double speed = 2.5;
 
-
         /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
                             double x, double y) : base(map)

@@ -7,6 +7,10 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+
+/*---------------------------------------------------------------------------------------
+                                OBSTACLE : GAMEOBJECT
+---------------------------------------------------------------------------------------*/
     public abstract class Obstacle : GameObject
     {
         protected string uri;
