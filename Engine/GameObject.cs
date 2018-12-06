@@ -15,7 +15,6 @@ namespace twoDTDS.Engine
         public static Random Random = new Random();
     }
 
-
 /*---------------------------------------------------------------------------------------
                          << GAMEOBJECT >> : DEPENDENCYPROPERTY 
 ---------------------------------------------------------------------------------------*/
@@ -63,8 +62,7 @@ namespace twoDTDS.Engine
         /*=========================== <<OnRender>> ==========================*/
         public virtual void OnRender(DrawingContext dc)
         {
-            if (Sprite != null)
-                Sprite.Render(this, dc);
+            if (Sprite != null) Sprite?.Render(this, dc);
         }
 
         /*========================== MoveToStoryboard =======================*/
