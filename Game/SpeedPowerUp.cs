@@ -16,7 +16,7 @@ namespace twoDTDS.Game
             this.Y = Y;
             Width = 40;
             Height = 40;
-            string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            string uri = Asset.env[1];
             Sprite = new Rec(Width, Height, uri);
             pickedUp = false;
         }

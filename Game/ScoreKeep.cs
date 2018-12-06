@@ -13,7 +13,7 @@ namespace twoDTDS.Game
     public class ScoreKeep
     {
         public static int Norm { get; set; } = 1;
-        public static int Guid { get; set; } = 5;
+        public static int Guide { get; set; } = 5;
 
         public int MaxHP { get; set; } = 250;
         public int HP { get; set; } = 250;

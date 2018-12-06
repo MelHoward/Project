@@ -131,7 +131,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -184,6 +183,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Hero\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Environnment\pwatch.png" />
+    <Resource Include="Environnment\rubis.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -180,7 +180,6 @@ namespace twoDTDS.Game
                     {
                         a.direction = "right";
                     }
-
                     Map.AddObject(a);
                 };
             }
@@ -236,7 +235,6 @@ namespace twoDTDS.Game
                 }
             }
         }
-
 
         /*================================== CheckPowerUp =============================*/
         public void CheckPowerUp()

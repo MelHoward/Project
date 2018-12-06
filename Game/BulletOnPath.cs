@@ -19,10 +19,10 @@ namespace twoDTDS.Game
 
         /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
-                            double x, double y) : base(map)
+                                               double x, double y) : base(map)
         {
             this.target = target;
-            Damage = ScoreKeep.Guid;
+            Damage = ScoreKeep.Guide;
 
             X = parent.X + parent.Width / 2;
             Y = parent.Y + parent.Height / 2;
@@ -30,10 +30,9 @@ namespace twoDTDS.Game
             Width = 6;
             Height = 6;
 
-            Sprite = new Circle(new SolidColorBrush(Color.FromRgb(100, 190, 255)), 3);
+            Sprite = new Circle(new SolidColorBrush(Color.FromRgb(120, 190, 255)), 3);
             angle = GetAngleToTarget(target);
             SetAngle(angle + angleOffset);
-
             DispatcherTimer t = new DispatcherTimer();
             t.Interval = TimeSpan.FromSeconds(2.5);
 
@@ -58,7 +57,6 @@ namespace twoDTDS.Game
                 angle = 180 + angle; 
             else if (xx > 0 && yy < 0)
                 angle = 360 - angle; 
-
             return angle;
         }
 
@@ -77,10 +75,8 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             double tAngle = GetAngleToTarget(target);
-
             angle = angle + (tAngle - angle) / 120;
             speed += 0.07;
-
             SetAngle(angle + angleOffset);
 
             X += xVec;
