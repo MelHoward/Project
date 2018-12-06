@@ -23,7 +23,7 @@ namespace twoDTDS.Game
         {
             plane.Map = new Level(plane);
         }
-         
+
         private void Bt_Restart_Click(object sender, RoutedEventArgs e)
         {
             plane.Map = new Level(plane);

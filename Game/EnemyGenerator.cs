@@ -31,7 +31,6 @@ namespace twoDTDS.Game
             };
             timer.Start();
         }
-
         /*==================== SetSpawnRate =======================*/
         private void SetSpawnRate()
         {
