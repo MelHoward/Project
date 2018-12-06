@@ -59,7 +59,6 @@ namespace twoDTDS.Game
                     t.Stop();
                     return;
                 }
-
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();
@@ -70,7 +69,6 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
-
                 Move();
 
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Down) ||
@@ -95,17 +93,13 @@ namespace twoDTDS.Game
                 {
                     Roll();
                 }
-
                 RollReset();
 
                 CheckPowerUp();
-
             }
         }
 
-        /// <summary>
-        /// Makes it to where you are invincible
-        /// </summary>
+        /*================================== Roll =============================*/
         private void Roll()
         {
             if (rollFrames < 50 && rollFrames > 0)
@@ -114,15 +108,12 @@ namespace twoDTDS.Game
                 {
                     rollFrames = 0;
                 }
-
                 invincible = true;
                 Sprite = new Rec(30, 35, uri);
             }
         }
 
-        /// <summary>
-        /// Makes you not invincible after a short time
-        /// </summary>
+        /*================================== RollReset =============================*/
         private void RollReset()
         {
             if (rollFrames == 50)
@@ -131,25 +122,12 @@ namespace twoDTDS.Game
                 Sprite = new Rec(40, 45, uri);
                 rollFrames = -25;
             }
-
             rollFrames++;
         }
 
-        /// <summary>
-        /// Lets you move using WASD
-        /// </summary>
+        /*================================== Move =============================*/
         private void Move()
         {
-            //foreach (GameObject obj in Map.Objects)
-            //{
-            //    if (!obj.ObDied && obj is Rock)
-            //    {
-            //        if (obj.IsHit(obj))
-            //        {
-
-            //        }
-            //    }
-            //}
             if (Keyboard.IsKeyDown(Key.A))
             {
                 X -= speed;
@@ -158,7 +136,6 @@ namespace twoDTDS.Game
             {
                 X += speed;
             }
-
             if (Keyboard.IsKeyDown(Key.W))
             {
                 Y -= speed;
@@ -170,9 +147,7 @@ namespace twoDTDS.Game
 
         }
 
-        /// <summary>
-        /// Lets you shoot using the arrow keys
-        /// </summary>
+        /*================================== Shoot =============================*/
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -187,17 +162,14 @@ namespace twoDTDS.Game
                     {
                         a.direction = "up";
                     }
-
                     if (Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "down";
                     }
-
                     if (Keyboard.IsKeyDown(Key.Left))
                     {
                         a.direction = "left";
                     }
-
                     if (Keyboard.IsKeyDown(Key.Right))
                     {
                         a.direction = "right";
@@ -211,9 +183,7 @@ namespace twoDTDS.Game
             bulletCreate.Start();
         }
 
-        /// <summary>
-        /// Detects when you get hit and shakes "camera" when you do
-        /// </summary>
+        /*================================== IsPlayerHit =============================*/
         private void IsPlayerHit()
         {
             foreach (GameObject obj in Map.Objects)
@@ -265,14 +235,12 @@ namespace twoDTDS.Game
                 }
             }
         }
-
+        /*================================== CheckPowerUp =============================*/
         public void CheckPowerUp()
         {
             InvincibilityPowerUp speed = new InvincibilityPowerUp(Map, this, X + 100, Y - 100);
             if (Keyboard.IsKeyDown(Key.Space))
             {
-
-
                 Map.AddObject(speed);
             }
             //if(Keyboard.IsKeyDown(Key.D3))
@@ -280,7 +248,6 @@ namespace twoDTDS.Game
             //  //  Rock rock = new Rock(Map, 300, 300);
             //    Map.AddObject(rock);
             //}
-
         }
 
         /*================================== OnRender =============================*/
@@ -294,7 +261,7 @@ namespace twoDTDS.Game
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
                     dyingSize, HorizontalAlignment.Center,
-                    System.Windows.VerticalAlignment.Center);
+                    VerticalAlignment.Center);
             }
         }
     }

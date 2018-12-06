@@ -10,8 +10,7 @@
     <Grid Margin="120,10,100,10">
 
         <Grid.Background>
-
-            <ImageBrush x:Name="stage" ImageSource="..\Assets\Dungeon.png" />
+            <ImageBrush x:Name="stage" ImageSource="..\Environnment\dungeon.png" />
     </Grid.Background>
     <engine:PlayArea x:Name="plane" Margin="0" />
     <Button x:Name="Bt_Restart" Content="Restart" 

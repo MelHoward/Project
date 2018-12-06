@@ -153,27 +153,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Stage.png" />
-    <Resource Include="Assets\The End.png" />
+    <Resource Include="Bullet\enemybullet.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Enemy\1.png" />
-    <Resource Include="Assets\Hero\front.png" />
-    <Resource Include="Assets\Hero\left.png" />
-    <Resource Include="Assets\Hero\right.png" />
-    <Resource Include="Assets\Hero\back.png" />
+    <Resource Include="Bullet\herobullet.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\dungeon.png" />
+    <Resource Include="Enemy\1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Bullet\herobullet.png" />
+    <Resource Include="Environnment\dungeon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Bullet\enemybullet.png" />
+    <Resource Include="Environnment\Stage.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Hero\example.png" />
+    <Resource Include="Environnment\The End.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\example.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
