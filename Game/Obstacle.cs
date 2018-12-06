@@ -16,26 +16,78 @@ namespace twoDTDS.Game
             
         }
 
+        bool hit = false;
+        bool leftOrRight = false;
+        bool sideHit = false;
+        bool botTopHit = false;
 
 
-        public void CollisionSetBackRight(GameObject other)
+        public void CollisionSetBack(GameObject other)
         {
-            double leftX = X - other.Width,
-                   rightX = X - Width,
+            double leftX = X - Width,
+                   rightX = X + Width + 1,
+                   bottomY = Y - other.Height,
+                   topY = Y + Height;
+            
+
+            if (other.X - Width < X && other.X < X)
+            {
+                other.X = other.X - 1;
+                hit = true;
+                leftOrRight = false;
+                sideHit = true;
+                
+            }
+            if (other.X + Width > X && other.X > X)
+            {
+                other.X = other.X + 1;
+                hit = true;
+                leftOrRight = true;
+                hit = false;
+               
+            }
+            
+     
+        }
+       
+        public void checkTopBot(GameObject other)
+            {
+
+            double leftX = X - Width,
+                   rightX = X + Width + 1,
                    bottomY = Y - other.Height,
                    topY = Y + Height;
 
-            if (other.Width + other.X >= rightX)
+            if (Y > other.Height + Height && (other.Y > Y &&  other.Y - other.Height  > Y - other.Height))
             {
-                other.X = rightX - 1;
+                other.Y = other.Y + 1;
+                hit = true;
+                if (other.X < X && (other.Y + other.Height < Y - other.Height && other.Y - Height > Y + Height))
+                {
+                    other.X += 1;
+                }
+                else if(other.X > X && (other.Y + other.Height < Y - other.Height && other.Y - Height > Y + Height))
+                    {
+                    other.X -= 1;
+                }
             }
-            if (other.Width + Width <= leftX)
+            if (other.Y - other.Height > Height && Y > other.Y - other.Height && other.Y + other.Height > Y - Height)
             {
-                other.X = leftX + 1;
+                other.Y = other.Y - 1;
+                hit = true;
+
+
+                if (other.X < X && (other.Y + other.Height < Y - other.Height && other.Y - Height > Y + Height))
+                {
+                    other.X += 1;
+                }
+                else if(other.X > X && (other.Y + other.Height < Y - other.Height && other.Y - Height > Y + Height))
+                {
+                    other.X -= 1;
+                }
             }
             
         }
-       
     }
 
     public class Rock : Obstacle

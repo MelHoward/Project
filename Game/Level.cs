@@ -14,7 +14,7 @@ namespace twoDTDS.Game
     public class EnemyGenerator : GameObject
     {
         public int EnemiesSpawned = 0;
-        public int EnemyCap = 50;
+        public int EnemyCap = 1;
         private double spawnRate = 3;
         /*==================== EnemyGenerator >> CTOR =======================*/
         public EnemyGenerator(Map m, Player p) : base(m)

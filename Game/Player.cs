@@ -173,7 +173,8 @@ namespace twoDTDS.Game
                     rock = (Rock)iteration;
                     if (IsHit(this, rock))
                     {
-                        rock.CollisionSetBackRight(this);
+                        rock.CollisionSetBack(this);
+                        rock.checkTopBot(this);
                     }
                 }
             }
