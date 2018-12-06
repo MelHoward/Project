@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/stage2.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("environnment/pwatch.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("environnment/rubis.png")]
 
 

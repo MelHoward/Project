@@ -21,12 +21,10 @@ namespace twoDTDS.Game
         /*=============================== Ammo >> CTOR ======================*/
         public Ammo(Map m) : base(m)
         {
-            this.X = X;
-            this.Y = Y;
+            X = X;
+            Y = Y;
             Width = 3;
             Height = 15;
-     
-            //Sprite = new Rec(Width, Height);
         }
 
         /*=============================== OnUpdate ==========================*/
