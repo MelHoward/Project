@@ -10,12 +10,17 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+
+/*---------------------------------------------------------------------------------------
+                                    ENEMY : GAMEOBJECT 
+---------------------------------------------------------------------------------------*/
     public class Enemy : GameObject
     {
         protected Engine.Random rand = new Engine.Random();
         protected List<AmmoInGame> bullets = new List<AmmoInGame>();
         protected DispatcherTimer dispense;
         protected Player player;
+        double powerUpSpawnRate;
         protected int HitPoints;
         protected int frames;
         protected string uri;
@@ -26,7 +31,7 @@ namespace twoDTDS.Game
             Width = 80;
             Height = 48;
             HitPoints = 4;
-            uri = Asset.paths[1];
+            uri = Asset.enemy[0];
             Sprite = new Rec(Width, Height, uri);
             Spawner();
 
@@ -39,7 +44,9 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
-            {
+            {   
+                IfEnemyDead();
+
                 if (!obj.ObDied && obj is Playerammo)
                 {
                     if (IsHit(this, obj))
@@ -50,18 +57,8 @@ namespace twoDTDS.Game
                         EnemyHit(this);
                     }
                 }
-                if (HitPoints == 0)
-                {
-                    SpawnPowerUp(Map, player);
-                    this.ObDied = true;
-                    Width = 0;
-                    Height = 0;
-                    if(this is EnemyMoveToRandom)
-                    {
-                        dispense.Stop();
-                    }
-                }
-                if (frames == 30)
+               
+                if (frames == 20)
                 {
                     frames = 0;
                     Sprite = new Rec(Width, Height, uri);
@@ -80,24 +77,25 @@ namespace twoDTDS.Game
             if (spawnNum <= 25)
             {
                 //Top
-                X = 400;
+                X = 360;
+                Y = 20;
             }
             if (spawnNum <= 50 && spawnNum > 25)
             {
                 //Left
-                Y = 300;
+                Y = 250;
             }
             if (spawnNum <= 75 && spawnNum > 50)
             {
                 //Right
-                Y = 300;
+                Y = 250;
                 X = 750;
             }
             if (spawnNum <= 100 && spawnNum > 75)
             {
                 //Bot
                 Y = 500;
-                X = 400;
+                X = 385;
             }
         }
 
@@ -114,18 +112,49 @@ namespace twoDTDS.Game
 
         private void SpawnPowerUp(Map m, Player p)
         {
-            Engine.Random rand = new Engine.Random();
-            double powerUpSpawnRate = rand.NextDouble(0, 100);
-
             if(powerUpSpawnRate >= 10 && powerUpSpawnRate <= 20)
             {
-                SpeedPowerUp speed = new SpeedPowerUp(m, p, X, Y);
+                SpeedPowerUp speed;
+                if (this is EnemyMoveToRandom)
+                {
+                    speed = new SpeedPowerUp(m, p, X + 30, Y + 30);
+                }
+                else
+                {
+                    speed = new SpeedPowerUp(m, p, X, Y);
+                }
                 m.AddObject(speed);
             }
             if(powerUpSpawnRate <= 5 && powerUpSpawnRate >= 0)
             {
-                InvincibilityPowerUp inv = new InvincibilityPowerUp(m, p, X, Y);
+                InvincibilityPowerUp inv;
+                if (this is EnemyMoveToRandom)
+                {
+                   inv = new InvincibilityPowerUp(m, p, X + 30, Y + 30);
+                }
+                else
+                {
+                    inv = new InvincibilityPowerUp(m, p, X, Y);
+                }
+                
                 m.AddObject(inv);
+            }
+        }
+
+        private void IfEnemyDead()
+        {
+            if (HitPoints == 0)
+            {
+                rand = new Engine.Random();
+                powerUpSpawnRate = rand.NextDouble(0, 200);
+                SpawnPowerUp(Map, player);
+                this.ObDied = true;
+                this.Width = 0;
+                this.Height = 0;
+                if (this is EnemyMoveToRandom)
+                {
+                    dispense.Stop();
+                }
             }
         }
     }

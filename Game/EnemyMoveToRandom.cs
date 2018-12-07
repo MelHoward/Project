@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 using twoDTDS.Engine;
 
@@ -16,7 +12,7 @@ namespace twoDTDS.Game
             Width = 50;
             Height = 48;
             HitPoints = 2;
-            uri = Asset.paths[1];
+            uri = Asset.enemy[0];
             Sprite = new Rec(Width, Height, uri);
             Spawner();
 
@@ -28,7 +24,7 @@ namespace twoDTDS.Game
                 dispense.Interval = TimeSpan.FromMilliseconds(400);
                 dispense.Tick += delegate
                 {
-                    Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y));
+                    Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y));     
                 };
             }
             dispense.Start();
@@ -44,7 +40,6 @@ namespace twoDTDS.Game
                 double x = rand.NextDouble(10, Map.Width - 10 - 80);
                 double duration = Math.Abs(x - X) * 8;
                 timer.Interval = TimeSpan.FromMilliseconds(duration);
-
                 MoveTo(x, rand.NextDouble(10, 30), duration);
             };
             timer.Start();

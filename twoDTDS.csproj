@@ -97,13 +97,16 @@
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\PlayArea.cs" />
     <Compile Include="Engine\Random.cs" />
+    <Compile Include="Engine\SoundAssets.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Game\ammo.cs" />
     <Compile Include="Game\AmmoInGame.cs" />
     <Compile Include="Game\BulletOnPath.cs" />
     <Compile Include="Game\CNormBullet.cs" />
+    <Compile Include="Game\EnemyGenerator.cs" />
     <Compile Include="Game\EnemyMoveToPlayer.cs" />
     <Compile Include="Game\EnemyMoveToRandom.cs" />
+    <Compile Include="Game\InvincibilityPowerUp.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Obstacle.cs" />
     <Compile Include="Game\Player.cs" />
@@ -114,6 +117,7 @@
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Enemy.cs" />
+    <Compile Include="Game\SpeedPowerUp.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -128,6 +132,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,16 +153,49 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\arrow.png" />
-    <Resource Include="Assets\Demon.png" />
-    <Resource Include="Assets\down.png" />
-    <Resource Include="Assets\left.png" />
-    <Resource Include="Assets\right.png" />
-    <Resource Include="Assets\Stage.png" />
-    <Resource Include="Assets\The End.png" />
-    <Resource Include="Assets\up.png" />
+    <Resource Include="Bullet\enemybullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bullet\herobullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Enemy\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Environnment\dungeon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Environnment\Stage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Environnment\The End.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\example.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\front.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hero\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Environnment\pwatch.png" />
+    <Resource Include="Environnment\rubis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\ancient_path.mp3" />
+    <Content Include="Sounds\enemy-death.mp3" />
+    <Content Include="Sounds\hurt.mp3" />
+    <Content Include="Sounds\item.mp3" />
+    <Content Include="Sounds\slash.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

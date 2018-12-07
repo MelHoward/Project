@@ -1,0 +1,7 @@
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\Game\InGamePlane.g.cs
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\MainWindow.g.cs
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\App.g.cs
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_Content.g.cs
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_MarkupCompile.cache
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_MarkupCompile.lref

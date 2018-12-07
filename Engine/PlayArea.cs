@@ -11,6 +11,7 @@ namespace twoDTDS.Engine
     public class PlayArea : FrameworkElement
     {
         private VisualCollection canvas;
+
         private Map map;
         public IPlayAreaControl PlaneControl { get; set; }
 
@@ -73,17 +74,24 @@ namespace twoDTDS.Engine
         }
 
         /*============================= RenderCompT =========================*/
-        private void RenderCompT(object sender, EventArgs e){ Render(); }
+        private void RenderCompT(object sender, EventArgs e)
+        {
+            Render();
+        }
 
         /*============================= Render ==============================*/
         private void Render()
         {
-            if (map != null)
+
+            if( map != null)
             {
                 map.OnUpdate();
                 DrawingVisual view = new DrawingVisual();
                 TransformGroup group = new TransformGroup();
-                using (DrawingContext dc = view.RenderOpen()) { map.OnRender(dc); }
+                using (DrawingContext dc = view.RenderOpen())
+                {
+                    map.OnRender(dc);
+                }
                 group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
                 group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX,
                                    CenterY = ViewScaleOriginY, ScaleX = ViewScaleX,

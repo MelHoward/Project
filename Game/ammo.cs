@@ -1,4 +1,20 @@
-﻿using twoDTDS.Engine;
+﻿
+using twoDTDS.Engine;
+/*
+        Table of Contents
+   ----------------------------------------------------
+     * *Ammo (in twoDTDS.Game)
+           + Ammo(Map m)
+           + OnUpdate():void
+
+   * Playerammo (in twoDTDS.Game)
+           + Playerammo(Map m, double X, double Y)
+           + OnUpdate():void
+
+   * TempEnemyammo (in twoDTDS.Game)
+            + TempEnemyammo(Map m, double X, double Y)
+            + OnUpdate():void
+*/
 
 namespace twoDTDS.Game
 {
@@ -7,23 +23,23 @@ namespace twoDTDS.Game
     ---------------------------------------------------------------------------------------*/
     public class Ammo : GameObject
     {
-        //string uri;
         /*=============================== Ammo >> CTOR ======================*/
         public Ammo(Map m) : base(m)
         {
-            this.X = X;
-            this.Y = Y;
+            X = X;
+            Y = Y;
             Width = 3;
             Height = 15;
-     
-            //Sprite = new Rec(Width, Height);
         }
 
         /*=============================== OnUpdate ==========================*/
         public override void OnUpdate()
         {
             Y -= 15;
-            if (Y < -100) {  ObDied = true;  }
+            if (Y < -100)
+            {
+                ObDied = true;
+            }
         }
     }
     /// <summary>
@@ -32,23 +48,60 @@ namespace twoDTDS.Game
     public class Playerammo : Ammo
     {
         public string direction;
-
+        public string uri = Asset.bullet[1];
+        
         public Playerammo(Map m, double X, double Y) : base(m)
         {
             this.X = X;
             this.Y = Y;
             Width = 6;
             Height = 15;
-            /*/string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";*/
-            Sprite = new Rec(Width, Height, Asset.paths[0]);
+            //uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
+            
+            Sprite = new Rec(Width, Height, uri);
         }
 
         public override void OnUpdate()
         {
-            if (direction == "up") { Y -= 15; }
-            if (direction == "down") { Y += 15; }
-            if (direction == "left") { X -= 15; }
-            if (direction == "right") { X += 15; }
+            if (direction == "up")
+            {
+                Y -= 15;
+            }
+
+            if (direction == "down")
+            {
+                Y += 15;
+            }
+
+            if (direction == "left")
+            {
+                X -= 15;
+            }
+
+            if (direction == "right")
+            {
+                X += 15;
+            }
+            if (direction == "upRight")
+            {
+                X += 15;
+                Y -= 15;
+            }
+            if (direction == "upLeft")
+            {
+                X -= 15;
+                Y -= 15;
+            }
+            if (direction == "downLeft")
+            {
+                X -= 15;
+                Y += 15;
+            }
+            if (direction == "downRight")
+            {
+                X += 15;
+                Y += 15;
+            }
 
             if (Y < -100) { ObDied = true; }
         }
@@ -62,16 +115,15 @@ namespace twoDTDS.Game
         {
             this.X = X;
             this.Y = Y;
-            Width = 15;
-            Height = 15;
-            /*string uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";*/
-            Sprite = new Rec(Width, Height, Asset.paths[2]);
+            Width = 8;
+            Height = 8;
+            Sprite = new Rec(Width, Height, Asset.bullet[0]);
         }
 
         public override void OnUpdate()
         {
             Y += 3;
-            CheckOutOfBounds();
+            if(Y > 470 && (X > 500) || (X < 340) ) { ObDied = true; }
         }
 
     }

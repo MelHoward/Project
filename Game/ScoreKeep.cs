@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
+/*---------------------------------------------------------------------------------------
+                                     SCOREKEEP 
+---------------------------------------------------------------------------------------*/
     public class ScoreKeep
     {
         public static int Norm { get; set; } = 1;
-        public static int Guid { get; set; } = 5;
+        public static int Guide { get; set; } = 5;
 
         public int MaxHP { get; set; } = 250;
         public int HP { get; set; } = 250;

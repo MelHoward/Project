@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Globalization;
 /*
 TABLE OF CONTENTS
-	* Global
+	* Map
 		+ abstract 
 		
 */
@@ -56,15 +56,12 @@ namespace twoDTDS.Engine
             Width = Plane.ActualWidth;
             Height = Plane.ActualHeight;
             ProcessPaddingObjects();
-
             foreach (GameObject obj in Objects)
             {
-                if (!obj.ObDied)
-                {
-                    obj.OnUpdate();
-                }
+                if (!obj.ObDied)  {  obj.OnUpdate();  }
             }
             ProcessPaddingObjects(true);
+            GarbageCollection();
         }
 
         /*======================= ProcessPaddingObjects =====================*/
