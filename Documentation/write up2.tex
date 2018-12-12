@@ -180,32 +180,30 @@ The files included in Engine are: Assets(Directory), GameObject.cs, IPlayAreaCon
 paths while still using uris applied to ImageBrushes that represent the images.\\
 \textbf{GameObject.cs}: Holds all the variables and methods to be used across all objects created in the game whether player, enemy, or bullet.
 This was done so that those things above can inherit this class use all of the commonalities.\\
-\textbf{IplayAreaContro}l: ***************************************************\\
-\textbf{Map.cs}: *************************************************************\\
-\textbf{PlayArea.cs}: ********************************************************\\
-\textbf{Random.cs}: **********************************************************\\
-\textbf{Sprite.cs}: **********************************************************\\
+\textbf{IplayAreaContro}l: Interface implemented by PlayArea with transformation functions\\
+\textbf{Map.cs}: Is simultaneously a GameObject and an aggregation of GameObjects \\
+\textbf{PlayArea.cs}: Uses the grid "plane" from InGamePlane.xaml and renders Level which renders gameobjects\\
+\textbf{Random.cs}: Custom RNG\\
+\textbf{Sprite.cs}: Contains a base Abstract Sprite with subclasses Rec, and Circle which\\
 
 The files included in Game are: AbsAmmo.cs, AbsBullet.cs, AmmoInGame.cs, BulletOnPath.cs, CNormAmmo.cs, CNormBullet.cs, CNormEnemyBullet.cs
 Enemy.cs, EnemyMoveToPlayer.cs, EnemyMoveToRandom.cs, InGamePlane.xaml, InGamePlane.xaml.cs, Level.cs, Obstacle.cs, Rock.cs,
 Player.cs, PlayerAmmo.cs, PowerUp.cs, SpeedPowerUp.cs, InvincibilityPowerUp.cs, ScoreKeep.cs, PlayerAmmo.cs, ammo.cs, EnemyAmmo.cs\\\\
 
-\textbf{AbsAmmo.cs}: *********************************************************\\
-\textbf{AbsBullet.cs}: *******************************************************\\
-\textbf{AmmoInGame.cs}: ******************************************************\\
-\textbf{BulletOnPath.c}s: ****************************************************\\
-\textbf{CNormAmmo.cs}: *******************************************************\\
-\textbf{CNormBullet.cs}: *****************************************************\\
-\textbf{CNormEnemyBullet.cs}: ************************************************\\
+\textbf{AbsAmmo.cs}: An abstract class that acts as the base for CNormAmmo and CNormEnemyBullet \\
+\textbf{AbsBullet.cs}: Abstract bullet and base class for BulletOnPath  and CNormBullet \\
+\textbf{CNormAmmo.cs}: Inherits Ammo and overrides its functions 
+\textbf{CNormBullet.cs}: Acts as an implemented template of the ammo obj that enemy and player use  \\
+\textbf{CNormEnemyBullet.cs}: Overrides ammo and implements enemy bullets
 \textbf{Enemy.cs}: A child of GameObject.cs. This is a class that defines the basic methods and attributes of an enemy without determening their movement. 
 This way we could have different types that move in different ways, depending on which type of Enemy they are. Each enemy can spawn from four seperate locations
 \textbf{EnemyMoveToPlayer.cs}: These are enemies that slowly move to the player for a randomly generated amount of time, then zip towards the player
 by a dispatch timer at a different randomly chosen time. The reason that they all have random movement times is because if they all had the same, they tended to clump up on top of each other quickly. They move by dispatch timer.\\
 \textbf{EnemyMoveToRandom}: These enemies dont really move to completely random places. They just move to the top of the screen then move randomly
 while shooting down projectiles towards the player.\\
-\textbf{InGamePlane.xaml}: ***************************************************\\
-\textbf{InGamePlane.xaml.cs}: ************************************************\\
-\textbf{Level.cs}: ***********************************************************\\
+\textbf{InGamePlane.xaml}: The Window in the main window \\
+\textbf{InGamePlane.xaml.cs}: Draws the PlayArea in the window \\
+\textbf{Level.cs}: Puts everything together in context \\
 \textbf{Wall.cs}: A child of GameObject.cs, this is how boundaries for the world are set where players can not walk.\\
 \textbf{Player.cs}: The player class that is a child of GameObject.cs that lays down all the logic for player movement, hit detection, and shooting.
 All the controls are determined in Player.cs. This makes it easy to update with the player. All functions that the player can do are in 
@@ -219,7 +217,7 @@ go to the top of the map to shoot.\\
 \textbf{SpeedPowerUp.cs}: If touched by the player, the players speed is increased by use of a paramter in the constructor. The time that the speed
 lasts is determined by a certain amount of "frames" or game cycles.\\
 \textbf{InvincibilityPowerUp.cs}: Similar to SpeedPowerUp except it instead sets the player to be invincible and the player sprite flashes.\\
-ScoreKeep.cs: *******************************************************\\
+ScoreKeep.cs: Responsible for keeping track of score and player health \\
 
 
 
@@ -290,11 +288,10 @@ along with invincibility frames, and player can die when
 health drops to zero.
 
 \subsection{Future Work}
-Where are you going next with your project?
-For early deliverables, what are your next steps?  (HINT: you will typically want to look back at your timeline and evaluate: did you meet your expected goals?  Are you ahead of schedule?  Did you decide to shift gears and implement a new feature?)
-By the end, what do you plan on doing with this project?  Will you try to sell it?  Set it on fire?  Link to it on your resume and forget it exists?
-
-
+I definitely want to polish this (music, sprites, hitboxes) and post it on Itch.io as well as potentially
+writing a tutorial in the form of a post on portfolio blog. Cole and I have also discussed "porting" it to 
+a game engine like Unity or Unreal and seeing what we could accomplish there. Personally, I want to get 
+a level generator working. 
 
 
 %\begin{thebibliography}{1}
