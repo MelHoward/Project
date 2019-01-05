@@ -22,11 +22,9 @@ namespace twoDTDS.Game
             {
                 dispense = new DispatcherTimer();
                 dispense.Interval = TimeSpan.FromMilliseconds(400);
-                dispense.Tick += delegate
-                {
-                    Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y));     
-                };
+                dispense.Tick += delegate { Map.AddObject(new TempEnemyammo(Map, X + Width / 2, Y)); };
             }
+
             dispense.Start();
         }
 

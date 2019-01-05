@@ -1,5 +1,5 @@
-﻿
-using twoDTDS.Engine;
+﻿using twoDTDS.Engine;
+
 /*
         Table of Contents
    ----------------------------------------------------
@@ -42,6 +42,7 @@ namespace twoDTDS.Game
             }
         }
     }
+
     /// <summary>
     /// Player ammo class that allows player ammo to have its own logic
     /// </summary>
@@ -49,7 +50,7 @@ namespace twoDTDS.Game
     {
         public string direction;
         public string uri = Asset.bullet[1];
-        
+
         public Playerammo(Map m, double X, double Y) : base(m)
         {
             this.X = X;
@@ -57,7 +58,7 @@ namespace twoDTDS.Game
             Width = 6;
             Height = 15;
             //uri = "http://pixelartmaker.com/art/f59eaa826d4e49f.png";
-            
+
             Sprite = new Rec(Width, Height, uri);
         }
 
@@ -82,30 +83,38 @@ namespace twoDTDS.Game
             {
                 X += 15;
             }
+
             if (direction == "upRight")
             {
                 X += 15;
                 Y -= 15;
             }
+
             if (direction == "upLeft")
             {
                 X -= 15;
                 Y -= 15;
             }
+
             if (direction == "downLeft")
             {
                 X -= 15;
                 Y += 15;
             }
+
             if (direction == "downRight")
             {
                 X += 15;
                 Y += 15;
             }
 
-            if (Y < -100) { ObDied = true; }
+            if (Y < -100)
+            {
+                ObDied = true;
+            }
         }
     }
+
     /// <summary>
     /// Enemy ammo class that allows enemy ammo to have its own logic
     /// </summary>
@@ -123,9 +132,10 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             Y += 3;
-            if(Y > 470 && (X > 500) || (X < 340) ) { ObDied = true; }
+            if (Y > 470 && (X > 500) || (X < 340))
+            {
+                ObDied = true;
+            }
         }
-
     }
-  
 }

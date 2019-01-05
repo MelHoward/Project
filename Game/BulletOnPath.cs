@@ -19,7 +19,7 @@ namespace twoDTDS.Game
 
         /*--------------------  BulletOnPath >> CTOR ----------------------------*/
         public BulletOnPath(Map map, GameObject parent, GameObject target,
-                                               double x, double y) : base(map)
+                            double x, double y) : base(map)
         {
             this.target = target;
             Damage = ScoreKeep.Guide;
@@ -41,7 +41,7 @@ namespace twoDTDS.Game
                 ObDied = true;
                 t.Stop();
             };
-        t.Start();
+            t.Start();
         }
 
         /*================================== GetAngleToTarget =============================*/
@@ -54,9 +54,9 @@ namespace twoDTDS.Game
             if (xx < 0 && yy > 0)
                 angle = 180 - angle;
             else if (xx < 0 && yy < 0)
-                angle = 180 + angle; 
+                angle = 180 + angle;
             else if (xx > 0 && yy < 0)
-                angle = 360 - angle; 
+                angle = 360 - angle;
             return angle;
         }
 
@@ -88,7 +88,10 @@ namespace twoDTDS.Game
         /*================================== RelativeDouble =============================*/
         private double RelativeDouble(double r)
         {
-            if (Math.Abs(r) < 0.0001) {  return 0; }
+            if (Math.Abs(r) < 0.0001)
+            {
+                return 0;
+            }
             else return r;
         }
     }

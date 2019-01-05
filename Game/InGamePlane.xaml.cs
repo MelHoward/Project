@@ -10,12 +10,13 @@ namespace twoDTDS.Game
 {
     public partial class InGamePlane : UserControl, IPlayAreaControl
     {
-        MediaPlayer player = new MediaPlayer( );
+        MediaPlayer player = new MediaPlayer();
+
         public InGamePlane()
         {
             InitializeComponent();
             PlaybackMusic();
-          
+
             Loaded += InGamePlane_Loaded;
         }
 
@@ -38,22 +39,23 @@ namespace twoDTDS.Game
         {
             RenderTransformOrigin = pt;
         }
-        public void PlaybackMusic ()
+
+        public void PlaybackMusic()
         {
-            if( player != null )
+            if (player != null)
             {
                 player.Open(new Uri(SoundAssets.sound[0]));
                 player.MediaEnded += new EventHandler(Media_Ended);
-                player.Play( );
+                player.Play();
 
                 return;
             }
         }
 
-        private void Media_Ended (object sender, EventArgs e)
+        private void Media_Ended(object sender, EventArgs e)
         {
             player.Position = TimeSpan.Zero;
-            player.Play( );
+            player.Play();
         }
     }
 }

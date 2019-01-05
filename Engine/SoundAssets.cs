@@ -17,6 +17,5 @@ namespace twoDTDS.Engine
             get => Sounds;
             set => Sounds = value;
         }
-
     }
 }

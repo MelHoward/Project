@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using twoDTDS.Engine;
+
 /** Player 
        + Player(Map map)
        + Score_died(object sender, ScoreKeep e):void
@@ -28,20 +29,24 @@ namespace twoDTDS.Game
     {
         public ScoreKeep myScore { get; set; }
         private MediaPlayer media = new MediaPlayer();
-         Engine.Random r = new Engine.Random();
+        Engine.Random r = new Engine.Random();
 
         DispatcherTimer bulletCreate,
-                        camShake;
-        public int cameraShakeCount = 0,
-                   rollFrames = 0,
-                   invincibilityFrames;
+            camShake;
 
-        public double speed = 3, 
-                      dyingSize = 40;
+        public int cameraShakeCount = 0,
+            rollFrames = 0,
+            invincibilityFrames;
+
+        public double speed = 3,
+            dyingSize = 40;
+
         public string uri;
         public bool invincible = false;
+
         public bool roll = false;
-       // GameObject iteration;
+
+        // GameObject iteration;
         List<Wall> mapWalls = new List<Wall>();
         bool wallsCreated = false;
 
@@ -79,6 +84,7 @@ namespace twoDTDS.Game
                     t.Stop();
                     return;
                 }
+
                 dyingSize = dyingSize + (24 - dyingSize) / 10;
             };
             t.Start();
@@ -89,12 +95,19 @@ namespace twoDTDS.Game
         {
             if (!myScore.Died)
             {
-                if(wallsCreated == false) {  Walls();  }
-                else {  CheckWalls();  }
+                if (wallsCreated == false)
+                {
+                    Walls();
+                }
+                else
+                {
+                    CheckWalls();
+                }
+
                 Move();
 
                 if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left) ||
-                    Keyboard.IsKeyDown(Key.Down)  || Keyboard.IsKeyDown(Key.Up))
+                    Keyboard.IsKeyDown(Key.Down) || Keyboard.IsKeyDown(Key.Up))
                 {
                     Shoot();
                 }
@@ -113,29 +126,32 @@ namespace twoDTDS.Game
                 {
                     Roll();
                 }
+
                 RollReset();
 
                 IsPlayerHit();
                 ShowIframes();
             }
         }
+
         /// <summary>
         /// Makes it to where you are invincible
         /// </summary>
         private void Roll()
         {
-            
-                if (rollFrames >= 0)
-                {
-                if(roll == false)
+            if (rollFrames >= 0)
+            {
+                if (roll == false)
                 {
                     rollFrames = 0;
                 }
-                    invincible = true;
-                    roll = true;
-                    Sprite = new Rec(30, 35, uri);
-                }
+
+                invincible = true;
+                roll = true;
+                Sprite = new Rec(30, 35, uri);
+            }
         }
+
         /// <summary>
         /// Makes you not invincible after a short time
         /// </summary>
@@ -148,6 +164,7 @@ namespace twoDTDS.Game
                 Sprite = new Rec(Width, Height, uri);
                 rollFrames = -25;
             }
+
             rollFrames++;
         }
 
@@ -158,10 +175,12 @@ namespace twoDTDS.Game
                 invincible = true;
                 invincibilityFrames--;
             }
+
             if (invincibilityFrames == 0)
             {
                 invincible = false;
             }
+
             if (invincible == true)
             {
                 if (invincibilityFrames % 2 == 0)
@@ -178,7 +197,6 @@ namespace twoDTDS.Game
 
         private void Move()
         {
-            
             if (Keyboard.IsKeyDown(Key.A))
             {
                 uri = Asset.hero[3];
@@ -191,6 +209,7 @@ namespace twoDTDS.Game
                 Sprite = new Rec(Width, Height, uri);
                 X += speed;
             }
+
             if (Keyboard.IsKeyDown(Key.W))
             {
                 uri = Asset.hero[0];
@@ -203,9 +222,8 @@ namespace twoDTDS.Game
                 Sprite = new Rec(Width, Height, uri);
                 Y += speed;
             }
-
         }
-        
+
         private void Shoot()
         {
             if (bulletCreate == null)
@@ -220,30 +238,37 @@ namespace twoDTDS.Game
                     {
                         a.direction = "up";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "down";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left))
                     {
                         a.direction = "left";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right))
                     {
                         a.direction = "right";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Up))
                     {
                         a.direction = "upLeft";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Left) && Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "downLeft";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Up))
                     {
                         a.direction = "upRight";
                     }
+
                     if (Keyboard.IsKeyDown(Key.Right) && Keyboard.IsKeyDown(Key.Down))
                     {
                         a.direction = "downRight";
@@ -251,10 +276,12 @@ namespace twoDTDS.Game
 
                     Map.AddObject(a);
                 };
-            };
+            }
+
+            ;
             bulletCreate.Start();
         }
-      
+
 
         private void IsPlayerHit()
         {
@@ -272,7 +299,7 @@ namespace twoDTDS.Game
                             {
                                 camShake = new DispatcherTimer();
                                 camShake.Interval = TimeSpan.FromMilliseconds(25);
-                      
+
                                 camShake.Tick += delegate
                                 {
                                     media.Open(new Uri(SoundAssets.sound[2]));
@@ -285,10 +312,12 @@ namespace twoDTDS.Game
                                         Map.Plane.ViewOffsetY = 0;
                                         return;
                                     }
+
                                     Map.Plane.ViewOffsetX = r.NextDouble(-5, 5);
                                     Map.Plane.ViewOffsetY = r.NextDouble(-5, 5);
                                 };
                             }
+
                             cameraShakeCount = 0;
                             camShake.Start();
                         }
@@ -322,34 +351,40 @@ namespace twoDTDS.Game
             {
                 Map.AddObject(mapWalls[i]);
             }
+
             wallsCreated = true;
         }
 
         public void CheckWalls()
         {
-            if(IsHit(this, mapWalls[0]))
+            if (IsHit(this, mapWalls[0]))
             {
                 mapWalls[0].HitLeftWall(this);
                 mapWalls[0].LeftTunnel(this);
             }
-            if(IsHit(this, mapWalls[1]))
+
+            if (IsHit(this, mapWalls[1]))
             {
                 mapWalls[1].HitRightWall(this);
                 mapWalls[1].RightTunnel(this);
             }
-            if(IsHit(this, mapWalls[2]))
+
+            if (IsHit(this, mapWalls[2]))
             {
                 mapWalls[2].HitTopWall(this);
             }
-            if(IsHit(this, mapWalls[3]) || IsHit(this, mapWalls[4]))
+
+            if (IsHit(this, mapWalls[3]) || IsHit(this, mapWalls[4]))
             {
                 mapWalls[3].HitBotWall(this);
             }
-            if(IsHit(this, mapWalls[5]))
+
+            if (IsHit(this, mapWalls[5]))
             {
                 mapWalls[5].HitLeftWall(this);
             }
-            if(IsHit(this, mapWalls[6]))
+
+            if (IsHit(this, mapWalls[6]))
             {
                 mapWalls[6].HitRightWall(this);
             }
@@ -358,12 +393,15 @@ namespace twoDTDS.Game
         /*================================== OnRender =============================*/
         public override void OnRender(DrawingContext dc)
         {
-            if (!myScore.Died) { base.OnRender(dc); }
+            if (!myScore.Died)
+            {
+                base.OnRender(dc);
+            }
             else
             {
                 Map.DrwTxt(dc, "YOU DIED", (Map.Width / 2), (Map.Height / 2),
-                             dyingSize, HorizontalAlignment.Center,
-                             System.Windows.VerticalAlignment.Center);
+                    dyingSize, HorizontalAlignment.Center,
+                    System.Windows.VerticalAlignment.Center);
             }
         }
     }

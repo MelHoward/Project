@@ -31,6 +31,7 @@ namespace twoDTDS.Game
             };
             timer.Start();
         }
+
         /*==================== SetSpawnRate =======================*/
         private void SetSpawnRate()
         {
@@ -38,6 +39,7 @@ namespace twoDTDS.Game
             {
                 spawnRate = 3;
             }
+
             if (EnemiesSpawned > 10 && EnemiesSpawned < 25)
             {
                 spawnRate = 2;
@@ -58,6 +60,7 @@ namespace twoDTDS.Game
             {
                 Map.AddObject(new EnemyMoveToRandom(m, p));
             }
+
             if (generator > 20)
             {
                 Map.AddObject(new EnemyMoveToPlayer(m, p));

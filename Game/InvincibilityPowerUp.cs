@@ -55,6 +55,7 @@ namespace twoDTDS.Game
                 player.invincible = false;
                 this.ObDied = true;
             }
+
             InvincibilityFrames--;
         }
 
@@ -65,5 +66,4 @@ namespace twoDTDS.Game
                 InvincibilityFrames--;
         }
     }
-
 }

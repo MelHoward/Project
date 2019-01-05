@@ -5,3 +5,14 @@ D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_Content.g.cs
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\GeneratedInternalTypeHelper.g.cs
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_MarkupCompile.cache
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS_MarkupCompile.lref
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\bin\Release\twoDTDS.exe.config
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\bin\Release\twoDTDS.exe
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\bin\Release\twoDTDS.pdb
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\Game\InGamePlane.baml
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\MainWindow.baml
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS.g.resources
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS.csproj.CoreCompileInputs.cache
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS.exe
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\twoDTDS.pdb
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\bin\Release\twoDTDS.exe.CodeAnalysisLog.xml
+D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\bin\Release\twoDTDS.exe.lastcodeanalysissucceeded

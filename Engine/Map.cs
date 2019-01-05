@@ -2,11 +2,13 @@
 *   file: Map.cs
 	author: Mel and Cole
 */
+
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Globalization;
+
 /*
 TABLE OF CONTENTS
 	* Map
@@ -17,6 +19,7 @@ namespace twoDTDS.Engine
 {
     using HA = HorizontalAlignment;
     using VA = VerticalAlignment;
+
     /*---------------------------------------------------------------------------------------
                                        << MAP >> 
     ---------------------------------------------------------------------------------------*/
@@ -58,8 +61,12 @@ namespace twoDTDS.Engine
             ProcessPaddingObjects();
             foreach (GameObject obj in Objects)
             {
-                if (!obj.ObDied)  {  obj.OnUpdate();  }
+                if (!obj.ObDied)
+                {
+                    obj.OnUpdate();
+                }
             }
+
             ProcessPaddingObjects(true);
             GarbageCollection();
         }
@@ -79,6 +86,7 @@ namespace twoDTDS.Engine
             {
                 Objects.AddRange(PaddingObjects);
             }
+
             PaddingObjects.Clear();
         }
 
@@ -88,19 +96,21 @@ namespace twoDTDS.Engine
         }
 
         /*============================= DrwTxt ==============================*/
-        public void DrwTxt(DrawingContext dc, string text="", double x = 0, 
-                             double y = 0, double size = 16, HA ha = HA.Left, 
-                             VA va = VA.Top)
+        public void DrwTxt(DrawingContext dc, string text = "", double x = 0,
+                           double y = 0, double size = 16, HA ha = HA.Left,
+                           VA va = VA.Top)
         {
-            FormattedText ft = new FormattedText(text, CultureInfo.CurrentCulture, 
-                                   FlowDirection.LeftToRight, Default.Typeface,
-                                   size, Brushes.Black);
+            FormattedText ft = new FormattedText(text, CultureInfo.CurrentCulture,
+                FlowDirection.LeftToRight, Default.Typeface,
+                size, Brushes.Black);
             double xOffset = 0;
             switch (ha)
             {
-                case HA.Center: xOffset = -ft.Width / 2;
+                case HA.Center:
+                    xOffset = -ft.Width / 2;
                     break;
-                case HA.Right: xOffset = -ft.Width;
+                case HA.Right:
+                    xOffset = -ft.Width;
                     break;
             }
 
@@ -115,8 +125,8 @@ namespace twoDTDS.Engine
                     break;
             }
 
-            dc.DrawText(ft, new Point(Math.Round(x + xOffset), 
-                        Math.Round(y + yOffset)));
+            dc.DrawText(ft, new Point(Math.Round(x + xOffset),
+                Math.Round(y + yOffset)));
         }
 
         /*============================= GarbageCollection ===================*/

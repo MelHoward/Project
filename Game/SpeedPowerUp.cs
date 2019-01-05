@@ -1,7 +1,7 @@
 ﻿using twoDTDS.Engine;
 
 namespace twoDTDS.Game
-{ 
+{
 /*---------------------------------------------------------------------------------------
                                      SPEEDPOWERUP : POWERUP 
 ---------------------------------------------------------------------------------------*/
@@ -50,9 +50,10 @@ namespace twoDTDS.Game
                 this.ObDied = true;
                 player.speed = 3;
             }
-            speedFrames--;
 
+            speedFrames--;
         }
+
         public override void OnUpdate()
         {
             SpeedUp(p);
@@ -60,5 +61,4 @@ namespace twoDTDS.Game
                 speedFrames--;
         }
     }
-
 }

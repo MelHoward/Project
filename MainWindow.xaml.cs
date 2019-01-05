@@ -13,7 +13,6 @@ namespace twoDTDS
         {
             InitializeComponent();
             grid.Children.Add(new InGamePlane());
-            
         }
     }
 }

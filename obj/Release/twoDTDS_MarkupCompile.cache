@@ -8,7 +8,7 @@ D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\obj\Release\
 twoDTDS
 none
 false
-TRACE
+CODE_ANALYSIS;TRACE
 D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\App.xaml
 2-1083488078
 5-1223919170
@@ -16,5 +16,5 @@ D:\Documents\_PROGRAMMING\repos\twoDTDS\Project\App.xaml
 151984215308
 Game\InGamePlane.xaml;MainWindow.xaml;
 
-True
+False
 

@@ -5,15 +5,15 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-
-
     /*---------------------------------------------------------------------------------------
                                     LEVEL : MAP
     ---------------------------------------------------------------------------------------*/
     public class Level : Map
     {
         Player Player;
+
         EnemyGenerator Enemy;
+
         /*========================= Level >> CTOR ===========================*/
         public Level(PlayArea play) : base(play)
         {
@@ -22,17 +22,18 @@ namespace twoDTDS.Game
             Objects.Add(Player);
             Objects.Add(Enemy);
         }
+
         /*============================= OnRender ===========================+*/
         public override void OnRender(DrawingContext dc)
         {
             base.OnRender(dc);
             dc.DrawText(new FormattedText("Score: " + Player.myScore.Sc.ToString(),
-                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
-                        Default.Typeface, 12, Brushes.White), new Point(-93, 90));
+                CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                Default.Typeface, 12, Brushes.White), new Point(-93, 90));
 
             dc.DrawText(new FormattedText("HP: " + Player.myScore.HP.ToString(),
-                        CultureInfo.CurrentCulture, FlowDirection.LeftToRight, 
-                        Default.Typeface, 12, Brushes.White), new Point(-93,120));
+                CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                Default.Typeface, 12, Brushes.White), new Point(-93, 120));
         }
     }
 }

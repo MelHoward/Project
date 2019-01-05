@@ -139,7 +139,7 @@ namespace twoDTDS.Game
         {
             double playerBot = other.Y + other.Height;
 
-            if(playerBot >= botWall)
+            if (playerBot >= botWall)
             {
                 other.Y = botWall - other.Height - 1;
             }
@@ -156,6 +156,7 @@ namespace twoDTDS.Game
                 other.X = rightWall - playerRight + other.Width;
             }
         }
+
         public void LeftTunnel(GameObject other)
         {
             double playerRight = other.X + other.Width;

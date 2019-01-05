@@ -16,7 +16,7 @@ namespace twoDTDS.Game
             Parent = parent;
             Map = parent.Map;
         }
+
         public abstract double Shoot();
     }
-
 }

@@ -10,7 +10,6 @@ using twoDTDS.Engine;
 
 namespace twoDTDS.Game
 {
-
 /*---------------------------------------------------------------------------------------
                                     ENEMY : GAMEOBJECT 
 ---------------------------------------------------------------------------------------*/
@@ -37,6 +36,7 @@ namespace twoDTDS.Game
 
             this.player = p;
         }
+
         /// <summary>
         /// Enemies die
         /// </summary>
@@ -44,7 +44,7 @@ namespace twoDTDS.Game
         public override void OnUpdate()
         {
             foreach (GameObject obj in Map.Objects)
-            {   
+            {
                 IfEnemyDead();
 
                 if (!obj.ObDied && obj is Playerammo)
@@ -57,7 +57,7 @@ namespace twoDTDS.Game
                         EnemyHit(this);
                     }
                 }
-               
+
                 if (frames == 20)
                 {
                     frames = 0;
@@ -65,6 +65,7 @@ namespace twoDTDS.Game
                     Width = 80;
                     Height = 48;
                 }
+
                 frames++;
             }
         }
@@ -80,17 +81,20 @@ namespace twoDTDS.Game
                 X = 360;
                 Y = 20;
             }
+
             if (spawnNum <= 50 && spawnNum > 25)
             {
                 //Left
                 Y = 250;
             }
+
             if (spawnNum <= 75 && spawnNum > 50)
             {
                 //Right
                 Y = 250;
                 X = 750;
             }
+
             if (spawnNum <= 100 && spawnNum > 75)
             {
                 //Bot
@@ -107,12 +111,11 @@ namespace twoDTDS.Game
                 enemy.Width = 0;
                 enemy.Height = 0;
             }
-
         }
 
         private void SpawnPowerUp(Map m, Player p)
         {
-            if(powerUpSpawnRate >= 10 && powerUpSpawnRate <= 20)
+            if (powerUpSpawnRate >= 10 && powerUpSpawnRate <= 20)
             {
                 SpeedPowerUp speed;
                 if (this is EnemyMoveToRandom)
@@ -123,20 +126,22 @@ namespace twoDTDS.Game
                 {
                     speed = new SpeedPowerUp(m, p, X, Y);
                 }
+
                 m.AddObject(speed);
             }
-            if(powerUpSpawnRate <= 5 && powerUpSpawnRate >= 0)
+
+            if (powerUpSpawnRate <= 5 && powerUpSpawnRate >= 0)
             {
                 InvincibilityPowerUp inv;
                 if (this is EnemyMoveToRandom)
                 {
-                   inv = new InvincibilityPowerUp(m, p, X + 30, Y + 30);
+                    inv = new InvincibilityPowerUp(m, p, X + 30, Y + 30);
                 }
                 else
                 {
                     inv = new InvincibilityPowerUp(m, p, X, Y);
                 }
-                
+
                 m.AddObject(inv);
             }
         }
@@ -159,6 +164,3 @@ namespace twoDTDS.Game
         }
     }
 }
-    
-
-   

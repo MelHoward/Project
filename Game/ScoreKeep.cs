@@ -38,7 +38,7 @@ namespace twoDTDS.Game
             this.Sc += Score + Streak;
             Streak++;
             MaxStreak = Math.Max(MaxStreak, Streak);
-            Streaks ?.Invoke(this, this);
+            Streaks?.Invoke(this, this);
         }
     }
 }

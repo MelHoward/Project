@@ -2,7 +2,6 @@
 
 namespace twoDTDS.Game
 {
-
 /*---------------------------------------------------------------------------------------
                              << POWERUP : GAMEOBJECT >>
 ---------------------------------------------------------------------------------------*/
@@ -11,11 +10,6 @@ namespace twoDTDS.Game
         protected Player p;
         protected bool pickedUp;
 
-        public PowerUp(Map map) : base(map)
-        {
-           
-        }
+        public PowerUp(Map map) : base(map) { }
     }
-
-   
 }

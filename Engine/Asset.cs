@@ -13,12 +13,28 @@ namespace twoDTDS.Engine
         private static string[] Enemy = Directory.GetFiles(CD + "/Enemy", "*.png");
         private static string[] Environment = Directory.GetFiles(CD + "/Environment ", "*.png");
 
-        public static string[] hero  { get => Hero; set => Hero = value; }
-        public static string[] bullet { get => Bullet; set => Bullet = value; }
-        public static string[] enemy { get => Enemy; set => Enemy = value; }
+        public static string[] hero
+        {
+            get => Hero;
+            set => Hero = value;
+        }
+
+        public static string[] bullet
+        {
+            get => Bullet;
+            set => Bullet = value;
+        }
+
+        public static string[] enemy
+        {
+            get => Enemy;
+            set => Enemy = value;
+        }
+
         public static string[] env
         {
-            get => Environment; set => Environment = value;
+            get => Environment;
+            set => Environment = value;
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Windows.Media;
 
 namespace twoDTDS.Engine
 {
-
     /*---------------------------------------------------------------------------------------
                                          IPLAYAREACONTROL 
     ---------------------------------------------------------------------------------------*/
@@ -11,5 +10,5 @@ namespace twoDTDS.Engine
     {
         void Settransform(Transform t);
         void SettransformOrigin(Point pt);
-    } 
+    }
 }

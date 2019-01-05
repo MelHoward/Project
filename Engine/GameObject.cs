@@ -5,7 +5,6 @@ using System.Windows.Media.Animation;
 
 namespace twoDTDS.Engine
 {
-
     /*---------------------------------------------------------------------------------------
                                     DEFAULT -> STATIC
     ---------------------------------------------------------------------------------------*/
@@ -20,27 +19,29 @@ namespace twoDTDS.Engine
 ---------------------------------------------------------------------------------------*/
     public abstract class GameObject : DependencyObject
     {
-        public static DependencyProperty XProperty = 
-                      DependencyProperty.Register("X", typeof(double), typeof(GameObject));
+        public static DependencyProperty XProperty =
+            DependencyProperty.Register("X", typeof(double), typeof(GameObject));
 
-        public static DependencyProperty YProperty = 
-                      DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
+        public static DependencyProperty YProperty =
+            DependencyProperty.Register("Y", typeof(double), typeof(GameObject));
 
         /*============================= X >> Acc. ===========================*/
         public double X
         {
-            get { return (double)GetValue(XProperty); }
+            get { return (double) GetValue(XProperty); }
             set { SetValue(XProperty, value); }
         }
+
         /*============================= Y >> Acc. ===========================*/
         public double Y
         {
-            get { return (double)GetValue(YProperty); }
+            get { return (double) GetValue(YProperty); }
             set { SetValue(YProperty, value); }
         }
 
         /*============================= Width ===============================*/
         public double Width { get; set; }
+
         /*============================== Height =============================*/
         public double Height { get; set; }
 
@@ -54,7 +55,10 @@ namespace twoDTDS.Engine
         public bool ObDied { get; set; } = false;
 
         /*=========================== GameObject ============================*/
-        public GameObject(Map map){ Map = map; }
+        public GameObject(Map map)
+        {
+            Map = map;
+        }
 
         /*=========================== OnUpdate  =============================*/
         public virtual void OnUpdate() { }
@@ -95,7 +99,7 @@ namespace twoDTDS.Engine
             sb.Begin();
 
             MoveToStoryboard = sb;
-            return sb; 
+            return sb;
         }
 
         /*============================= IsHit ===============================*/
@@ -103,14 +107,16 @@ namespace twoDTDS.Engine
         {
             // returns true if other is within player bounds
             double leftX = me.X - other.Width,
-                   rightX = me.X + me.Width,
-                   bottomY = me.Y - other.Height,
-                   topY = me.Y + me.Height;
+                rightX = me.X + me.Width,
+                bottomY = me.Y - other.Height,
+                topY = me.Y + me.Height;
 
-            if ((other.X >= leftX) && (other.X <= rightX) && 
-                (other.Y >= bottomY) && (other.Y <= topY)){
+            if ((other.X >= leftX) && (other.X <= rightX) &&
+                (other.Y >= bottomY) && (other.Y <= topY))
+            {
                 return true;
             }
+
             return false;
         }
 
@@ -124,8 +130,9 @@ namespace twoDTDS.Engine
         /*========================= CheckOutOfBounds ========================*/
         public void CheckOutOfBounds()
         {
-            if ((X < -Width)  || (X > Map.Width + Width) || 
-                (Y < -Height) || (Y > Map.Height + Height)) {
+            if ((X < -Width) || (X > Map.Width + Width) ||
+                (Y < -Height) || (Y > Map.Height + Height))
+            {
                 ObDied = true;
             }
         }

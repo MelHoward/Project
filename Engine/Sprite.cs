@@ -34,11 +34,11 @@ namespace twoDTDS.Engine
 
         /*============================= Rec << CTOR =========================*/
 
-            //Added a string uri to parameters to get sprite image for each sprite created
+        //Added a string uri to parameters to get sprite image for each sprite created
         public Rec(double width, double height, string uri)
         {
             src = new ImageBrush();
-            
+
             Uri u = new Uri(uri);
             src.ImageSource = new BitmapImage(u);
             Width = width;
@@ -72,7 +72,7 @@ namespace twoDTDS.Engine
         }
 
         /*============================= Circle << CTOR ======================*/
-        public Circle( System.Windows.Media.Brush brush, double radius)
+        public Circle(System.Windows.Media.Brush brush, double radius)
         {
             this.brush = brush;
             this.radius = radius;
