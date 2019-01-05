@@ -91,11 +91,11 @@ These requirements were gathered based on prior gaming experience.
 \hline
 Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline 
-1 & Move Player & User & Med & \\
+1 & Move Player & User & Med & High\\
 \hline
-2 & Stop Player & User & Med & \\
+2 & Stop Player & User & Med & High\\
 \hline 
-3 & Shoot & User & Med & \\
+3 & Shoot & User & Med & High\\
 \hline
 
 \end{tabular}
@@ -149,6 +149,7 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 
 
 \subsection{Interface Mockups}
+These are very rough ideas and are bound the change depending on how progress of the game plays out. The first is the men, where the start button resides, the next is a player creation in which we hope to allow players to be generated before beggining the game.
 \begin{figure}[ht!]
 \includegraphics[scale=.25]{Start.png}
 \includegraphics[scale=.25]{Player.png}
@@ -159,6 +160,7 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 
 .\\\\\\\\\\\\
 \section{Project Timeline} 
+The timeline shows all the major due dates, and whenever there were any large scale updates/breakthorughs made
 \begin{figure}[ht!]
 \includegraphics[scale=.45]{game_timeline.png}
 \caption{}
@@ -180,32 +182,30 @@ The files included in Engine are: Assets(Directory), GameObject.cs, IPlayAreaCon
 paths while still using uris applied to ImageBrushes that represent the images.\\
 \textbf{GameObject.cs}: Holds all the variables and methods to be used across all objects created in the game whether player, enemy, or bullet.
 This was done so that those things above can inherit this class use all of the commonalities.\\
-\textbf{IplayAreaContro}l: ***************************************************\\
-\textbf{Map.cs}: *************************************************************\\
-\textbf{PlayArea.cs}: ********************************************************\\
-\textbf{Random.cs}: **********************************************************\\
-\textbf{Sprite.cs}: **********************************************************\\
+\textbf{IplayAreaContro}l: Interface implemented by PlayArea with transformation functions\\
+\textbf{Map.cs}: Is simultaneously a GameObject and an aggregation of GameObjects \\
+\textbf{PlayArea.cs}: Uses the grid "plane" from InGamePlane.xaml and renders Level which renders gameobjects\\
+\textbf{Random.cs}: Custom RNG\\
+\textbf{Sprite.cs}: Contains a base Abstract Sprite with subclasses Rec, and Circle which\\
 
 The files included in Game are: AbsAmmo.cs, AbsBullet.cs, AmmoInGame.cs, BulletOnPath.cs, CNormAmmo.cs, CNormBullet.cs, CNormEnemyBullet.cs
 Enemy.cs, EnemyMoveToPlayer.cs, EnemyMoveToRandom.cs, InGamePlane.xaml, InGamePlane.xaml.cs, Level.cs, Obstacle.cs, Rock.cs,
 Player.cs, PlayerAmmo.cs, PowerUp.cs, SpeedPowerUp.cs, InvincibilityPowerUp.cs, ScoreKeep.cs, PlayerAmmo.cs, ammo.cs, EnemyAmmo.cs\\\\
 
-\textbf{AbsAmmo.cs}: *********************************************************\\
-\textbf{AbsBullet.cs}: *******************************************************\\
-\textbf{AmmoInGame.cs}: ******************************************************\\
-\textbf{BulletOnPath.c}s: ****************************************************\\
-\textbf{CNormAmmo.cs}: *******************************************************\\
-\textbf{CNormBullet.cs}: *****************************************************\\
-\textbf{CNormEnemyBullet.cs}: ************************************************\\
+\textbf{AbsAmmo.cs}: An abstract class that acts as the base for CNormAmmo and CNormEnemyBullet \\
+\textbf{AbsBullet.cs}: Abstract bullet and base class for BulletOnPath  and CNormBullet \\
+\textbf{CNormAmmo.cs}: Inherits Ammo and overrides its functions 
+\textbf{CNormBullet.cs}: Acts as an implemented template of the ammo obj that enemy and player use  \\
+\textbf{CNormEnemyBullet.cs}: Overrides ammo and implements enemy bullets
 \textbf{Enemy.cs}: A child of GameObject.cs. This is a class that defines the basic methods and attributes of an enemy without determening their movement. 
 This way we could have different types that move in different ways, depending on which type of Enemy they are. Each enemy can spawn from four seperate locations
 \textbf{EnemyMoveToPlayer.cs}: These are enemies that slowly move to the player for a randomly generated amount of time, then zip towards the player
 by a dispatch timer at a different randomly chosen time. The reason that they all have random movement times is because if they all had the same, they tended to clump up on top of each other quickly. They move by dispatch timer.\\
 \textbf{EnemyMoveToRandom}: These enemies dont really move to completely random places. They just move to the top of the screen then move randomly
 while shooting down projectiles towards the player.\\
-\textbf{InGamePlane.xaml}: ***************************************************\\
-\textbf{InGamePlane.xaml.cs}: ************************************************\\
-\textbf{Level.cs}: ***********************************************************\\
+\textbf{InGamePlane.xaml}: The Window in the main window \\
+\textbf{InGamePlane.xaml.cs}: Draws the PlayArea in the window \\
+\textbf{Level.cs}: Puts everything together in context \\
 \textbf{Wall.cs}: A child of GameObject.cs, this is how boundaries for the world are set where players can not walk.\\
 \textbf{Player.cs}: The player class that is a child of GameObject.cs that lays down all the logic for player movement, hit detection, and shooting.
 All the controls are determined in Player.cs. This makes it easy to update with the player. All functions that the player can do are in 
@@ -219,13 +219,13 @@ go to the top of the map to shoot.\\
 \textbf{SpeedPowerUp.cs}: If touched by the player, the players speed is increased by use of a paramter in the constructor. The time that the speed
 lasts is determined by a certain amount of "frames" or game cycles.\\
 \textbf{InvincibilityPowerUp.cs}: Similar to SpeedPowerUp except it instead sets the player to be invincible and the player sprite flashes.\\
-ScoreKeep.cs: *******************************************************\\
+ScoreKeep.cs: Responsible for keeping track of score and player health \\
 
 
 
 
 \subsection{UML Outline}
-Show the full structure of your program.  Make sure to keep on updating this section as your project evolves (you often start out with one plan, but end up modifying things as you move along).  As a note, while Dia fails miserably at generating pdfs (probably my fault), I have had much success with png files.  Make sure to wrap your images in a \texttt{figure} environment, and to reference with the \texttt{ref} command.  For example, see Figure %\ref{cat2}.
+This UMl was generated using a program built in to Visual Studios showing all the classes inheritence. We had to move around all the classes and such though as what is generated by default is a mess. It does not show dependencies so another porgram called Resharper was used to create the dependency graph below.
 \begin{figure}[ht!]
 \includegraphics[scale=.25]{ClassDiagram1.png}
 \caption{}
@@ -235,13 +235,16 @@ Show the full structure of your program.  Make sure to keep on updating this sec
 \includegraphics[scale=.25]{Dependencies Graph.png}
 \caption{}
 \label{UML}
-\end{figure}
+\end{figure} \\\\\\\\
 
 
 
 \subsection{Design Patterns Used}
-Make sure to actually use at least 2 design patterns from this class.  This is not normally part of such documentation, but largely just specific to this class -- I want to see you use the patterns!
+First Design Patter: \textbf{Template Pattern} \\
+How this works is that we have a single enemy class that contains all of the base logic for the enemy, Enemy.cs, which has functions likes its OnUpdate(), a spawner function, and their hit detection. Then there are two child classes: EnemyMoveToPlayer.cs and EnemyMoveToRandom.cs. Each of these have a different algorithm in which enemy movement and behavior is used, while all the rest of the enemy logic in Enemy.cs stays the same. \\
 
+Second Design Pattern: \textbf {Observer Pattern} \\
+How this works is that we have a base class for all objects that are part of the game called GameObject.cs. Then, inside our class Map.cs, we delcare a list of GameObjects that all of the objects are added to. Inside map, there is a function for whenever the game updates, and a change is made, all the objects inside the list of GameObjects are updated using the OnUpdate() method. That way every time there is a change in anything. every game objedct gets updated accordingly.
 
 \section{Results}
 \subsubsection*{Deliverable 1:}The team is Mel Howard and Cole Davis. 
@@ -290,11 +293,10 @@ along with invincibility frames, and player can die when
 health drops to zero.
 
 \subsection{Future Work}
-Where are you going next with your project?
-For early deliverables, what are your next steps?  (HINT: you will typically want to look back at your timeline and evaluate: did you meet your expected goals?  Are you ahead of schedule?  Did you decide to shift gears and implement a new feature?)
-By the end, what do you plan on doing with this project?  Will you try to sell it?  Set it on fire?  Link to it on your resume and forget it exists?
-
-
+I definitely want to polish this (music, sprites, hitboxes) and post it on Itch.io as well as potentially
+writing a tutorial in the form of a post on portfolio blog. Cole and I have also discussed "porting" it to 
+a game engine like Unity or Unreal and seeing what we could accomplish there. Personally, I want to get 
+a level generator working. 
 
 
 %\begin{thebibliography}{1}
@@ -339,5 +341,3 @@ By the end, what do you plan on doing with this project?  Will you try to sell i
 
 % that's all folks
 \end{document}
-
-
